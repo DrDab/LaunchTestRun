@@ -313,85 +313,148 @@ public class TestServlet extends HttpServlet
 				"<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n" + 
 				"\n" + 
 				"</head>\n" + 
-				"\n" + 
-				"<body class=\"no-mathjax\">\n" + 
-				" <div align=\"center\">\n" + 
-				"  <div class=\"shadow1\">\n" + 
-				"\n" + 
-				"   <div class=\"content\">\n" + 
-				"\n" + 
-				"  \n" + 
-				"\n" + 
-				"   \n" + 
-				"    \n" + 
-				"\n" + 
-				"\n" + 
-				"<div class=\"panel\">\n" + 
-				"\n" + 
-				"<h2> Sample Problem OwO </h2>\n" + 
-				"<h2> Test Contest Set Mark IV </h2>\n" + 
-				" \n" + 
-				"</div><br><br><br>\n" + 
-				"\n" + 
-				"<br style=\"clear:both\" />\n" + 
-				"\n" + 
-				"\n" + 
-				"<div id=\"last-status\" style=\"padding:10px; position:relative; float:left; left:30px; top:-45px; width:820px; border:1px solid black; background-color:#FFF; \" \n" + 
-				"	data-response-code=\"-1\" data-sid=\"1006973\"> \n" + 
-				"   <img src=\"current/images/ajax.gif\"/> <p style=\"display:inline;\"> </p>\n" + 
-				"<div id=\"trial-information\"></div>\n" + 
-				"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" + 
-				"</div>\n" + 
-				"\n" + 
-				"<br style=\"clear:both\" />\n" + 
-				"\n" + 
-				"<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n" +  
-				"\n" + 
-				"</div>\n" + 
-				"\n" + 
-				"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
-				"<div align=\"left\" class=\"problem-text\" style='width:800px; padding-top:10px;'>\n" + 
-				"<span id=\"probtext-text\" class=\"mathjax\">" +
-				"(insert PDF view here + notes)" +
-				"</span>\n" + 
-				"</div>\n" + 
-				"\n" + 
-				"    \n" + 
-				"		<form class=\"submission\" method=\"POST\" action=\"/LaunchTestRun/submit-solution\" enctype=\"multipart/form-data\">\n" + 
-				"		<div id=\"solution\">\n" + 
-				"			<input type=\"hidden\" name=\"cpid\" value=\"811\"/>\n" + 
-				"		\n<br><br><br>" + 
-				"			<div class=\"field2\">\n" + 
-				"				<label for=\"language\">Language:</label>\n" + 
-				"				<select name=\"language\">\n" + 
-				"					<option value='1'>C (GCC 8.1)</option>\n" + 
-				"					<option value='2'>C++ (GCC 8.1)</option>\n" + 
-				"					<option value='3'>Java (Oracle JVM 8)</option>\n" + 
-				"					<option value='4'>Python (2.7.6)</option>\n" + 
-				"					<option value='5'>Python (3.4.0)</option>\n" + 
-				"				</select></div>\n" + 
-				"			\n" + 
-				"			<div class=\"field2\">\n" + 
-				"				<label for=\"sourcefile\">Source File:</label>\n" + 
-				"				<input name=\"sourcefile\" size=\"50\" type=\"file\" class=\"required\" /></div>\n" + 
-				"		\n" + 
-				"			<div class=\"field2\">\n" + 
-				"				    <input name=\"solution-submit\" id=\"solution-submit\" type=\"submit\" value=\"Submit Solution\" /></div>\n" + 
-				"			</div>\n" + 
-				"		</form>\n" + 
-				"    \n" + 
-				"</div>\n" + 
-				"\n" + 
-				"\n" + 
-				"<br style=\"clear:both\" />\n" + 
-				"\n" + 
-				"\n" + 
-				"   </div>\n" + 
-				"  </div>\n" + 
-				" </div>\n" + 
-				"\n" + 
-				" <br style=\"clear:both\" />\n" + 
-				"\n";
+				"";
+		try
+		{
+			s += 	"\n" + 
+					"<body class=\"no-mathjax\">\n" + 
+					" <div align=\"center\">\n" + 
+					"  <div class=\"shadow1\">\n" + 
+					"\n" + 
+					"   <div class=\"content\">\n" + 
+					"\n" + 
+					"  \n" + 
+					"\n" + 
+					"   \n" + 
+					"    \n" + 
+					"\n" + 
+					"\n" + 
+					"<div class=\"panel\">\n" + 
+					"\n" + 
+					"<h2> Sample Problem OwO </h2>\n" + 
+					"<h2> Test Contest Set Mark IV </h2>\n" + 
+					" \n" + 
+					"</div><br><br><br>\n" + 
+					"\n" + 
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"\n" + 
+					"<div id=\"last-status\" style=\"padding:10px; position:relative; float:left; left:30px; top:-45px; width:820px; border:1px solid black; background-color:#FFF; \" \n" + 
+					"	data-response-code=\"-1\" data-sid=\"1006973\"> \n" + 
+					"   <img src=\"current/images/ajax.gif\"/> <p style=\"display:inline;\"> </p>\n" + 
+					"<div id=\"trial-information\"></div>\n" + 
+					"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" + 
+					"</div>\n" + 
+					"\n" + 
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n" +  
+					"\n" + 
+					"</div>\n" + 
+					"\n" + 
+					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
+					"<div align=\"left\" class=\"problem-text\" style='width:800px; padding-top:10px;'>\n" + 
+					"<span id=\"probtext-text\" class=\"mathjax\">" +
+					"(insert PDF view here + notes)" +
+					"</span>\n" + 
+					"</div>\n" + 
+					"\n" + 
+					"    \n" + 
+					"		<form class=\"submission\" method=\"POST\" action=\"/LaunchTestRun/submit-solution\" enctype=\"multipart/form-data\">\n" + 
+					"		<div id=\"solution\">\n" + 
+					"			<input type=\"hidden\" name=\"cpid\" value=\"811\"/>\n" + 
+					"		\n<br><br><br>" + 
+					"			<div class=\"field2\">\n" + 
+					"				<label for=\"language\">Language:</label>\n" + 
+					"				<select name=\"language\">\n" + 
+					"					<option value='1'>C (GCC 8.1)</option>\n" + 
+					"					<option value='2'>C++ (GCC 8.1)</option>\n" + 
+					"					<option value='3'>Java (Oracle JVM 8)</option>\n" + 
+					"					<option value='4'>Python (2.7.6)</option>\n" + 
+					"					<option value='5'>Python (3.4.0)</option>\n" + 
+					"				</select></div>\n" + 
+					"			\n" + 
+					"			<div class=\"field2\">\n" + 
+					"				<label for=\"sourcefile\">Source File:</label>\n" + 
+					"				<input name=\"sourcefile\" size=\"50\" type=\"file\" class=\"required\" /></div>\n" + 
+					"		\n" + 
+					"			<div class=\"field2\">\n" + 
+					"				    <input name=\"solution-submit\" id=\"solution-submit\" type=\"submit\" value=\"Submit Solution\" /></div>\n" + 
+					"			</div>\n" + 
+					"		</form>\n" + 
+					"    \n" + 
+					"</div>\n" + 
+					"\n" + 
+					"\n" + 
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"\n" + 
+					"   </div>\n" + 
+					"  </div>\n" + 
+					" </div>\n" + 
+					"\n" + 
+					" <br style=\"clear:both\" />\n" + 
+					"\n";
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			s += 
+					"\n" + 
+					"<body class=\"no-mathjax\">\n" + 
+					" <div align=\"center\">\n" + 
+					"  <div class=\"shadow1\">\n" + 
+					"\n" + 
+					"   <div class=\"content\">\n" + 
+					"\n" + 
+					"  \n" + 
+					"\n" + 
+					"   \n" + 
+					"    \n" + 
+					"\n" + 
+					"\n" + 
+					"<div class=\"panel\">\n" + 
+					"\n" + 
+					"<h2> Error </h2>\n" + 
+					" \n" + 
+					"</div><br><br><br>\n" + 
+					"\n" + 
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"\n" + 
+					"<div id=\"last-status\" style=\"padding:10px; position:relative; float:left; left:30px; top:-45px; width:820px; border:1px solid black; background-color:#FFF; \" \n" + 
+					"	data-response-code=\"-1\" data-sid=\"1006973\"> \n" + 
+					"   <img src=\"current/images/ajax.gif\"/> <p style=\"display:inline;\"> </p>\n" + 
+					"<div id=\"trial-information\"></div>\n" + 
+					"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" + 
+					"</div>\n" + 
+					"\n" + 
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n" +  
+					"\n" + 
+					"</div>\n" + 
+					"\n" + 
+					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
+					"<div align=\"left\" class=\"problem-text\" style='width:800px; padding-top:10px;'>\n" + 
+					"<span id=\"probtext-text\">" +
+					"Oops, something went wrong: " + e +
+					"</span>\n" + 
+					"</div>\n" + 
+					"\n" + 
+					"</div>\n" + 
+					"\n" + 
+					"\n" + 
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"\n" + 
+					"   </div>\n" + 
+					"  </div>\n" + 
+					" </div>\n" + 
+					"\n" + 
+					" <br style=\"clear:both\" />\n" + 
+					"\n";
+		}
 		String end = "<center>Page requested: " + request.getRequestURI() + "<br>Page generated in: " + (double)((DataStore.stw.getElapsedNanoTime() - start)/ 1000000000.0) + " seconds [ 100% Tomcat 8 ] </center>";
 		response.getWriter().append(s).append(end + "</body>\n" + 
 				"\n" + 
