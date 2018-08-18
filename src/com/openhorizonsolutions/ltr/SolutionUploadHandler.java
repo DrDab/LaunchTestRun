@@ -82,7 +82,8 @@ public class SolutionUploadHandler extends HttpServlet
 			         
 			        // creates the directory if it does not exist
 			        File uploadDir = new File(uploadPath);
-			        if (!uploadDir.exists()) {
+			        if (!uploadDir.exists()) 
+			        {
 			            uploadDir.mkdir();
 			        }
 			 

@@ -33,6 +33,13 @@ public class TestServlet extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
+		String requestURI = request.getRequestURI();
+		String cpid = requestURI.substring(requestURI.indexOf("/LaunchTestRun/test.html") + new String("/LaunchTestRun/test.html").length());
+		Problem p = null;
+		if (ProblemLoaderUtils.problemExists(cpid))
+		{
+			p = ProblemLoaderUtils.getProblem(cpid);
+		}
 		String s = "";
 		s += "\n" + 
 				"\n" + 
@@ -331,8 +338,8 @@ public class TestServlet extends HttpServlet
 					"\n" + 
 					"<div class=\"panel\">\n" + 
 					"\n" + 
-					"<h2> Sample Problem OwO </h2>\n" + 
-					"<h2> Test Contest Set Mark IV </h2>\n" + 
+					"<h2> " + p.getTitle() + "</h2>\n" + 
+					"<h2> " + p.getSetInfo() + " </h2>\n" + 
 					" \n" + 
 					"</div><br><br><br>\n" + 
 					"\n" + 
@@ -355,7 +362,7 @@ public class TestServlet extends HttpServlet
 					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
 					"<div align=\"left\" class=\"problem-text\" style='width:800px; padding-top:10px;'>\n" + 
 					"<span id=\"probtext-text\" class=\"mathjax\">" +
-					"(insert PDF view here + notes)" +
+					p.getDescription() +
 					"</span>\n" + 
 					"</div>\n" + 
 					"\n" + 
