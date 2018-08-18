@@ -346,9 +346,9 @@ public class TestServlet extends HttpServlet
 					"\n" + 
 					"<br style=\"clear:both\" />\n" + 
 					"\n" + 
-					"\n" +
-					"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" + 
-					"</div>\n" + 
+					"\n" + 
+					"<div id=\"trial-information\"></div>\n" + 
+					"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" +  
 					"\n" + 
 					"<br style=\"clear:both\" />\n" + 
 					"\n" + 
