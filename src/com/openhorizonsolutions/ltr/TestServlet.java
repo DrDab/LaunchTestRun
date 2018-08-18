@@ -34,7 +34,8 @@ public class TestServlet extends HttpServlet
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
 		String requestURI = request.getRequestURI();
-		String cpid = requestURI.substring(requestURI.indexOf("/LaunchTestRun/test.html") + new String("/LaunchTestRun/test.html").length());
+		String cpid = requestURI.substring(new String("/LaunchTestRun/test.html").length());
+		System.out.println("CPID:" + cpid);
 		Problem p = null;
 		if (ProblemLoaderUtils.problemExists(cpid))
 		{
@@ -345,11 +346,7 @@ public class TestServlet extends HttpServlet
 					"\n" + 
 					"<br style=\"clear:both\" />\n" + 
 					"\n" + 
-					"\n" + 
-					"<div id=\"last-status\" style=\"padding:10px; position:relative; float:left; left:30px; top:-45px; width:820px; border:1px solid black; background-color:#FFF; \" \n" + 
-					"	data-response-code=\"-1\" data-sid=\"1006973\"> \n" + 
-					"   <img src=\"current/images/ajax.gif\"/> <p style=\"display:inline;\"> </p>\n" + 
-					"<div id=\"trial-information\"></div>\n" + 
+					"\n" +
 					"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" + 
 					"</div>\n" + 
 					"\n" + 

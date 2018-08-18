@@ -4,7 +4,11 @@ public class ProblemLoaderUtils
 {
 	public static boolean problemExists(String cpid)
 	{
-		return true;
+		if(!cpid.matches("/222"))
+		{
+			return true;
+		}
+		return false;
 	}
 	
 	public static Problem getProblem(String cpid)
