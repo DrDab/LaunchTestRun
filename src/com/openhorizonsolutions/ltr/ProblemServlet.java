@@ -465,7 +465,7 @@ public class ProblemServlet extends HttpServlet
 			{
 				String pCPID = problem.getCPID();
 				String title = problem.getTitle();
-				generatedLinkPart += "<a href=\"/LaunchTestRun/problem.html/" + pCPID + "\">" + title  + "</a>\n";
+				generatedLinkPart += "<a href=\"/LaunchTestRun/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
 			}
 			s += "\n" + 
 					"<body class=\"no-mathjax\">\n" + 
