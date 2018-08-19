@@ -11,20 +11,20 @@
     <welcome-file>upload.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <servlet-name>TestServlet</servlet-name>
-    <servlet-class>com.openhorizonsolutions.ltr.TestServlet</servlet-class>
+    <servlet-name>ProblemServlet</servlet-name>
+    <servlet-class>com.openhorizonsolutions.ltr.ProblemServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>SolutionUploadHandler</servlet-name>
     <servlet-class>com.openhorizonsolutions.ltr.SolutionUploadHandler</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>TestServlet</servlet-name>
-    <url-pattern>/test.html</url-pattern>
+    <servlet-name>ProblemServlet</servlet-name>
+    <url-pattern>/problem.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>TestServlet</servlet-name>
-    <url-pattern>/test.html/*</url-pattern>
+    <servlet-name>ProblemServlet</servlet-name>
+    <url-pattern>/problem.html/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SolutionUploadHandler</servlet-name>

@@ -63,65 +63,60 @@ public class SolutionUploadHandler extends HttpServlet
         }
 		else
 		{
-			// Create a factory for disk-based file items
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 
-			// Set factory constraints
 			factory.setSizeThreshold(1024 * 512);
 			factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
 
-			// Create a new file upload handler
 			ServletFileUpload upload = new ServletFileUpload(factory);
 
-			// Set overall request size constraint
 			upload.setSizeMax(1024 * 512);
 
-			// Parse the request
-				 String uploadPath = getServletContext().getRealPath("")
+			String uploadPath = getServletContext().getRealPath("")
 			                + File.separator + UPLOAD_DIRECTORY;
-			         
-			        // creates the directory if it does not exist
-			        File uploadDir = new File(uploadPath);
-			        if (!uploadDir.exists()) 
-			        {
-			            uploadDir.mkdir();
-			        }
+
+			File uploadDir = new File(uploadPath);
+			
+			if (!uploadDir.exists()) 
+			{
+				uploadDir.mkdir();
+			}
 			 
-			        try
-			        {
-			            Part filePart = request.getPart("sourcefile");
-			            Part problemIDPart = request.getPart("cpid");
-			            InputStream filecontent = filePart.getInputStream();
-			            InputStream pidcontent = problemIDPart.getInputStream();
-			            String fileName = new File(filePart.getSubmittedFileName()).getName();
-	                    String filePath = uploadPath + File.separator + fileName;
-	                    File storeFile = new File(filePath);
-	                    storeFile.createNewFile();
-	                    System.out.println(storeFile.getAbsolutePath());
-	                    byte[] buffer = new byte[filecontent.available()];
-	                    byte[] pidpartbuffer = new byte[pidcontent.available()];
-	                    filecontent.read(buffer, 0, filecontent.available());
-	                    pidcontent.read(pidpartbuffer, 0, pidcontent.available());
-	                    String problemID = new String(pidpartbuffer);
-	                    System.out.println(problemID);
-	                    OutputStream outStream = new FileOutputStream(storeFile);
-	                    outStream.write(buffer);
-	                    outStream.close();
-	                     request.setAttribute("message",
-	                            "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType());
-			                    
-			        } 
-			        catch (Exception ex) 
-			        {
-			            request.setAttribute("message",
-			                    "There was an error: " + ex.getMessage());
-			        }
-			        getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
-			} 
-			writer.println("Data successfully received! Yiff yiff!");
-			writer.flush();
-			return;
-		}
+			try
+	        {
+	            Part filePart = request.getPart("sourcefile");
+	            Part problemIDPart = request.getPart("cpid");
+	            InputStream filecontent = filePart.getInputStream();
+	            InputStream pidcontent = problemIDPart.getInputStream();
+	            String fileName = new File(filePart.getSubmittedFileName()).getName();
+                String filePath = uploadPath + File.separator + fileName;
+                File storeFile = new File(filePath);
+                storeFile.createNewFile();
+                System.out.println(storeFile.getAbsolutePath());
+                byte[] buffer = new byte[filecontent.available()];
+                byte[] pidpartbuffer = new byte[pidcontent.available()];
+                filecontent.read(buffer, 0, filecontent.available());
+                pidcontent.read(pidpartbuffer, 0, pidcontent.available());
+                String problemID = new String(pidpartbuffer);
+                System.out.println(problemID);
+                OutputStream outStream = new FileOutputStream(storeFile);
+                outStream.write(buffer);
+                outStream.close();
+                request.setAttribute("message", "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType());
+	                    
+	        } 
+	        catch (Exception ex) 
+	        {
+	            request.setAttribute("message", "There was an error: " + ex.getMessage());
+	        }
+	        getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
+			
+		} 
+		
+		writer.println("Data successfully received! Yiff yiff!");
+		writer.flush();
+		return;
+	}
 		// doGet(request, response);
 
 }
