@@ -112,7 +112,7 @@ public class SolutionUploadHandler extends HttpServlet
 				// the file size is over 1MB
 				if (buffer.length >= 10000)
 				{
-					request.setAttribute("message", "File size too big. Please upload a smaller file.");
+					request.setAttribute("message", "File size too big. Please upload a smaller file under 1MB.");
 				}
 				else
 				{
@@ -147,6 +147,7 @@ public class SolutionUploadHandler extends HttpServlet
 						OutputStream outStream = new FileOutputStream(storeFile);
 						outStream.write(buffer);
 						outStream.close();
+						ProblemLoaderUtils.compileProgram(storeFile, languageType);
 						request.setAttribute("message", "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType());
 					}
 					else
