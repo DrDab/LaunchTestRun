@@ -80,20 +80,24 @@ public class ProblemLoaderUtils
 		if (language == 0 || language == 1)
 		{
 			command += "";
+			command += file.toString();
 		}
 		else if (language == 2)
 		{
-			command += "/usr/bin/java ";
+			command += "/usr/bin/java -cp ";
+			command += file.getParent() + " ";
+			command += file.getName().replaceAll(".class", "");
 		}
 		else if (language == 3)
 		{
 			command += "/usr/bin/python2 ";
+			command += file.toString();
 		}
 		else if (language == 4)
 		{
 			command += "/usr/bin/python3 ";
+			command += file.toString();
 		}
-		command += file.toString();
 		try 
 		{
 			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
