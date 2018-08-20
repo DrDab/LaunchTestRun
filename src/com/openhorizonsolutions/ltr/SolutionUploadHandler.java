@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -147,7 +148,8 @@ public class SolutionUploadHandler extends HttpServlet
 						OutputStream outStream = new FileOutputStream(storeFile);
 						outStream.write(buffer);
 						outStream.close();
-						StdPipePostExecOutputHandler compilerOutput = ProblemLoaderUtils.compileProgram(storeFile, languageType);
+						String uuid = UUID.randomUUID().toString();
+						StdPipePostExecOutputHandler compilerOutput = ProblemLoaderUtils.compileProgram(uuid, storeFile, languageType);
 						File executableFile = null;
 						if (languageType == 0 || languageType == 1)
 						{
@@ -162,7 +164,7 @@ public class SolutionUploadHandler extends HttpServlet
 							executableFile = storeFile;
 						}
 						
-						StdPipePostExecOutputHandler executionOutput = ProblemLoaderUtils.getProgramOutput(executableFile, languageType);
+						StdPipePostExecOutputHandler executionOutput = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType);
 						request.setAttribute("message", "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><strong>COMPILER OUTPUT</strong><br>STDOUT:\"" + compilerOutput.getStdOut() + "\"<br>STDERR:\"" + compilerOutput.getStdErr() + "\"<br> <strong>EXECUTION OUTPUT</strong><br>STDOUT:\"" + executionOutput.getStdOut() + "\"<br>STDERR:\"" + executionOutput.getStdErr() + "\"<br>");
 					}
 					else

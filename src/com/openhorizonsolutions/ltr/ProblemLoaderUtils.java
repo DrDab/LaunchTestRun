@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,8 +54,10 @@ public class ProblemLoaderUtils
 		return tmpLst;
 	}
 	
-	public static StdPipePostExecOutputHandler getProgramOutput(File file, int language) throws InterruptedException
+	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language) throws InterruptedException
 	{
+		File programOutputFile = new File(file.getParent(), uuid + "-program-output");
+		File programErrFile = new File(file.getParent(), uuid + "-program-error");
 		String command = "";
 		if (language == 0 || language == 1)
 		{
@@ -75,18 +78,17 @@ public class ProblemLoaderUtils
 		command += file.toString();
 		try 
 		{
-			ByteArrayOutputStream stdoutStream = new ByteArrayOutputStream();
-			PrintStream stdoutPs = new PrintStream(stdoutStream);
-			ByteArrayOutputStream stderrStream = new ByteArrayOutputStream();
-			PrintStream stderrPs = new PrintStream(stderrStream);
-			Process buildProcess = Runtime.getRuntime().exec(command.split(" "));
-			inheritIO(buildProcess.getInputStream(), stdoutPs);
-		    inheritIO(buildProcess.getErrorStream(), stderrPs);
+			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
+			pb.redirectOutput(programOutputFile);
+			pb.redirectError(programErrFile);
+			Process buildProcess = pb.start();
 		    System.out.println("Waiting for process...");
 		    buildProcess.waitFor();
 		    System.out.println("Done! Yiff yiff!~");
-		    String stdout = stdoutStream.toString("UTF8");
-		    String stderr = stderrStream.toString("UTF8");
+		    byte[] stdoutarr = Files.readAllBytes(programOutputFile.toPath());
+		    byte[] stderrarr = Files.readAllBytes(programErrFile.toPath());
+		    String stdout = new String(stdoutarr);
+		    String stderr = new String(stderrarr);
 		    System.out.println("STDOUT: " + stdout + "<");
 		    System.out.println("STDERR: " + stderr + "<");
 		    return new StdPipePostExecOutputHandler(stdout, stderr);
@@ -99,8 +101,10 @@ public class ProblemLoaderUtils
 		}
 	}
 	
-	public static StdPipePostExecOutputHandler compileProgram(File file, int language) throws InterruptedException
+	public static StdPipePostExecOutputHandler compileProgram(String uuid, File file, int language) throws InterruptedException
 	{
+		File programOutputFile = new File(file.getParent(), uuid + "-compiler-output");
+		File programErrFile = new File(file.getParent(), uuid + "-compiler-error");
 		String command = "";
 		if (language == 0)
 		{
@@ -128,18 +132,17 @@ public class ProblemLoaderUtils
 
 		try 
 		{
-			ByteArrayOutputStream stdoutStream = new ByteArrayOutputStream();
-			PrintStream stdoutPs = new PrintStream(stdoutStream);
-			ByteArrayOutputStream stderrStream = new ByteArrayOutputStream();
-			PrintStream stderrPs = new PrintStream(stderrStream);
-			Process buildProcess = Runtime.getRuntime().exec(command.split(" "));
-			inheritIO(buildProcess.getInputStream(), stdoutPs);
-		    inheritIO(buildProcess.getErrorStream(), stderrPs);
+			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
+			pb.redirectOutput(programOutputFile);
+			pb.redirectError(programErrFile);
+			Process buildProcess = pb.start();
 		    System.out.println("Waiting for process...");
 		    buildProcess.waitFor();
 		    System.out.println("Done! Yiff yiff!~");
-		    String stdout = stdoutStream.toString("UTF8");
-		    String stderr = stderrStream.toString("UTF8");
+		    byte[] stdoutarr = Files.readAllBytes(programOutputFile.toPath());
+		    byte[] stderrarr = Files.readAllBytes(programErrFile.toPath());
+		    String stdout = new String(stdoutarr);
+		    String stderr = new String(stderrarr);
 		    System.out.println("STDOUT: " + stdout + "<");
 		    System.out.println("STDERR: " + stderr + "<");
 		    return new StdPipePostExecOutputHandler(stdout, stderr);
@@ -152,20 +155,4 @@ public class ProblemLoaderUtils
 		}
 	}
 	
-	public static void inheritIO(final InputStream src, final PrintStream dest)
-	{
-	    new Thread(new Runnable() 
-	    {
-	        public void run() 
-	        {
-	            @SuppressWarnings("resource")
-				Scanner sc = new Scanner(src);
-	            while (sc.hasNextLine()) 
-	            {
-	                dest.println(sc.nextLine());
-	            }
-	        }
-	    }
-	    ).start();
-	}
 }
