@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class ProblemLoaderUtils
 {
@@ -100,20 +101,53 @@ public class ProblemLoaderUtils
 		}
 		try 
 		{
+			ArrayList<Integer> al = new ArrayList<Integer>();
+			// 1 = executed and terminated normally
+			// 2 = forcekilled due to hangup on time.
 			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
 			Process buildProcess = pb.start();
 		    // System.out.println("Waiting for process...");
+			new Thread(new Runnable() 
+			{
+
+				@Override
+				public void run()
+				{
+					// TODO Auto-generated method stub
+					try 
+					{
+						Thread.sleep(2000);
+						if (buildProcess.isAlive())
+						{
+							buildProcess.destroy();
+							al.add(1);
+						}
+					} 
+					catch (InterruptedException e) 
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			}).start();
 		    buildProcess.waitFor();
-		    // System.out.println("Done! Yiff yiff!~");
 		    byte[] stdoutarr = Files.readAllBytes(programOutputFile.toPath());
 		    byte[] stderrarr = Files.readAllBytes(programErrFile.toPath());
 		    String stdout = new String(stdoutarr);
 		    String stderr = new String(stderrarr);
 		    // System.out.println("STDOUT: " + stdout + "<");
 		    // System.out.println("STDERR: " + stderr + "<");
-		    return new StdPipePostExecOutputHandler(stdout, stderr);
+		    if (al.size() == 0)
+		    {
+		    	return new StdPipePostExecOutputHandler(stdout, stderr);
+		    }
+		    else
+		    {
+		    	return new StdPipePostExecOutputHandler("Process Forcibly Terminated", "The process took too long to run, and was terminated.");
+		    }
 		} 
 		catch (IOException e)
 		{
