@@ -22,7 +22,7 @@ public class ProblemLoaderUtils
 	public static boolean problemExists(String cpid)
 	{
 		refreshIO();
-		System.out.println("CPID:" + cpid);
+		// System.out.println("CPID:" + cpid);
 		for (Problem p : tmpLst)
 		{
 			if (p.getCPID().matches(cpid))
@@ -104,15 +104,15 @@ public class ProblemLoaderUtils
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
 			Process buildProcess = pb.start();
-		    System.out.println("Waiting for process...");
+		    // System.out.println("Waiting for process...");
 		    buildProcess.waitFor();
-		    System.out.println("Done! Yiff yiff!~");
+		    // System.out.println("Done! Yiff yiff!~");
 		    byte[] stdoutarr = Files.readAllBytes(programOutputFile.toPath());
 		    byte[] stderrarr = Files.readAllBytes(programErrFile.toPath());
 		    String stdout = new String(stdoutarr);
 		    String stderr = new String(stderrarr);
-		    System.out.println("STDOUT: " + stdout + "<");
-		    System.out.println("STDERR: " + stderr + "<");
+		    // System.out.println("STDOUT: " + stdout + "<");
+		    // System.out.println("STDERR: " + stderr + "<");
 		    return new StdPipePostExecOutputHandler(stdout, stderr);
 		} 
 		catch (IOException e)
@@ -158,15 +158,15 @@ public class ProblemLoaderUtils
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
 			Process buildProcess = pb.start();
-		    System.out.println("Waiting for process...");
+		    // System.out.println("Waiting for process...");
 		    buildProcess.waitFor();
-		    System.out.println("Done! Yiff yiff!~");
+		    // System.out.println("Done! Yiff yiff!~");
 		    byte[] stdoutarr = Files.readAllBytes(programOutputFile.toPath());
 		    byte[] stderrarr = Files.readAllBytes(programErrFile.toPath());
 		    String stdout = new String(stdoutarr);
 		    String stderr = new String(stderrarr);
-		    System.out.println("STDOUT: " + stdout + "<");
-		    System.out.println("STDERR: " + stderr + "<");
+		    // System.out.println("STDOUT: " + stdout + "<");
+		    // System.out.println("STDERR: " + stderr + "<");
 		    return new StdPipePostExecOutputHandler(stdout, stderr);
 		} 
 		catch (IOException e)

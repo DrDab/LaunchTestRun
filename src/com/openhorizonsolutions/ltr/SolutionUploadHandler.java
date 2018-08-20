@@ -112,11 +112,12 @@ public class SolutionUploadHandler extends HttpServlet
 				String languageStr = new String(languagebuffer);
 				File storeFile = new File(filePath);
 				
-				
+				/*
 				System.out.println("Path: " + storeFile.getAbsolutePath());
 				System.out.println("Problem ID: " + problemID);
 				System.out.println("Filename: " + fileName);
 				System.out.println("File size: " + buffer.length);
+				*/
 				
 				// the file size is over 1MB
 				if (buffer.length >= 10000)
