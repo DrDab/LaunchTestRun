@@ -165,7 +165,7 @@ public class SolutionUploadHandler extends HttpServlet
 						}
 						else if (languageType == 2)
 						{
-							executableFile = new File(storeFile.getParent(), storeFile.toString().replaceAll(".java", "") + ".class");
+							executableFile = new File(storeFile.getParent(), storeFile.getName().replaceAll(".java", "") + ".class");
 						}
 						else if (languageType == 3 || languageType == 4)
 						{
@@ -173,7 +173,7 @@ public class SolutionUploadHandler extends HttpServlet
 						}
 						
 						StdPipePostExecOutputHandler executionOutput = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType);
-						request.setAttribute("message", "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><strong>COMPILER OUTPUT</strong><br>STDOUT:\"" + compilerOutput.getStdOut() + "\"<br>STDERR:\"" + compilerOutput.getStdErr() + "\"<br> <strong>EXECUTION OUTPUT</strong><br>STDOUT:\"" + executionOutput.getStdOut() + "\"<br>STDERR:\"" + executionOutput.getStdErr() + "\"<br>");
+						request.setAttribute("message", "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutput.getStdErr()) + "</code></pre>\"<br>");
 					}
 					else
 					{

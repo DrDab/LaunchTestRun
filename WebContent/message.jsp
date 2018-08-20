@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Upload Result</title>
+<style>body{ font-family:"monospace"; }</style>
 </head>
 <body>
     ${message}

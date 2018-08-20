@@ -1,13 +1,9 @@
 package com.openhorizonsolutions.ltr;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ProblemLoaderUtils
 {
@@ -54,6 +50,28 @@ public class ProblemLoaderUtils
 		return tmpLst;
 	}
 	
+	
+	public static String escapeHTML(String s) 
+	{
+	    StringBuilder out = new StringBuilder(Math.max(16, s.length()));
+	    for (int i = 0; i < s.length(); i++) 
+	    {
+	        char c = s.charAt(i);
+	        if (c > 127 || c == '"' || c == '<' || c == '>' || c == '&')
+	        {
+	            out.append("&#");
+	            out.append((int) c);
+	            out.append(';');
+	        } 
+	        else
+	        {
+	            out.append(c);
+	        }
+	    }
+	    return out.toString();
+	}
+
+	
 	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language) throws InterruptedException
 	{
 		File programOutputFile = new File(file.getParent(), uuid + "-program-output");
@@ -65,15 +83,15 @@ public class ProblemLoaderUtils
 		}
 		else if (language == 2)
 		{
-			command += "java ";
+			command += "/usr/bin/java ";
 		}
 		else if (language == 3)
 		{
-			command += "python2 ";
+			command += "/usr/bin/python2 ";
 		}
 		else if (language == 4)
 		{
-			command += "python3 ";
+			command += "/usr/bin/python3 ";
 		}
 		command += file.toString();
 		try 
