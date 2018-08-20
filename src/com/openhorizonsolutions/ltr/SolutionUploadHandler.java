@@ -76,11 +76,19 @@ public class SolutionUploadHandler extends HttpServlet
 			upload.setSizeMax(1024 * 512);
 
 			String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
-
+			String uuid = UUID.randomUUID().toString();
+			uploadPath += File.separator + uuid;
+			
 			File uploadDir = new File(uploadPath);
 
 			if (!uploadDir.exists())
 			{
+				uploadDir.mkdir();
+			}
+			else
+			{
+				uploadDir.delete();
+				uploadDir = new File(uploadPath);
 				uploadDir.mkdir();
 			}
 
@@ -148,7 +156,7 @@ public class SolutionUploadHandler extends HttpServlet
 						OutputStream outStream = new FileOutputStream(storeFile);
 						outStream.write(buffer);
 						outStream.close();
-						String uuid = UUID.randomUUID().toString();
+						
 						StdPipePostExecOutputHandler compilerOutput = ProblemLoaderUtils.compileProgram(uuid, storeFile, languageType);
 						File executableFile = null;
 						if (languageType == 0 || languageType == 1)
