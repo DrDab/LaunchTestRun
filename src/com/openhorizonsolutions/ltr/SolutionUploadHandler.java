@@ -87,7 +87,7 @@ public class SolutionUploadHandler extends HttpServlet
 			{
 				Part filePart = request.getPart("sourcefile");
 				Part problemIDPart = request.getPart("cpid");
-				Part languagePart = request.getPart("languagePart");
+				Part languagePart = request.getPart("language");
 				InputStream filecontent = filePart.getInputStream();
 				InputStream pidcontent = problemIDPart.getInputStream();
 				InputStream langcontent = languagePart.getInputStream();
@@ -158,6 +158,7 @@ public class SolutionUploadHandler extends HttpServlet
 			catch (Exception ex) 
 			{
 				request.setAttribute("message", "There was an error: " + ex.getMessage());
+				ex.printStackTrace();
 			}
 			getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
 
