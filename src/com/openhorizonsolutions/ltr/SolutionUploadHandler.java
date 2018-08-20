@@ -147,8 +147,23 @@ public class SolutionUploadHandler extends HttpServlet
 						OutputStream outStream = new FileOutputStream(storeFile);
 						outStream.write(buffer);
 						outStream.close();
-						ProblemLoaderUtils.compileProgram(storeFile, languageType);
-						request.setAttribute("message", "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType());
+						StdPipePostExecOutputHandler compilerOutput = ProblemLoaderUtils.compileProgram(storeFile, languageType);
+						File executableFile = null;
+						if (languageType == 0 || languageType == 1)
+						{
+							executableFile = new File(storeFile.getParent(), "toExecute");
+						}
+						else if (languageType == 2)
+						{
+							executableFile = new File(storeFile.getParent(), storeFile.toString().replaceAll(".java", "") + ".class");
+						}
+						else if (languageType == 3 || languageType == 4)
+						{
+							executableFile = storeFile;
+						}
+						
+						StdPipePostExecOutputHandler executionOutput = ProblemLoaderUtils.getProgramOutput(executableFile, languageType);
+						request.setAttribute("message", "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><strong>COMPILER OUTPUT</strong><br>STDOUT:\"" + compilerOutput.getStdOut() + "\"<br>STDERR:\"" + compilerOutput.getStdErr() + "\"<br> <strong>EXECUTION OUTPUT</strong><br>STDOUT:\"" + executionOutput.getStdOut() + "\"<br>STDERR:\"" + executionOutput.getStdErr() + "\"<br>");
 					}
 					else
 					{

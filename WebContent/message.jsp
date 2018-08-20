@@ -8,8 +8,6 @@
 <title>Upload Result</title>
 </head>
 <body>
-    <center>
-        <h2>${message}</h2>
-    </center>
+    ${message}
 </body>
 </html>

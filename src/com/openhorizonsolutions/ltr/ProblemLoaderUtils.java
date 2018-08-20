@@ -53,12 +53,12 @@ public class ProblemLoaderUtils
 		return tmpLst;
 	}
 	
-	public static String getProgramOutput(File file, int language)
+	public static StdPipePostExecOutputHandler getProgramOutput(File file, int language) throws InterruptedException
 	{
 		String command = "";
 		if (language == 0 || language == 1)
 		{
-			command += "exec ";
+			command += "";
 		}
 		else if (language == 2)
 		{
@@ -72,11 +72,34 @@ public class ProblemLoaderUtils
 		{
 			command += "python3 ";
 		}
-		
-		return "";
+		command += file.toString();
+		try 
+		{
+			ByteArrayOutputStream stdoutStream = new ByteArrayOutputStream();
+			PrintStream stdoutPs = new PrintStream(stdoutStream);
+			ByteArrayOutputStream stderrStream = new ByteArrayOutputStream();
+			PrintStream stderrPs = new PrintStream(stderrStream);
+			Process buildProcess = Runtime.getRuntime().exec(command.split(" "));
+			inheritIO(buildProcess.getInputStream(), stdoutPs);
+		    inheritIO(buildProcess.getErrorStream(), stderrPs);
+		    System.out.println("Waiting for process...");
+		    buildProcess.waitFor();
+		    System.out.println("Done! Yiff yiff!~");
+		    String stdout = stdoutStream.toString("UTF8");
+		    String stderr = stderrStream.toString("UTF8");
+		    System.out.println("STDOUT: " + stdout + "<");
+		    System.out.println("STDERR: " + stderr + "<");
+		    return new StdPipePostExecOutputHandler(stdout, stderr);
+		} 
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new StdPipePostExecOutputHandler(e.getMessage(), e.getMessage());
+		}
 	}
 	
-	public static String compileProgram(File file, int language) throws InterruptedException
+	public static StdPipePostExecOutputHandler compileProgram(File file, int language) throws InterruptedException
 	{
 		String command = "";
 		if (language == 0)
@@ -100,7 +123,7 @@ public class ProblemLoaderUtils
 		}
 		else
 		{
-			return "";
+			return new StdPipePostExecOutputHandler("", "");
 		}
 
 		try 
@@ -119,13 +142,13 @@ public class ProblemLoaderUtils
 		    String stderr = stderrStream.toString("UTF8");
 		    System.out.println("STDOUT: " + stdout + "<");
 		    System.out.println("STDERR: " + stderr + "<");
-		    return stderr;
+		    return new StdPipePostExecOutputHandler(stdout, stderr);
 		} 
 		catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return e.getMessage();
+			return new StdPipePostExecOutputHandler(e.getMessage(), e.getMessage());
 		}
 	}
 	
