@@ -1,5 +1,6 @@
 package com.openhorizonsolutions.ltr;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -57,7 +58,7 @@ public class ProblemLoaderUtils
 		String command = "";
 		if (language == 0 || language == 1)
 		{
-			command += "./";
+			command += "exec ";
 		}
 		else if (language == 2)
 		{
@@ -65,17 +66,17 @@ public class ProblemLoaderUtils
 		}
 		else if (language == 3)
 		{
-			command += "python2";
+			command += "python2 ";
 		}
 		else if (language == 4)
 		{
-			command += "python3";
+			command += "python3 ";
 		}
 		
 		return "";
 	}
 	
-	public static String compileProgram(File file, int language)
+	public static String compileProgram(File file, int language) throws InterruptedException
 	{
 		String command = "";
 		if (language == 0)
@@ -95,6 +96,7 @@ public class ProblemLoaderUtils
 		{
 			command += "/usr/bin/javac -source 1.8 -target 1.8 ";
 			command += file.getAbsolutePath() + " ";
+			command += "-d " + file.getParent();
 		}
 		else
 		{
@@ -103,17 +105,28 @@ public class ProblemLoaderUtils
 
 		try 
 		{
-			Process buildProcess = new ProcessBuilder().inheritIO().command(command.split(" ")).start();
-			inheritIO(buildProcess.getInputStream(), System.out);
-		    inheritIO(buildProcess.getErrorStream(), System.err);
+			ByteArrayOutputStream stdoutStream = new ByteArrayOutputStream();
+			PrintStream stdoutPs = new PrintStream(stdoutStream);
+			ByteArrayOutputStream stderrStream = new ByteArrayOutputStream();
+			PrintStream stderrPs = new PrintStream(stderrStream);
+			Process buildProcess = Runtime.getRuntime().exec(command.split(" "));
+			inheritIO(buildProcess.getInputStream(), stdoutPs);
+		    inheritIO(buildProcess.getErrorStream(), stderrPs);
+		    System.out.println("Waiting for process...");
+		    buildProcess.waitFor();
+		    System.out.println("Done! Yiff yiff!~");
+		    String stdout = stdoutStream.toString("UTF8");
+		    String stderr = stderrStream.toString("UTF8");
+		    System.out.println("STDOUT: " + stdout + "<");
+		    System.out.println("STDERR: " + stderr + "<");
+		    return stderr;
 		} 
 		catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return e.getMessage();
 		}
-		
-		return "";
 	}
 	
 	public static void inheritIO(final InputStream src, final PrintStream dest)
@@ -122,7 +135,8 @@ public class ProblemLoaderUtils
 	    {
 	        public void run() 
 	        {
-	            Scanner sc = new Scanner(src);
+	            @SuppressWarnings("resource")
+				Scanner sc = new Scanner(src);
 	            while (sc.hasNextLine()) 
 	            {
 	                dest.println(sc.nextLine());
