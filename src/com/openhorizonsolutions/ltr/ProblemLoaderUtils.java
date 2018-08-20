@@ -1,5 +1,6 @@
 package com.openhorizonsolutions.ltr;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class ProblemLoaderUtils
@@ -45,5 +46,15 @@ public class ProblemLoaderUtils
 	public static ArrayList<Problem> getProblemList()
 	{
 		return tmpLst;
+	}
+	
+	public static String getProgramOutput(File file, int language)
+	{
+		return "";
+	}
+	
+	public static String compileProgram(File file, int language)
+	{
+		return "";
 	}
 }
