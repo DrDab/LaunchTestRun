@@ -22,7 +22,6 @@ public class ProblemLoaderUtils
 	{
 		ArrayList<Problem> tmp = new ArrayList<Problem>();
 		String problemsPath = realPath + File.separator + UPLOAD_DIRECTORY;
-		System.out.println(problemsPath);
 		File problemsFolder = new File(problemsPath);
 		if (!problemsFolder.exists())
 		{
@@ -32,44 +31,47 @@ public class ProblemLoaderUtils
 		File[] subdirectories = problemsFolder.listFiles();
 		for (File subFolder : subdirectories)
 		{
-			File configJson = new File(subFolder, "config.json");
-			if (configJson.exists() && configJson.isFile())
+			if (subFolder.isDirectory())
 			{
-				// parse this json
-				// format:
-				/**
-				 * {
-				 * 	"cpid":"12345",
-				 * 	"title":"sampletitle",
-				 * 	"description":"sampledescription",
-				 * 	"setinfo":"samplesetinfo",
-				 * 	"samplein":"sample.in",
-				 * 	"sampleout":"sample.out",
-				 * 	"judgein":"judge.in",
-				 * 	"judgeout":"judge.out"
-				 * }
-				 */
-				try
+				File configJson = new File(subFolder, "config.json");
+				if (configJson.exists() && configJson.isFile())
 				{
-					String jsonData = getJSONDataFromFile(configJson);
-					JSONObject mainObj = new JSONObject(jsonData);
-					String cpid = mainObj.getString("cpid");
-					String title = mainObj.getString("title");
-					String description = mainObj.getString("description");
-					String setInfo = mainObj.getString("setinfo");
-					String sampleIn = mainObj.getString("samplein");
-					String sampleOut = mainObj.getString("sampleout");
-					String judgeIn = mainObj.getString("judgein");
-					String judgeOut = mainObj.getString("judgeout");
-					File sampleInFile = new File(subFolder, sampleIn);
-					File sampleOutFile = new File(subFolder, sampleOut);
-					File judgeInFile = new File(subFolder, judgeIn);
-					File judgeOutFile = new File(subFolder, judgeOut);
-					tmp.add(new Problem(cpid, title, setInfo, description, sampleInFile, sampleOutFile, judgeInFile, judgeOutFile));
-				}
-				catch (JSONException je0)
-				{
-					je0.printStackTrace();
+					// parse this json
+					// format:
+					/**
+					 * {
+					 * 	"cpid":"12345",
+					 * 	"title":"sampletitle",
+					 * 	"description":"sampledescription",
+					 * 	"setinfo":"samplesetinfo",
+					 * 	"samplein":"sample.in",
+					 * 	"sampleout":"sample.out",
+					 * 	"judgein":"judge.in",
+					 * 	"judgeout":"judge.out"
+					 * }
+					 */
+					try
+					{
+						String jsonData = getJSONDataFromFile(configJson);
+						JSONObject mainObj = new JSONObject(jsonData);
+						String cpid = mainObj.getString("cpid");
+						String title = mainObj.getString("title");
+						String description = mainObj.getString("description");
+						String setInfo = mainObj.getString("setinfo");
+						String sampleIn = mainObj.getString("samplein");
+						String sampleOut = mainObj.getString("sampleout");
+						String judgeIn = mainObj.getString("judgein");
+						String judgeOut = mainObj.getString("judgeout");
+						File sampleInFile = new File(subFolder, sampleIn);
+						File sampleOutFile = new File(subFolder, sampleOut);
+						File judgeInFile = new File(subFolder, judgeIn);
+						File judgeOutFile = new File(subFolder, judgeOut);
+						tmp.add(new Problem(cpid, title, setInfo, description, sampleInFile, sampleOutFile, judgeInFile, judgeOutFile));
+					}
+					catch (JSONException je0)
+					{
+						je0.printStackTrace();
+					}
 				}
 			}
 		}
