@@ -2,9 +2,13 @@ package com.openhorizonsolutions.ltr;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
@@ -293,6 +297,28 @@ public class ProblemLoaderUtils
 			e.printStackTrace();
 			return new StdPipePostExecOutputHandler(e.getMessage(), e.getMessage());
 		}
+	}
+	
+	public static void copyFile(File source, File dest) throws IOException 
+	{
+	    InputStream is = null;
+	    OutputStream os = null;
+	    try 
+	    {
+	        is = new FileInputStream(source);
+	        os = new FileOutputStream(dest);
+	        byte[] buffer = new byte[is.available()];
+	        int length;
+	        while ((length = is.read(buffer)) > 0) 
+	        {
+	            os.write(buffer, 0, length);
+	        }
+	    } 
+	    finally
+	    {
+	        is.close();
+	        os.close();
+	    }
 	}
 	
 }

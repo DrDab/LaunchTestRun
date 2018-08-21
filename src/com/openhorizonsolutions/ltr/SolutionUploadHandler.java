@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -173,8 +174,56 @@ public class SolutionUploadHandler extends HttpServlet
 							executableFile = storeFile;
 						}
 						
-						StdPipePostExecOutputHandler executionOutput = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType);
-						request.setAttribute("message", "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutput.getStdErr()) + "</code></pre>\"<br>");
+						Problem curProblem = ProblemLoaderUtils.getProblem(problemID);
+						File sampleInput = curProblem.getSampleInput();
+						File judgeInput = curProblem.getJudgeInput();
+						File sampleInputLocal = new File(uploadDir, sampleInput.getName());
+						File judgeInputLocal = new File(uploadDir, judgeInput.getName());
+						ProblemLoaderUtils.copyFile(sampleInput, sampleInputLocal);
+						ProblemLoaderUtils.copyFile(judgeInput, judgeInputLocal);
+						
+						sampleInputLocal.renameTo(new File(uploadDir, "input.txt"));
+						StdPipePostExecOutputHandler executionOutputSample = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType);
+						sampleInputLocal.delete();
+						judgeInputLocal.renameTo(new File(uploadDir, "input.txt"));
+						StdPipePostExecOutputHandler executionOutputJudge = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType);
+						judgeInputLocal.delete();
+
+						int sampleStatus = -1;
+						int judgeStatus = -1;
+						byte[] expectedSampleOutputBytes = Files.readAllBytes(curProblem.getSampleOutput().toPath());
+						byte[] expectedJudgeOutputBytes = Files.readAllBytes(curProblem.getJudgeOutput().toPath());
+						String expectedSampleOutput = new String(expectedSampleOutputBytes).trim();
+						String expectedJudgeOutput = new String(expectedJudgeOutputBytes).trim();
+						if (executionOutputSample.getStdOut().trim().matches(expectedSampleOutput))
+						{
+							sampleStatus = 0;
+						}
+						else
+						{
+							sampleStatus = 1;
+						}
+						
+						if (executionOutputJudge.getStdOut().trim().matches(expectedJudgeOutput))
+						{
+							judgeStatus = 0;
+						}
+						else
+						{
+							judgeStatus = 1;
+						}
+						
+						// -1: not finished
+						//  0: correct
+						//  1: incorrect
+						//  2: error
+						//  3: timeout
+						
+						String message = "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><br><strong>SAMPLE DATA</strong><br><br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+						message += "<br>SAMPLE STATUS: " + sampleStatus;
+						message += "<br>JUDGE STATUS: " + judgeStatus;
+						message += "<br><br>";
+						request.setAttribute("message", message);
 					}
 					else
 					{
