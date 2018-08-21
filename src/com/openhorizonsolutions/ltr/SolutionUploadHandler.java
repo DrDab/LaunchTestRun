@@ -189,35 +189,46 @@ public class SolutionUploadHandler extends HttpServlet
 						StdPipePostExecOutputHandler executionOutputJudge = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType);
 						judgeInputLocal.delete();
 
-						int sampleStatus = -1;
-						int judgeStatus = -1;
+						String sampleStatus = "SYSTEM ERROR";
+						String judgeStatus = "SYSTEM ERROR";
 						byte[] expectedSampleOutputBytes = Files.readAllBytes(curProblem.getSampleOutput().toPath());
 						byte[] expectedJudgeOutputBytes = Files.readAllBytes(curProblem.getJudgeOutput().toPath());
 						String expectedSampleOutput = new String(expectedSampleOutputBytes).trim();
 						String expectedJudgeOutput = new String(expectedJudgeOutputBytes).trim();
-						if (executionOutputSample.getStdOut().trim().matches(expectedSampleOutput))
+						
+						if (executionOutputSample.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{
-							sampleStatus = 0;
+							sampleStatus = "TIMEOUT";
+						}
+						else if (executionOutputSample.getStdErr().trim().contains("error=2, No such file or directory") || executionOutputSample.getStdErr().trim().contains("Error:"))
+						{
+							sampleStatus = "ERROR";
+						}
+						else if (executionOutputSample.getStdOut().trim().equals(expectedSampleOutput))
+						{
+							sampleStatus = "CORRECT";
 						}
 						else
 						{
-							sampleStatus = 1;
+							sampleStatus = "WRONG";
 						}
 						
-						if (executionOutputJudge.getStdOut().trim().matches(expectedJudgeOutput))
+						if (executionOutputJudge.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{
-							judgeStatus = 0;
+							sampleStatus = "TIMEOUT";
+						}
+						else if (executionOutputJudge.getStdErr().trim().contains("error=2, No such file or directory") || executionOutputJudge.getStdErr().trim().contains("Error:"))
+						{
+							sampleStatus = "ERROR";
+						}
+						if (executionOutputJudge.getStdOut().trim().equals(expectedJudgeOutput))
+						{
+							sampleStatus = "CORRECT";
 						}
 						else
 						{
-							judgeStatus = 1;
+							sampleStatus = "WRONG";
 						}
-						
-						// -1: not finished
-						//  0: correct
-						//  1: incorrect
-						//  2: error
-						//  3: timeout
 						
 						String message = "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><br><strong>SAMPLE DATA</strong><br><br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
 						message += "<br>SAMPLE STATUS: " + sampleStatus;
