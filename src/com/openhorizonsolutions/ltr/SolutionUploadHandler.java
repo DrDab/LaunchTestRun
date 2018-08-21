@@ -181,8 +181,15 @@ public class SolutionUploadHandler extends HttpServlet
 						File judgeInput = curProblem.getJudgeInput();
 						File sampleInputLocal = new File(uploadDir, sampleInput.getName());
 						File judgeInputLocal = new File(uploadDir, judgeInput.getName());
-						ProblemLoaderUtils.copyFile(sampleInput, sampleInputLocal);
-						ProblemLoaderUtils.copyFile(judgeInput, judgeInputLocal);
+						
+						try
+						{
+							ProblemLoaderUtils.copyFile(sampleInput, sampleInputLocal);
+							ProblemLoaderUtils.copyFile(judgeInput, judgeInputLocal);
+						}
+						catch (NullPointerException npe0)
+						{
+						}
 						
 						sampleInputLocal.renameTo(new File(uploadDir, curProblem.getInputName()));
 						StdPipePostExecOutputHandler executionOutputSample = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType, timeout);
