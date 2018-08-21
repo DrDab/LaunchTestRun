@@ -72,7 +72,6 @@ public class ProblemLoaderUtils
 						String judgeOut = mainObj.getString("judgeout");
 						String inputName = mainObj.getString("inputname");
 						int timeout = Integer.parseInt(mainObj.getString("timeout"));
-						System.out.println(timeout);
 						File sampleInFile = new File(subFolder, sampleIn);
 						File sampleOutFile = new File(subFolder, sampleOut);
 						File judgeInFile = new File(subFolder, judgeIn);
@@ -96,11 +95,7 @@ public class ProblemLoaderUtils
 	
 	public static boolean problemExists(String cpid)
 	{
-		if (tmpMap.containsKey(cpid))
-		{
-			return true;
-		}
-		return false;
+		return tmpMap.containsKey(cpid);
 	}
 	
 	public static Problem getProblem(String cpid)
