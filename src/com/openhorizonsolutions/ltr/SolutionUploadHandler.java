@@ -200,7 +200,7 @@ public class SolutionUploadHandler extends HttpServlet
 						{
 							sampleStatus = "TIMEOUT";
 						}
-						else if (executionOutputSample.getStdErr().trim().contains("error=2, No such file or directory") || executionOutputSample.getStdErr().trim().contains("Error:"))
+						else if (!executionOutputSample.getStdErr().trim().equals(""))
 						{
 							sampleStatus = "ERROR";
 						}
@@ -217,7 +217,7 @@ public class SolutionUploadHandler extends HttpServlet
 						{
 							judgeStatus = "TIMEOUT";
 						}
-						else if (executionOutputJudge.getStdErr().trim().contains("error=2, No such file or directory") || executionOutputJudge.getStdErr().trim().contains("Error:"))
+						else if (!executionOutputJudge.getStdErr().trim().equals(""))
 						{
 							judgeStatus = "ERROR";
 						}

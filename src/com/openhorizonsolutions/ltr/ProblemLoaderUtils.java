@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,6 +21,7 @@ public class ProblemLoaderUtils
 	// the folowing methods are sample methods that return dummy output.
 	// these will return dynamic data based on reading config files from a designated directory later.
 	private static ArrayList<Problem> tmpLst = new ArrayList<Problem>();
+	private static HashMap<String, Integer> tmpMap = new HashMap<String, Integer>();
 	private static final String UPLOAD_DIRECTORY = "problems";
 	
 	public static void refreshIO(String realPath)
@@ -70,6 +72,7 @@ public class ProblemLoaderUtils
 						File sampleOutFile = new File(subFolder, sampleOut);
 						File judgeInFile = new File(subFolder, judgeIn);
 						File judgeOutFile = new File(subFolder, judgeOut);
+						tmpMap.put(cpid, tmp.size());
 						tmp.add(new Problem(cpid, title, setInfo, description, sampleInFile, sampleOutFile, judgeInFile, judgeOutFile));
 					}
 					catch (JSONException je0)
@@ -82,28 +85,20 @@ public class ProblemLoaderUtils
 		tmpLst = tmp;
 	}
 	
-	public static boolean problemExists(String realPath, String cpid)
+	public static boolean problemExists(String cpid)
 	{
-		refreshIO(realPath);
-		// System.out.println("CPID:" + cpid);
-		for (Problem p : tmpLst)
+		if (tmpMap.containsKey(cpid))
 		{
-			if (p.getCPID().matches(cpid))
-			{
-				return true;
-			}
+			return true;
 		}
 		return false;
 	}
 	
 	public static Problem getProblem(String cpid)
 	{
-		for (Problem p : tmpLst)
+		if (tmpMap.containsKey(cpid))
 		{
-			if (p.getCPID().matches(cpid))
-			{
-				return p;
-			}
+			return tmpLst.get(tmpMap.get(cpid));
 		}
 		return null;
 	}
