@@ -12,8 +12,10 @@ public class Problem implements Comparable<Problem>
 	private File sampleOutput;
 	private File judgeInput;
 	private File judgeOutput;
+	private String inputName;
+	private int timeOut;
 	
-	public Problem(String cpid, String title, String setInfo, String description, File sampleInput, File sampleOutput, File judgeInput, File judgeOutput)
+	public Problem(String cpid, String title, String setInfo, String description, File sampleInput, File sampleOutput, File judgeInput, File judgeOutput, String inputName, int timeout)
 	{
 		this.cpid = cpid;
 		this.title = title;
@@ -23,6 +25,8 @@ public class Problem implements Comparable<Problem>
 		this.sampleOutput = sampleOutput;
 		this.judgeInput = judgeInput;
 		this.judgeOutput = judgeOutput;
+		this.inputName = inputName;
+		this.timeOut = timeOut;
 	}
 	
 	
@@ -64,6 +68,16 @@ public class Problem implements Comparable<Problem>
 	public File getJudgeOutput()
 	{
 		return judgeOutput;
+	}
+	
+	public String getInputName()
+	{
+		return inputName;
+	}
+	
+	public int getTimeOutMillis()
+	{
+		return timeOut;
 	}
 	
 	@Override

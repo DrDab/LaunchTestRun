@@ -175,6 +175,7 @@ public class SolutionUploadHandler extends HttpServlet
 						}
 						
 						Problem curProblem = ProblemLoaderUtils.getProblem(problemID);
+						double timeout = curProblem.getTimeOutMillis();
 						File sampleInput = curProblem.getSampleInput();
 						File judgeInput = curProblem.getJudgeInput();
 						File sampleInputLocal = new File(uploadDir, sampleInput.getName());
@@ -182,11 +183,11 @@ public class SolutionUploadHandler extends HttpServlet
 						ProblemLoaderUtils.copyFile(sampleInput, sampleInputLocal);
 						ProblemLoaderUtils.copyFile(judgeInput, judgeInputLocal);
 						
-						sampleInputLocal.renameTo(new File(uploadDir, "input.txt"));
-						StdPipePostExecOutputHandler executionOutputSample = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType);
+						sampleInputLocal.renameTo(new File(uploadDir, curProblem.getInputName()));
+						StdPipePostExecOutputHandler executionOutputSample = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType, timeout);
 						sampleInputLocal.delete();
-						judgeInputLocal.renameTo(new File(uploadDir, "input.txt"));
-						StdPipePostExecOutputHandler executionOutputJudge = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType);
+						judgeInputLocal.renameTo(new File(uploadDir, curProblem.getInputName()));
+						StdPipePostExecOutputHandler executionOutputJudge = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType, timeout);
 						judgeInputLocal.delete();
 
 						String sampleStatus = "SYSTEM ERROR";

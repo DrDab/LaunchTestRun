@@ -54,6 +54,8 @@ public class ProblemLoaderUtils
 					 * 	"sampleout":"sample.out",
 					 * 	"judgein":"judge.in",
 					 * 	"judgeout":"judge.out"
+					 * 	"inputname":"input.txt"
+					 * 	"timeout":"2000"
 					 * }
 					 */
 					try
@@ -68,16 +70,22 @@ public class ProblemLoaderUtils
 						String sampleOut = mainObj.getString("sampleout");
 						String judgeIn = mainObj.getString("judgein");
 						String judgeOut = mainObj.getString("judgeout");
+						String inputName = mainObj.getString("inputname");
+						int timeout = Integer.parseInt(mainObj.getString("timeout"));
 						File sampleInFile = new File(subFolder, sampleIn);
 						File sampleOutFile = new File(subFolder, sampleOut);
 						File judgeInFile = new File(subFolder, judgeIn);
 						File judgeOutFile = new File(subFolder, judgeOut);
 						tmpMap.put(cpid, tmp.size());
-						tmp.add(new Problem(cpid, title, setInfo, description, sampleInFile, sampleOutFile, judgeInFile, judgeOutFile));
+						tmp.add(new Problem(cpid, title, setInfo, description, sampleInFile, sampleOutFile, judgeInFile, judgeOutFile, inputName, timeout));
 					}
 					catch (JSONException je0)
 					{
 						je0.printStackTrace();
+					}
+					catch (NumberFormatException nfe0)
+					{
+						nfe0.printStackTrace();
 					}
 				}
 			}
@@ -156,7 +164,7 @@ public class ProblemLoaderUtils
 	}
 
 	
-	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language) throws InterruptedException
+	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language, double timeout) throws InterruptedException
 	{
 		File programOutputFile = new File(file.getParent(), uuid + "-program-output");
 		File programErrFile = new File(file.getParent(), uuid + "-program-error");
@@ -201,7 +209,7 @@ public class ProblemLoaderUtils
 					// TODO Auto-generated method stub
 					try 
 					{
-						Thread.sleep(2000);
+						Thread.sleep((long) timeout);
 						if (buildProcess.isAlive())
 						{
 							buildProcess.destroy();
