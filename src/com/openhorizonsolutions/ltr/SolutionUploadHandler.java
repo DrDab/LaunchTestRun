@@ -159,8 +159,10 @@ public class SolutionUploadHandler extends HttpServlet
 						outStream.write(buffer);
 						outStream.close();
 						
-						ProblemLoaderUtils.refreshIO(getServletContext().getRealPath(""));
-						StdPipePostExecOutputHandler compilerOutput = ProblemLoaderUtils.compileProgram(uuid, storeFile, languageType);
+						String realpath = getServletContext().getRealPath("");
+						
+						ProblemLoaderUtils.refreshIO(realpath);
+						StdPipePostExecOutputHandler compilerOutput = ProblemLoaderUtils.compileProgram(uuid, storeFile, languageType, realpath);
 						File executableFile = null;
 						if (languageType == 0 || languageType == 1)
 						{
@@ -192,10 +194,10 @@ public class SolutionUploadHandler extends HttpServlet
 						}
 						
 						sampleInputLocal.renameTo(new File(uploadDir, curProblem.getInputName()));
-						StdPipePostExecOutputHandler executionOutputSample = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType, timeout);
+						StdPipePostExecOutputHandler executionOutputSample = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType, timeout, realpath);
 						sampleInputLocal.delete();
 						judgeInputLocal.renameTo(new File(uploadDir, curProblem.getInputName()));
-						StdPipePostExecOutputHandler executionOutputJudge = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType, timeout);
+						StdPipePostExecOutputHandler executionOutputJudge = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType, timeout, realpath);
 						judgeInputLocal.delete();
 
 						String sampleStatus = "SYSTEM ERROR";

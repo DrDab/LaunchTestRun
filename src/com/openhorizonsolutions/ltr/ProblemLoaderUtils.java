@@ -158,10 +158,10 @@ public class ProblemLoaderUtils
 	    }
 	    return out.toString();
 	}
-
 	
-	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language, int timeout) throws InterruptedException
+	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language, int timeout, String serverpath) throws InterruptedException
 	{
+		ExecutableLocationUpdator eld = new ExecutableLocationUpdator(serverpath);
 		File programOutputFile = new File(file.getParent(), uuid + "-program-output");
 		File programErrFile = new File(file.getParent(), uuid + "-program-error");
 		String command = "";
@@ -172,18 +172,18 @@ public class ProblemLoaderUtils
 		}
 		else if (language == 2)
 		{
-			command += "/usr/bin/java -cp ";
+			command += eld.getJava() + " -cp ";
 			command += file.getParent() + " ";
 			command += file.getName().replaceAll(".class", "");
 		}
 		else if (language == 3)
 		{
-			command += "/usr/bin/python2 ";
+			command += eld.getPython27() + " ";
 			command += file.toString();
 		}
 		else if (language == 4)
 		{
-			command += "/usr/bin/python3 ";
+			command += eld.getPython36() + " ";
 			command += file.toString();
 		}
 		try 
@@ -242,27 +242,28 @@ public class ProblemLoaderUtils
 		}
 	}
 	
-	public static StdPipePostExecOutputHandler compileProgram(String uuid, File file, int language) throws InterruptedException
+	public static StdPipePostExecOutputHandler compileProgram(String uuid, File file, int language, String serverpath) throws InterruptedException
 	{
+		ExecutableLocationUpdator eld = new ExecutableLocationUpdator(serverpath);
 		File programOutputFile = new File(file.getParent(), uuid + "-compiler-output");
 		File programErrFile = new File(file.getParent(), uuid + "-compiler-error");
 		String command = "";
 		if (language == 0)
 		{
-			command += "/usr/bin/gcc ";
+			command += eld.getGCC() + " ";
 			command += file.getAbsolutePath() + " ";
 			command += "-o " + file.getParent() + "/toExecute";
 		}
 		else if (language == 1)
 		{
-			command += "/usr/bin/g++ ";
+			command += eld.getGPP() + " ";
 			command += file.getAbsolutePath() + " ";
 			command += "--std=c++11 ";
 			command += "-o " + file.getParent() + "/toExecute";
 		}
 		else if (language == 2)
 		{
-			command += "/usr/bin/javac -source 1.8 -target 1.8 ";
+			command += eld.getJavac() + " -source 1.8 -target 1.8 ";
 			command += file.getAbsolutePath() + " ";
 			command += "-d " + file.getParent();
 		}
