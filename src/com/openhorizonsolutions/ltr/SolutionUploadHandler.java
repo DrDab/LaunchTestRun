@@ -230,9 +230,9 @@ public class SolutionUploadHandler extends HttpServlet
 							judgeStatus = "WRONG";
 						}
 						
-						String message = "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><br><strong>SAMPLE DATA</strong><br><br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
-						message += "<br>SAMPLE STATUS: " + sampleStatus;
-						message += "<br>JUDGE STATUS: " + judgeStatus;
+						String message = "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><br><strong>YOUR RESULTS</strong><br><br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT WITH SAMPLE DATA</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+						message += "<br>SAMPLE TEST STATUS: " + sampleStatus;
+						message += "<br>JUDGE TEST STATUS: " + judgeStatus;
 						message += "<br><br>";
 						request.setAttribute("message", message);
 					}
