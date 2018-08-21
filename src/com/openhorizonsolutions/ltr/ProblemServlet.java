@@ -319,7 +319,7 @@ public class ProblemServlet extends HttpServlet
 				"</head>\n" + 
 				"";
 		
-		if (ProblemLoaderUtils.problemExists(cpid))
+		if (ProblemLoaderUtils.problemExists(getServletContext().getRealPath(""), cpid))
 		{
 			p = ProblemLoaderUtils.getProblem(cpid);
 			try

@@ -8,17 +8,21 @@ public class Problem implements Comparable<Problem>
 	private String title;
 	private String setInfo;
 	private String description;
-	private File input;
-	private File output;
+	private File sampleInput;
+	private File sampleOutput;
+	private File judgeInput;
+	private File judgeOutput;
 	
-	public Problem(String cpid, String title, String setInfo, String description, File input, File output)
+	public Problem(String cpid, String title, String setInfo, String description, File sampleInput, File sampleOutput, File judgeInput, File judgeOutput)
 	{
 		this.cpid = cpid;
 		this.title = title;
 		this.setInfo = setInfo;
 		this.description = description;
-		this.input = input;
-		this.output = output;
+		this.sampleInput = sampleInput;
+		this.sampleOutput = sampleOutput;
+		this.judgeInput = judgeInput;
+		this.judgeOutput = judgeOutput;
 	}
 	
 	
@@ -42,14 +46,24 @@ public class Problem implements Comparable<Problem>
 		return description;
 	}
 	
-	public File getInputFile()
+	public File getSampleInput()
 	{
-		return input;
+		return sampleInput;
 	}
 	
-	public File getOutputFile()
+	public File getSampleOutput()
 	{
-		return output;
+		return sampleOutput;
+	}
+	
+	public File getJudgeInput()
+	{
+		return judgeInput;
+	}
+	
+	public File getJudgeOutput()
+	{
+		return judgeOutput;
 	}
 	
 	@Override

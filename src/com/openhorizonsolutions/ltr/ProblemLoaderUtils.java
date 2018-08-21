@@ -1,28 +1,84 @@
 package com.openhorizonsolutions.ltr;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ProblemLoaderUtils
 {
 	// the folowing methods are sample methods that return dummy output.
 	// these will return dynamic data based on reading config files from a designated directory later.
 	private static ArrayList<Problem> tmpLst = new ArrayList<Problem>();
-		
-	public static void refreshIO()
+	private static final String UPLOAD_DIRECTORY = "problems";
+	
+	public static void refreshIO(String realPath)
 	{
-		tmpLst = new ArrayList<Problem>();
-		tmpLst.add(new Problem("1", "Sample Problem OwO", "Test Contest Set Mark IV", "(insert PDF view here + notes + html code)", null, null));
-		tmpLst.add(new Problem("2", "Sample Problem OwO II", "Test Contest Set Mark IV", "(insert PDF view here + notes + html code)", null, null));
-		tmpLst.add(new Problem("3", "Sample Problem OwO III", "Test Contest Set Mark IV", "Sample Text<br><br>Sample question text here. There are $N$ pies on the side of the road. $0.5N$ of these pies are green and blue.<br><br>(insert PDF view here + notes + html code)", null, null));
+		ArrayList<Problem> tmp = new ArrayList<Problem>();
+		String problemsPath = realPath + File.separator + UPLOAD_DIRECTORY;
+		System.out.println(problemsPath);
+		File problemsFolder = new File(problemsPath);
+		if (!problemsFolder.exists())
+		{
+			problemsFolder.mkdir();
+		}
+		
+		File[] subdirectories = problemsFolder.listFiles();
+		for (File subFolder : subdirectories)
+		{
+			File configJson = new File(subFolder, "config.json");
+			if (configJson.exists() && configJson.isFile())
+			{
+				// parse this json
+				// format:
+				/**
+				 * {
+				 * 	"cpid":"12345",
+				 * 	"title":"sampletitle",
+				 * 	"description":"sampledescription",
+				 * 	"setinfo":"samplesetinfo",
+				 * 	"samplein":"sample.in",
+				 * 	"sampleout":"sample.out",
+				 * 	"judgein":"judge.in",
+				 * 	"judgeout":"judge.out"
+				 * }
+				 */
+				try
+				{
+					String jsonData = getJSONDataFromFile(configJson);
+					JSONObject mainObj = new JSONObject(jsonData);
+					String cpid = mainObj.getString("cpid");
+					String title = mainObj.getString("title");
+					String description = mainObj.getString("description");
+					String setInfo = mainObj.getString("setinfo");
+					String sampleIn = mainObj.getString("samplein");
+					String sampleOut = mainObj.getString("sampleout");
+					String judgeIn = mainObj.getString("judgein");
+					String judgeOut = mainObj.getString("judgeout");
+					File sampleInFile = new File(subFolder, sampleIn);
+					File sampleOutFile = new File(subFolder, sampleOut);
+					File judgeInFile = new File(subFolder, judgeIn);
+					File judgeOutFile = new File(subFolder, judgeOut);
+					tmp.add(new Problem(cpid, title, setInfo, description, sampleInFile, sampleOutFile, judgeInFile, judgeOutFile));
+				}
+				catch (JSONException je0)
+				{
+					je0.printStackTrace();
+				}
+			}
+		}
+		tmpLst = tmp;
 	}
 	
-	public static boolean problemExists(String cpid)
+	public static boolean problemExists(String realPath, String cpid)
 	{
-		refreshIO();
+		refreshIO(realPath);
 		// System.out.println("CPID:" + cpid);
 		for (Problem p : tmpLst)
 		{
@@ -51,6 +107,32 @@ public class ProblemLoaderUtils
 		return tmpLst;
 	}
 	
+	 public static String getJSONDataFromFile(File location)
+	 {
+		try 
+		{
+			BufferedReader br = new BufferedReader(new FileReader(location));
+			String s = "";
+			String tmp = "";
+			try 
+			{
+				while ((tmp = br.readLine()) != null)
+				{
+					s += tmp;
+				}
+			}
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+			return s;
+		} 
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	public static String escapeHTML(String s) 
 	{
