@@ -72,6 +72,7 @@ public class ProblemLoaderUtils
 						String judgeOut = mainObj.getString("judgeout");
 						String inputName = mainObj.getString("inputname");
 						int timeout = Integer.parseInt(mainObj.getString("timeout"));
+						System.out.println(timeout);
 						File sampleInFile = new File(subFolder, sampleIn);
 						File sampleOutFile = new File(subFolder, sampleOut);
 						File judgeInFile = new File(subFolder, judgeIn);
@@ -164,7 +165,7 @@ public class ProblemLoaderUtils
 	}
 
 	
-	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language, double timeout) throws InterruptedException
+	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language, int timeout) throws InterruptedException
 	{
 		File programOutputFile = new File(file.getParent(), uuid + "-program-output");
 		File programErrFile = new File(file.getParent(), uuid + "-program-error");
@@ -237,6 +238,7 @@ public class ProblemLoaderUtils
 		    }
 		    else
 		    {
+		    	System.out.println("TIMEOUT: " + timeout);
 		    	return new StdPipePostExecOutputHandler("Process Forcibly Terminated", "The process took too long to run, and was terminated.");
 		    }
 		} 

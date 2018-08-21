@@ -159,6 +159,7 @@ public class SolutionUploadHandler extends HttpServlet
 						outStream.write(buffer);
 						outStream.close();
 						
+						ProblemLoaderUtils.refreshIO(getServletContext().getRealPath(""));
 						StdPipePostExecOutputHandler compilerOutput = ProblemLoaderUtils.compileProgram(uuid, storeFile, languageType);
 						File executableFile = null;
 						if (languageType == 0 || languageType == 1)
@@ -175,7 +176,7 @@ public class SolutionUploadHandler extends HttpServlet
 						}
 						
 						Problem curProblem = ProblemLoaderUtils.getProblem(problemID);
-						double timeout = curProblem.getTimeOutMillis();
+						int timeout = curProblem.getTimeOutMillis();
 						File sampleInput = curProblem.getSampleInput();
 						File judgeInput = curProblem.getJudgeInput();
 						File sampleInputLocal = new File(uploadDir, sampleInput.getName());

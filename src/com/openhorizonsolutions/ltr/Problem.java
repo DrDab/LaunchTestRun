@@ -13,7 +13,7 @@ public class Problem implements Comparable<Problem>
 	private File judgeInput;
 	private File judgeOutput;
 	private String inputName;
-	private int timeOut;
+	private int timeout;
 	
 	public Problem(String cpid, String title, String setInfo, String description, File sampleInput, File sampleOutput, File judgeInput, File judgeOutput, String inputName, int timeout)
 	{
@@ -26,7 +26,7 @@ public class Problem implements Comparable<Problem>
 		this.judgeInput = judgeInput;
 		this.judgeOutput = judgeOutput;
 		this.inputName = inputName;
-		this.timeOut = timeOut;
+		this.timeout = timeout;
 	}
 	
 	
@@ -77,7 +77,7 @@ public class Problem implements Comparable<Problem>
 	
 	public int getTimeOutMillis()
 	{
-		return timeOut;
+		return timeout;
 	}
 	
 	@Override
