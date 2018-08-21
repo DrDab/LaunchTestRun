@@ -215,19 +215,19 @@ public class SolutionUploadHandler extends HttpServlet
 						
 						if (executionOutputJudge.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{
-							sampleStatus = "TIMEOUT";
+							judgeStatus = "TIMEOUT";
 						}
 						else if (executionOutputJudge.getStdErr().trim().contains("error=2, No such file or directory") || executionOutputJudge.getStdErr().trim().contains("Error:"))
 						{
-							sampleStatus = "ERROR";
+							judgeStatus = "ERROR";
 						}
-						if (executionOutputJudge.getStdOut().trim().equals(expectedJudgeOutput))
+						else if (executionOutputJudge.getStdOut().trim().equals(expectedJudgeOutput))
 						{
-							sampleStatus = "CORRECT";
+							judgeStatus = "CORRECT";
 						}
 						else
 						{
-							sampleStatus = "WRONG";
+							judgeStatus = "WRONG";
 						}
 						
 						String message = "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>File type: " + filePart.getContentType() + "<br><br><strong>SAMPLE DATA</strong><br><br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
