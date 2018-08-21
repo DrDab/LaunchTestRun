@@ -189,8 +189,6 @@ public class ProblemLoaderUtils
 		try 
 		{
 			ArrayList<Integer> al = new ArrayList<Integer>();
-			// 1 = executed and terminated normally
-			// 2 = forcekilled due to hangup on time.
 			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
@@ -233,7 +231,6 @@ public class ProblemLoaderUtils
 		    }
 		    else
 		    {
-		    	System.out.println("TIMEOUT: " + timeout);
 		    	return new StdPipePostExecOutputHandler("Process Forcibly Terminated", "The process took too long to run, and was terminated.");
 		    }
 		} 
