@@ -161,6 +161,10 @@ public class ProblemLoaderUtils
 	
 	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language, int timeout, String serverpath) throws InterruptedException
 	{
+		if (!file.getParentFile().exists())
+		{
+			file.getParentFile().mkdir();
+		}
 		ExecutableLocationUpdator eld = new ExecutableLocationUpdator(serverpath);
 		File programOutputFile = new File(file.getParent(), uuid + "-program-output");
 		File programErrFile = new File(file.getParent(), uuid + "-program-error");
@@ -244,6 +248,10 @@ public class ProblemLoaderUtils
 	
 	public static StdPipePostExecOutputHandler compileProgram(String uuid, File file, int language, String serverpath) throws InterruptedException
 	{
+		if (!file.getParentFile().exists())
+		{
+			file.getParentFile().mkdir();
+		}
 		ExecutableLocationUpdator eld = new ExecutableLocationUpdator(serverpath);
 		File programOutputFile = new File(file.getParent(), uuid + "-compiler-output");
 		File programErrFile = new File(file.getParent(), uuid + "-compiler-error");

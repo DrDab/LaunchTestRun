@@ -30,7 +30,7 @@ public class ExecutableLocationUpdator
 				pw.println("	\"gcc\":\"/usr/bin/gcc\",");
 				pw.println("	\"g++\":\"/usr/bin/g++\",");
 				pw.println("	\"python2\":\"/usr/bin/python2\",");
-				pw.println("	\"python3\":\"/usr/bin/python3\",");
+				pw.println("	\"python3\":\"/usr/bin/python3\"");
 				pw.println("}");
 				pw.close();
 			}
