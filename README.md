@@ -54,3 +54,6 @@ Where:
 - ``timeout`` is an integer defining the number of milliseconds that the program will be alloted to execute before a forced termination.
 
 3. To set the locations of the compilers, you can edit ``webapps/LaunchTestRun/settings.json``, which contains the paths that LaunchTestRun will look for the compilers in.
+
+# Using
+The LaunchTestRun server can be accessed by default from: ``http://127.0.0.1:8080/LaunchTestRun/problem.html/`` after it is configured with Tomcat in the previous sections.
