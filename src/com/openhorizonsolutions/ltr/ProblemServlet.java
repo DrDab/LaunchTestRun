@@ -326,6 +326,12 @@ public class ProblemServlet extends HttpServlet
 			p = ProblemLoaderUtils.getProblem(cpid);
 			try
 			{
+				String choices = "";
+				for(int i = 0; i < DataStore.typeNames.length; i++)
+				{
+					int t = (i + 1);
+					choices += "					<option value='" + t + "'>" + DataStore.typeNames[i] + "</option>\n";
+				}
 				s += 	"\n" + 
 						"<body class=\"no-mathjax\">\n" + 
 						" <div align=\"center\">\n" + 
@@ -373,11 +379,7 @@ public class ProblemServlet extends HttpServlet
 						"			<div class=\"field2\">\n" + 
 						"				<label for=\"language\">Language:</label>\n" + 
 						"				<select name=\"language\">\n" + 
-						"					<option value='1'>C</option>\n" + 
-						"					<option value='2'>C++11</option>\n" + 
-						"					<option value='3'>Java</option>\n" + 
-						"					<option value='4'>Python 2</option>\n" + 
-						"					<option value='5'>Python 3</option>\n" + 
+						choices +
 						"				</select></div>\n" + 
 						"			\n" + 
 						"			<div class=\"field2\">\n" + 
