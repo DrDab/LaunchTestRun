@@ -34,7 +34,8 @@ public class ProblemServlet extends HttpServlet
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
 		String requestURI = request.getRequestURI();
-		String cpid = requestURI.substring(new String("/LaunchTestRun/problem.html").length()).replaceAll("/", "");
+		String[] sep = requestURI.split("/");
+		String cpid = sep[sep.length - 1];
 		Problem p = null;
 		
 		String s = "";
