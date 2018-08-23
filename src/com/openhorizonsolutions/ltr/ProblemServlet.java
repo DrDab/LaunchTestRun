@@ -332,6 +332,13 @@ public class ProblemServlet extends HttpServlet
 					int t = (i + 1);
 					choices += "					<option value='" + t + "'>" + DataStore.typeNames[i] + "</option>\n";
 				}
+				String accumDescription = "";
+				String pdfLink = p.getPDFLink();
+				if (!(pdfLink.equals("")))
+				{
+					accumDescription += "<embed src=\"" + pdfLink + "\" type=\"application/pdf\" width=\"100%\" height=\"600px\" />\n<br>\n";
+				}
+				accumDescription += p.getDescription();
 				s += 	"\n" + 
 						"<body class=\"no-mathjax\">\n" + 
 						" <div align=\"center\">\n" + 
@@ -367,7 +374,7 @@ public class ProblemServlet extends HttpServlet
 						"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
 						"<div align=\"left\" class=\"problem-text\" style='width:800px; padding-top:10px;'>\n" + 
 						"<span id=\"probtext-text\" class=\"mathjax\">" +
-						p.getDescription() +
+						accumDescription +
 						"</span>\n" + 
 						"</div>\n" + 
 						"\n" + 

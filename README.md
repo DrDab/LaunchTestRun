@@ -32,6 +32,7 @@ export JDK_JAVA_OPTIONS
 	"cpid":"12345",
 	"title":"Sample Tile 1",
 	"description":"Test Problem Description",
+	"pdf":"http://www.pdfsite.org/files/test.pdf",
 	"setinfo":"Fall Competition 2019",
 	"samplein":"sample.in",
 	"sampleout":"sample.out",
@@ -45,6 +46,7 @@ Where:
 - ``cpid`` is the ID # for the problem you want to define.
 - ``title`` is the title for the problem you want to define.
 - ``description`` is the description for the problem you want to define.
+- ``pdf`` is the URL link to the PDF file that you want to be displayed with the problem.
 - ``setinfo`` is the information about the problem set that the problem you want to define comes from.
 - ``samplein`` is the name of the sample input file. (The input given to the user-uploaded program)
 - ``sampleout`` is the name of the sample output file. (The output expected for the input)

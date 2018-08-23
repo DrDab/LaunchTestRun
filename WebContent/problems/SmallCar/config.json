@@ -1,7 +1,8 @@
 {
 	"cpid":"1",
 	"title":"Small Car",
-	"description":"<embed src=\"https://teamscode.com/assets/problem_pdfs/small_car.pdf\" type=\"application/pdf\" width=\"100%\" height=\"600px\" />",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/small_car.pdf",
 	"setinfo":"TeamsCode Fall 2017 MIHS Programming Contest",
 	"samplein":"",
 	"sampleout":"sample.out",

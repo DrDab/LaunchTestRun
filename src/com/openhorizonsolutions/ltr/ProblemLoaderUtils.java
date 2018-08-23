@@ -49,6 +49,7 @@ public class ProblemLoaderUtils
 					 * 	"cpid":"12345",
 					 * 	"title":"sampletitle",
 					 * 	"description":"sampledescription",
+					 * 	"pdf":"(insert pdf link)"
 					 * 	"setinfo":"samplesetinfo",
 					 * 	"samplein":"sample.in",
 					 * 	"sampleout":"sample.out",
@@ -64,7 +65,16 @@ public class ProblemLoaderUtils
 						JSONObject mainObj = new JSONObject(jsonData);
 						String cpid = mainObj.getString("cpid");
 						String title = mainObj.getString("title");
-						String description = mainObj.getString("description");
+						String description = "";
+						if (mainObj.has("description"))
+						{
+							description = mainObj.getString("description");
+						}
+						String pdf = "";
+						if (mainObj.has("pdf"))
+						{
+							pdf = mainObj.getString("pdf");
+						}
 						String setInfo = mainObj.getString("setinfo");
 						String sampleIn = mainObj.getString("samplein");
 						String sampleOut = mainObj.getString("sampleout");
@@ -77,7 +87,7 @@ public class ProblemLoaderUtils
 						File judgeInFile = new File(subFolder, judgeIn);
 						File judgeOutFile = new File(subFolder, judgeOut);
 						tmpMap.put(cpid, tmp.size());
-						tmp.add(new Problem(cpid, title, setInfo, description, sampleInFile, sampleOutFile, judgeInFile, judgeOutFile, inputName, timeout));
+						tmp.add(new Problem(cpid, title, setInfo, description, pdf, sampleInFile, sampleOutFile, judgeInFile, judgeOutFile, inputName, timeout));
 					}
 					catch (JSONException je0)
 					{
