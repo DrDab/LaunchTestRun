@@ -206,6 +206,7 @@ public class ProblemLoaderUtils
 		{
 			ArrayList<Integer> al = new ArrayList<Integer>();
 			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
+			pb.directory(new File(file.getParent()));
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
 			Process buildProcess = pb.start();
