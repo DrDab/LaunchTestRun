@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import org.json.JSONException;
@@ -100,6 +101,7 @@ public class ProblemLoaderUtils
 				}
 			}
 		}
+		Collections.sort(tmpLst);
 		tmpLst = tmp;
 	}
 	

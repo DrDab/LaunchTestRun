@@ -1,0 +1,13 @@
+{
+    "cpid":"5",
+    "title":"Valid DNA",
+    "description":"",
+    "pdf":"https://teamscode.com/assets/problem_pdfs/valid_dna.pdf",
+    "setinfo":"TeamsCode Fall 2017 MIHS Programming Contest",
+    "samplein":"sample.in",
+    "sampleout":"sample.out",
+    "judgein":"judge.in",
+    "judgeout":"judge.out",
+    "inputname":"dna.txt",
+    "timeout":"2000"
+}
