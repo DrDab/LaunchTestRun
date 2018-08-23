@@ -2,6 +2,7 @@ package com.openhorizonsolutions.ltr;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -62,7 +63,7 @@ public class ProblemServlet extends HttpServlet
 				"body {\n" + 
 				"  margin-top: 0px;\n" + 
 				"  margin-bottom: 0px;\n" + 
-				"  background-color: #AAA;\n" + 
+				"  background-color: #EFEAEA;\n" + 
 				"}\n" + 
 				"div.main {\n" + 
 				"  background-color: #FFFFFF;\n" + 
@@ -130,7 +131,7 @@ public class ProblemServlet extends HttpServlet
 				".panel a:visited {color: #009; text-decoration: underline; }\n" + 
 				".panel a:hover {color: #33F; text-decoration: none; }\n" + 
 				".panel h2 {\n" + 
-				"  font-variant: small-caps;  \n" + 
+				"  font-family: Arial, Helvetica, sans-serif;  \n" + 
 				"  line-height: 25%;\n" + 
 				"}\n" + 
 				".sponsors span {\n" + 
@@ -198,6 +199,17 @@ public class ProblemServlet extends HttpServlet
 				" 	margin-bottom: 15px;\n" + 
 				"	font-family: \"Raleway\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n" + 
 				"}\n" + 
+				".rcorners2 {\n" + 
+				"		border-radius: 25px;\n" + 
+				"		border: 2px solid #4286F4;\n" + 
+				"		padding-right: 20px;\n" + 
+				"		padding-left: 20px;\n" + 
+				"		padding-top: 5px;\n" + 
+				"		padding-bottom: 10px;\n" + 
+				"		margin-bottom: 15px;\n" + 
+				"		font-family: \"Raleway\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n" + 
+				"}\n" + 
+				"" +
 				"pre, code, .mono, .mono * { font-family: monospace !important; }\n" + 
 				".prewrap { white-space: pre-wrap; }\n" + 
 				"\n" + 
@@ -321,7 +333,87 @@ public class ProblemServlet extends HttpServlet
 				"";
 		
 		ProblemLoaderUtils.refreshIO(getServletContext().getRealPath(""));
-		if (ProblemLoaderUtils.problemExists(cpid))
+		if (cpid.equals("listproblems.html"))
+		{
+			String generatedLinkPart = "";
+			HashMap<String, ArrayList<Problem>> categoryMap = new HashMap<String, ArrayList<Problem>>();
+			ArrayList<Problem> linkGenList = ProblemLoaderUtils.getProblemList();
+			for(Problem problem : linkGenList)
+			{
+				String setdetails = problem.getSetInfo();
+				if (categoryMap.containsKey(setdetails))
+				{
+					categoryMap.get(setdetails).add(problem);
+				}
+				else
+				{
+					categoryMap.put(setdetails, new ArrayList<Problem>());
+					categoryMap.get(setdetails).add(problem);
+				}
+			}
+			for(String setdetails : categoryMap.keySet())
+			{
+				generatedLinkPart += "<strong>" + setdetails + "</strong><br>";
+				for (Problem problem : categoryMap.get(setdetails))
+				{
+					String pCPID = problem.getCPID();
+					String title = problem.getTitle();
+					generatedLinkPart += "<a href=\"/LaunchTestRun/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
+				}
+			}
+			s += "\n" + 
+					"<body class=\"no-mathjax\">\n" + 
+					" <div align=\"center\">\n" + 
+					"  <div class=\"shadow1\">\n" + 
+					"\n" + 
+					"   <div class=\"content\">\n" + 
+					"\n" + 
+					"  \n" + 
+					"\n" + 
+					"   \n" + 
+					"    \n" + 
+					"\n" + 
+					"\n" + 
+					"<div class=\"panel\">\n" + 
+					"\n" + 
+					"<h2> Problems </h2>\n" + 
+					" \n" + 
+					"</div><br><br><br>\n" + 
+					"\n" + 
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"\n" + 
+					"<div id=\"trial-information\"></div>\n" + 
+					"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" +
+					"\n" + 
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n" +  
+					"\n" + 
+					"</div>\n" + 
+					"\n" + 
+					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
+					"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
+					"A list of the problems: <br>" +
+					"<br>" +
+					generatedLinkPart +
+					"<br>" +
+					"</div>\n" + 
+					"\n" + 
+					"</div>\n" + 
+					"\n" + 
+					"\n" + 
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"\n" + 
+					"   </div>\n" + 
+					"  </div>\n" + 
+					" </div>\n" + 
+					"\n" + 
+					" <br style=\"clear:both\" />\n" + 
+					"\n";
+		}
+		else if (ProblemLoaderUtils.problemExists(cpid))
 		{
 			p = ProblemLoaderUtils.getProblem(cpid);
 			try
@@ -372,17 +464,18 @@ public class ProblemServlet extends HttpServlet
 						"</div>\n" + 
 						"\n" + 
 						"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
-						"<div align=\"left\" class=\"problem-text\" style='width:800px; padding-top:10px;'>\n" + 
+						"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
 						"<span id=\"probtext-text\" class=\"mathjax\">" +
 						accumDescription +
 						"</span>\n" + 
 						"</div>\n" + 
 						"\n" + 
 						"    \n" + 
+						"	<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px; border:solid #f4419d'>\n" + 
 						"		<form class=\"submission\" method=\"POST\" action=\"/LaunchTestRun/submit-solution\" enctype=\"multipart/form-data\">\n" + 
 						"		<div id=\"solution\">\n" + 
 						"			<input type=\"hidden\" name=\"cpid\" value=\"" + cpid + "\"/>\n" + 
-						"		\n<br><br><br>" + 
+						"		\n" + 
 						"			<div class=\"field2\">\n" + 
 						"				<label for=\"language\">Language:</label>\n" + 
 						"				<select name=\"language\">\n" + 
@@ -397,6 +490,7 @@ public class ProblemServlet extends HttpServlet
 						"				    <input name=\"solution-submit\" id=\"solution-submit\" type=\"submit\" value=\"Submit Solution\" /></div>\n" + 
 						"			</div>\n" + 
 						"		</form>\n" + 
+						"	</div>" +
 						"    \n" + 
 						"</div>\n" + 
 						"\n" + 
@@ -447,7 +541,7 @@ public class ProblemServlet extends HttpServlet
 						"</div>\n" + 
 						"\n" + 
 						"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
-						"<div align=\"left\" class=\"problem-text\" style='width:800px; padding-top:10px;'>\n" + 
+						"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
 						"<span id=\"probtext-text\">" +
 						"Oops, something went wrong: " + e +
 						"</span>\n" + 
@@ -470,12 +564,30 @@ public class ProblemServlet extends HttpServlet
 		else
 		{
 			String generatedLinkPart = "";
+			HashMap<String, ArrayList<Problem>> categoryMap = new HashMap<String, ArrayList<Problem>>();
 			ArrayList<Problem> linkGenList = ProblemLoaderUtils.getProblemList();
 			for(Problem problem : linkGenList)
 			{
-				String pCPID = problem.getCPID();
-				String title = problem.getTitle();
-				generatedLinkPart += "<a href=\"/LaunchTestRun/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
+				String setdetails = problem.getSetInfo();
+				if (categoryMap.containsKey(setdetails))
+				{
+					categoryMap.get(setdetails).add(problem);
+				}
+				else
+				{
+					categoryMap.put(setdetails, new ArrayList<Problem>());
+					categoryMap.get(setdetails).add(problem);
+				}
+			}
+			for(String setdetails : categoryMap.keySet())
+			{
+				generatedLinkPart += "<strong>" + setdetails + "</strong><br>";
+				for (Problem problem : categoryMap.get(setdetails))
+				{
+					String pCPID = problem.getCPID();
+					String title = problem.getTitle();
+					generatedLinkPart += "<a href=\"/LaunchTestRun/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
+				}
 			}
 			s += "\n" + 
 					"<body class=\"no-mathjax\">\n" + 
@@ -509,15 +621,13 @@ public class ProblemServlet extends HttpServlet
 					"</div>\n" + 
 					"\n" + 
 					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
-					"<div align=\"left\" class=\"problem-text\" style='width:800px; padding-top:10px;'>\n" + 
-					"<span id=\"probtext-text\">" +
-					"Oops, that problem does not exist: " + cpid +
+					"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
+					"The problem that you existed does not exist: " + cpid +
 					"<br><br>" +
 					"A list of the problems: " +
 					"<br>" +
 					generatedLinkPart +
-					"<br>" +
-					"</span>\n" + 
+					"<br>" + 
 					"</div>\n" + 
 					"\n" + 
 					"</div>\n" + 
@@ -535,7 +645,7 @@ public class ProblemServlet extends HttpServlet
 		}
 		
 		
-		String end = "<center>Page requested: " + request.getRequestURI() + "<br>Page generated in: " + (double)((DataStore.stw.getElapsedNanoTime() - start)/ 1000000000.0) + " seconds [ 100% Tomcat 8 ] </center>";
+		String end = "<center>Page requested: " + request.getRequestURI() + "<br>Page generated in: " + (double)((DataStore.stw.getElapsedNanoTime() - start)/ 1000000000.0) + " seconds [ 100% Tomcat 8 ]<br>LaunchTestRun is (C) copyright of Victor Du.</center>";
 		response.getWriter().append(s).append(end + "</body>\n" + 
 				"\n" + 
 				"</html>\n" + 
