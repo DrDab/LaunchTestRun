@@ -90,6 +90,6 @@ public class Problem implements Comparable<Problem>
 	@Override
 	public int compareTo(Problem o)
 	{
-		return cpid.compareTo(o.getCPID());
+		return getTitle().compareTo(o.getTitle());
 	}
 }

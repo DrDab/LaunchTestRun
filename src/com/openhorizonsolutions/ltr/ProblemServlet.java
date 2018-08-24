@@ -2,6 +2,7 @@ package com.openhorizonsolutions.ltr;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -351,7 +352,11 @@ public class ProblemServlet extends HttpServlet
 					categoryMap.get(setdetails).add(problem);
 				}
 			}
-			for(String setdetails : categoryMap.keySet())
+			
+			Object[] toSort = categoryMap.keySet().toArray();
+			Arrays.sort(toSort);
+			
+			for(Object setdetails : toSort)
 			{
 				generatedLinkPart += "<strong>" + setdetails + "</strong><br>";
 				for (Problem problem : categoryMap.get(setdetails))
@@ -361,6 +366,7 @@ public class ProblemServlet extends HttpServlet
 					generatedLinkPart += "<a href=\"/LaunchTestRun/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
 				}
 			}
+			
 			s += "\n" + 
 					"<body class=\"no-mathjax\">\n" + 
 					" <div align=\"center\">\n" + 
@@ -566,6 +572,7 @@ public class ProblemServlet extends HttpServlet
 			String generatedLinkPart = "";
 			HashMap<String, ArrayList<Problem>> categoryMap = new HashMap<String, ArrayList<Problem>>();
 			ArrayList<Problem> linkGenList = ProblemLoaderUtils.getProblemList();
+			
 			for(Problem problem : linkGenList)
 			{
 				String setdetails = problem.getSetInfo();
@@ -579,7 +586,11 @@ public class ProblemServlet extends HttpServlet
 					categoryMap.get(setdetails).add(problem);
 				}
 			}
-			for(String setdetails : categoryMap.keySet())
+			
+			Object[] toSort = categoryMap.keySet().toArray();
+			Arrays.sort(toSort);
+			
+			for(Object setdetails : toSort)
 			{
 				generatedLinkPart += "<strong>" + setdetails + "</strong><br>";
 				for (Problem problem : categoryMap.get(setdetails))
@@ -589,6 +600,7 @@ public class ProblemServlet extends HttpServlet
 					generatedLinkPart += "<a href=\"/LaunchTestRun/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
 				}
 			}
+			
 			s += "\n" + 
 					"<body class=\"no-mathjax\">\n" + 
 					" <div align=\"center\">\n" + 

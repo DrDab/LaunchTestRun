@@ -101,7 +101,7 @@ public class ProblemLoaderUtils
 				}
 			}
 		}
-		Collections.sort(tmpLst);
+		Collections.sort(tmp);
 		tmpLst = tmp;
 	}
 	
