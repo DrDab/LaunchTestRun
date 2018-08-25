@@ -140,7 +140,7 @@ public class SolutionUploadHandler extends HttpServlet
 						request.setAttribute("message", "The selected language type is invalid.");
 					}
 					boolean ok = true;
-					if (languageType > 4 || languageType < 0)
+					if (languageType > 5 || languageType < 0)
 					{
 						ok = false;
 					}
@@ -176,6 +176,10 @@ public class SolutionUploadHandler extends HttpServlet
 						else if (languageType == 3 || languageType == 4)
 						{
 							executableFile = storeFile;
+						}
+						else if (languageType == 5)
+						{
+							executableFile = new File(storeFile.getParent(), "toExecute.exe");
 						}
 						
 						Problem curProblem = ProblemLoaderUtils.getProblem(problemID);

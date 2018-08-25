@@ -204,6 +204,11 @@ public class ProblemLoaderUtils
 			command += eld.getPython36() + " ";
 			command += file.toString();
 		}
+		else if (language == 5)
+		{
+			command += eld.getCSharpRunner() + " ";
+			command += file.toString();
+		}
 		try 
 		{
 			ArrayList<Integer> al = new ArrayList<Integer>();
@@ -290,6 +295,11 @@ public class ProblemLoaderUtils
 			command += file.getAbsolutePath() + " ";
 			command += "-d " + file.getParent();
 		}
+		else if (language == 5)
+		{
+			command += eld.getMCS() + " -out:toExecute.exe ";
+			command += "-pkg:dotnet " + file.getName(); 
+		}
 		else
 		{
 			return new StdPipePostExecOutputHandler("", "");
@@ -298,6 +308,7 @@ public class ProblemLoaderUtils
 		try 
 		{
 			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
+			pb.directory(new File(file.getParent()));
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
 			Process buildProcess = pb.start();

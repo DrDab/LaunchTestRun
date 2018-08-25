@@ -31,6 +31,8 @@ public class ExecutableLocationUpdator
 				pw.println("	\"g++\":\"/usr/bin/g++\",");
 				pw.println("	\"python2\":\"/usr/bin/python2\",");
 				pw.println("	\"python3\":\"/usr/bin/python3\"");
+				pw.println("	\"csharp-build\":\"/usr/bin/mcs\"");
+				pw.println("	\"csharp-run\":\"/usr/bin/mono\"");
 				pw.println("}");
 				pw.close();
 			}
@@ -94,6 +96,24 @@ public class ExecutableLocationUpdator
 		if (mainObject.has("python3"))
 		{
 			return mainObject.getString("python3");
+		}
+		return "";
+	}
+	
+	public String getMCS()
+	{
+		if (mainObject.has("csharp-build"))
+		{
+			return mainObject.getString("csharp-build");
+		}
+		return "";
+	}
+	
+	public String getCSharpRunner()
+	{
+		if (mainObject.has("csharp-run"))
+		{
+			return mainObject.getString("csharp-run");
 		}
 		return "";
 	}
