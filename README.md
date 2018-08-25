@@ -42,6 +42,23 @@ export JDK_JAVA_OPTIONS
 ```
 6. Run ``bin/startup.sh`` to start LaunchTestRun.
 
+### Securing your setup
+If you would like more security on your LaunchTestRun installation (strongly recommended as others will be running code on your server!), you should create a new user that only has permissions to run and access the files within the Tomcat installation directory. To do this, run the following commands:
+```
+cd ~/LaunchTestRun/apache-tomcat-8.5.33
+su root
+useradd launchtestrun
+chown -R logs launchtestrun:launchtestrun
+chown -R webapps/LaunchTestRun* launchtestrun:launchtestrun
+```
+
+After setting these permissions, when starting the LaunchTestRun server, switch to the ``launchtestrun`` user before running ``startup.sh`` with the following commands:
+```
+su launchtestrun
+cd ~/LaunchTestRun/apache-tomcat-8.5.33/bin
+./startup.sh
+```
+
 # Setup
 1. If you haven't installed the LaunchTestRun server before reading this step, please refer back to Running and follow the instructions.
 2. To add a custom problem, go into your Apache Tomcat server directory, and go to ``webapps/LaunchTestRun/problems`` inside your server directory. Create a new directory with the following structure:
