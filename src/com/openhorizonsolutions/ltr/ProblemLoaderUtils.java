@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -36,6 +37,8 @@ public class ProblemLoaderUtils
 		}
 		
 		File[] subdirectories = problemsFolder.listFiles();
+		Arrays.sort(subdirectories);
+		
 		for (File subFolder : subdirectories)
 		{
 			if (subFolder.isDirectory())
@@ -101,7 +104,6 @@ public class ProblemLoaderUtils
 				}
 			}
 		}
-		Collections.sort(tmp);
 		tmpLst = tmp;
 	}
 	
