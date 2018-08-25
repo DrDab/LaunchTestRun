@@ -1,10 +1,37 @@
 # LaunchTestRun
 A platform that lets you submit and test code snippets online for practice.
 
-# Running
-1. If you would like to build from source, continue to step 2. Otherwise, copy the .WAR file in ``release/`` to the ``webapps/`` directory in your Apache Tomcat server, and skip to step 5.
+# Dependencies
+LaunchTestRun depends on the following software to run:
+- Apache Tomcat 8.5.33 or higher
+- Java 1.7 or higher
+- GCC 5 or higher
+- Python 2
+- Python 3
+- Mono .NET
+
+To install these packages on Ubuntu or Debian, please run the following commands:
+
+To install the required toolchains, run
+```
+sudo apt-get update
+sudo apt-get install default-jre default-jdk build-essential python2 python3 mono-devel
+```
+
+To install Tomcat, run
+```
+cd
+mkdir LaunchTestRun
+cd LaunchTestRun
+curl http://apache.mirrors.tds.net/tomcat/tomcat-8/v8.5.33/bin/apache-tomcat-8.5.33.zip
+unzip apache-tomcat-8.5.33.zip
+rm -r apache-tomcat-8.5.33.zip
+```
+
+# Installation
+1. If you would like to build from source, continue to step 2. Otherwise, copy the .WAR file in ``release/`` to the ``webapps/`` directory in your Apache Tomcat server (if you used the previous steps Tomcat should be installed in ~/LaunchTestRun), and skip to step 5.
 2. Import this as an Eclipse Dynamic Web Project.
-3. Export the project into a .WAR.
+3. Export the project into a .WAR named ``LaunchTestRun.war``.
 4. Move the .WAR file into your Apache Tomcat server, in the ``webapps/`` directory.
 5. In ``bin/catalina.sh``, remove the following lines:
 ```
@@ -13,7 +40,7 @@ JDK_JAVA_OPTIONS="$JDK_JAVA_OPTIONS --add-opens=java.base/java.io=ALL-UNNAMED"
 JDK_JAVA_OPTIONS="$JDK_JAVA_OPTIONS --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED"
 export JDK_JAVA_OPTIONS
 ```
-6. Run ``bin/startup.sh``.
+6. Run ``bin/startup.sh`` to start LaunchTestRun.
 
 # Setup
 1. If you haven't installed the LaunchTestRun server before reading this step, please refer back to Running and follow the instructions.
