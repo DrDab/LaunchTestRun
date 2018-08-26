@@ -1,12 +1,15 @@
 package com.openhorizonsolutions.ltr;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -160,7 +163,7 @@ public class SolutionUploadHandler extends HttpServlet
 					{
 						if (!(fileExtension.equals(DataStore.types[languageType])) && !(fileExtension.equals(DataStore.altTypes[languageType])))
 						{
-							DataStore.forensicsLogger.logUpload(uuid, request.getRemoteAddr(), "Invalid file type: " + fileExtension, filePath, fileSize);
+							DataStore.forensicsLogger.logUpload(uuid, "", request.getRemoteAddr(), "Invalid file type: " + fileExtension, filePath, fileSize);
 							ok = false;
 						}
 					}
@@ -172,7 +175,9 @@ public class SolutionUploadHandler extends HttpServlet
 						outStream.write(buffer);
 						outStream.close();
 						
-						DataStore.forensicsLogger.logUpload(uuid, request.getRemoteAddr(), DataStore.typeNames[languageType], filePath, fileSize);
+						String md5sum = getMD5Checksum(storeFile.getAbsolutePath());
+						
+						DataStore.forensicsLogger.logUpload(uuid, md5sum, request.getRemoteAddr(), DataStore.typeNames[languageType], filePath, fileSize);
 						
 						String realpath = getServletContext().getRealPath("");
 						
@@ -265,9 +270,9 @@ public class SolutionUploadHandler extends HttpServlet
 							judgeStatus = "WRONG";
 						}
 						
-						String message = "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>Language: " + DataStore.typeNames[languageType] + "<br><br><strong>YOUR RESULTS</strong><br><br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT WITH SAMPLE DATA</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
-						message += "<br>SAMPLE TEST STATUS: " + sampleStatus;
-						message += "<br>JUDGE TEST STATUS: " + judgeStatus;
+						String message = "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>Language: " + DataStore.typeNames[languageType] + "<br>MD5 Checksum: " + md5sum + "<br><br><strong>YOUR RESULTS</strong><br><br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT WITH SAMPLE DATA</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+						message += "<br>SAMPLE TEST STATUS: " + sampleStatus + " (" + executionOutputSample.getMillis() + "ms)";
+						message += "<br>JUDGE TEST STATUS: " + judgeStatus + " (" + executionOutputJudge.getMillis() + "ms)";
 						message += "<br><br>";
 						request.setAttribute("message", message);
 					}
@@ -288,6 +293,39 @@ public class SolutionUploadHandler extends HttpServlet
 
 		return;
 	}
-	// doGet(request, response);
+	
+	public static byte[] createChecksum(String filename) throws Exception 
+	{
+		InputStream fis = new FileInputStream(filename);
+
+		byte[] buffer = new byte[1024];
+		MessageDigest complete = MessageDigest.getInstance("MD5");
+		int numRead;
+
+		do
+		{
+			numRead = fis.read(buffer);
+			if (numRead > 0) 
+			{
+				complete.update(buffer, 0, numRead);
+			}
+		} 
+		while (numRead != -1);
+
+		fis.close();
+		return complete.digest();
+	}
+
+	public static String getMD5Checksum(String filename) throws Exception
+	{
+		byte[] b = createChecksum(filename);
+		String result = "";
+
+		for (int i = 0; i < b.length; i++)
+		{
+			result += Integer.toString((b[i] & 0xff) + 0x100, 16).substring(1);
+		}
+		return result;
+	}
 
 }

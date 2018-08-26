@@ -37,10 +37,10 @@ public class ForensicsLogger
 		}
 	}
 	
-	public void logUpload(String uuid, String IP, String language, String filename, int filesize)
+	public void logUpload(String uuid, String md5sum, String IP, String language, String filename, int filesize)
 	{
 		double time = stw.getTime();
-		String writeOut = "[ " + time + " ] (UPLOAD) UUID: " + uuid + " IP: " + IP + " LANG: " + language + " FILE: " + filename + " SIZE: " + filesize;
+		String writeOut = "[ " + time + " ] (UPLOAD) UUID: " + uuid + " MD5: " + md5sum + " IP: " + IP + " LANG: " + language + " FILE: " + filename + " SIZE: " + filesize;
 		if (!logfile.exists())
 		{
 			try 
@@ -57,7 +57,7 @@ public class ForensicsLogger
 		pw.flush();
 	}
 	
-	public void logUploadResult(boolean judge,  String uuid, String stdin, String stdout, String stderr, double millis)
+	public void logUploadResult(boolean judge, String uuid, String stdin, String stdout, String stderr, double millis)
 	{
 		double time = stw.getTime();
 		String writeOut = "[ " + time + " ] (EXECUTE) UUID: " + uuid + " JUDGE: " + judge + "\nSTDIN:\n" + stdin + "<\nSTDOUT:\n" + stdout + "<\nSTDERR:\n" + stderr + "<\nTIME: " + millis + "ms";
