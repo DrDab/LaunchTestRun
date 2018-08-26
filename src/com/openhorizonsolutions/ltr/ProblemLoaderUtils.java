@@ -245,10 +245,14 @@ public class ProblemLoaderUtils
 			}).start();
 		    buildProcess.waitFor();
 		    double taken = (DataStore.stw.getElapsedNanoTime() - start) / 1000000.0;
-		    byte[] stdinarr = Files.readAllBytes(input.toPath());
+		    String stdin = "";
+		    if (!input.isDirectory())
+		    {
+		    	byte[] stdinarr = Files.readAllBytes(input.toPath());
+		    	stdin = new String(stdinarr);
+		    }
 		    byte[] stdoutarr = Files.readAllBytes(programOutputFile.toPath());
 		    byte[] stderrarr = Files.readAllBytes(programErrFile.toPath());
-		    String stdin = new String(stdinarr);
 		    String stdout = new String(stdoutarr);
 		    String stderr = new String(stderrarr);
 		    // System.out.println("STDOUT: " + stdout + "<");
