@@ -4,6 +4,8 @@ public class DataStore
 {
 	public static Stopwatch stw = new Stopwatch();
 	
+	public static ForensicsLogger forensicsLogger = new ForensicsLogger(stw);
+	
 	public static String[] types = {"c", "cpp", "java", "py", "py", "cs"};
 	public static String[] altTypes = {"c", "cc", "java", "py", "py", "cs"};
 	public static String[] typeNames = {"C", "C++11", "Java", "Python 2", "Python 3", "C#"};

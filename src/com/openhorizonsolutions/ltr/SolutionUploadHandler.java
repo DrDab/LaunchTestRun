@@ -76,12 +76,15 @@ public class SolutionUploadHandler extends HttpServlet
 
 			upload.setSizeMax(1024 * 512);
 
-			String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
+			String realPath = getServletContext().getRealPath("");
+			String uploadPath = realPath + File.separator + UPLOAD_DIRECTORY;
+			String logPath = realPath + File.separator + "forensics.txt";
 			String uuid = UUID.randomUUID().toString();
 			uploadPath += File.separator + uuid;
 			
 			File uploadDir = new File(uploadPath);
-
+			File logFile = new File(logPath);
+			
 			if (!uploadDir.exists())
 			{
 				uploadDir.mkdir();
@@ -93,6 +96,13 @@ public class SolutionUploadHandler extends HttpServlet
 				uploadDir.mkdir();
 			}
 
+			if (!logFile.exists())
+			{
+				logFile.createNewFile();
+			}
+			
+			DataStore.forensicsLogger.setFile(logFile);
+			
 			try
 			{
 				Part filePart = request.getPart("sourcefile");
@@ -122,7 +132,8 @@ public class SolutionUploadHandler extends HttpServlet
 				*/
 				
 				// the file size is over 1MB
-				if (buffer.length >= 10000)
+				int fileSize = buffer.length;
+				if (fileSize >= 10000)
 				{
 					request.setAttribute("message", "File size too big. Please upload a smaller file under 1MB.");
 				}
@@ -149,6 +160,7 @@ public class SolutionUploadHandler extends HttpServlet
 					{
 						if (!(fileExtension.equals(DataStore.types[languageType])) && !(fileExtension.equals(DataStore.altTypes[languageType])))
 						{
+							DataStore.forensicsLogger.logUpload(uuid, request.getRemoteAddr(), "Invalid file type: " + fileExtension, filePath, fileSize);
 							ok = false;
 						}
 					}
@@ -159,6 +171,8 @@ public class SolutionUploadHandler extends HttpServlet
 						OutputStream outStream = new FileOutputStream(storeFile);
 						outStream.write(buffer);
 						outStream.close();
+						
+						DataStore.forensicsLogger.logUpload(uuid, request.getRemoteAddr(), DataStore.typeNames[languageType], filePath, fileSize);
 						
 						String realpath = getServletContext().getRealPath("");
 						
@@ -198,11 +212,13 @@ public class SolutionUploadHandler extends HttpServlet
 						{
 						}
 						
-						sampleInputLocal.renameTo(new File(uploadDir, curProblem.getInputName()));
-						StdPipePostExecOutputHandler executionOutputSample = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType, timeout, realpath);
+						String inputname = curProblem.getInputName();
+						File inputfile = new File(uploadDir, inputname);
+						sampleInputLocal.renameTo(inputfile);
+						StdPipePostExecOutputHandler executionOutputSample = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, inputfile, languageType, timeout, realpath);
 						sampleInputLocal.delete();
-						judgeInputLocal.renameTo(new File(uploadDir, curProblem.getInputName()));
-						StdPipePostExecOutputHandler executionOutputJudge = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, languageType, timeout, realpath);
+						judgeInputLocal.renameTo(inputfile);
+						StdPipePostExecOutputHandler executionOutputJudge = ProblemLoaderUtils.getProgramOutput(uuid, executableFile, inputfile, languageType, timeout, realpath);
 						judgeInputLocal.delete();
 
 						String sampleStatus = "SYSTEM ERROR";
@@ -211,6 +227,9 @@ public class SolutionUploadHandler extends HttpServlet
 						byte[] expectedJudgeOutputBytes = Files.readAllBytes(curProblem.getJudgeOutput().toPath());
 						String expectedSampleOutput = new String(expectedSampleOutputBytes).trim();
 						String expectedJudgeOutput = new String(expectedJudgeOutputBytes).trim();
+						
+						DataStore.forensicsLogger.logUploadResult(false, uuid, executionOutputSample.getStdIn(), executionOutputSample.getStdOut(), executionOutputSample.getStdErr(), executionOutputSample.getMillis());
+						DataStore.forensicsLogger.logUploadResult(true, uuid, executionOutputJudge.getStdIn(), executionOutputJudge.getStdOut(), executionOutputJudge.getStdErr(), executionOutputJudge.getMillis());
 						
 						if (executionOutputSample.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{

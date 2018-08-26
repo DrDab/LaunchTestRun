@@ -173,51 +173,52 @@ public class ProblemLoaderUtils
 	    return out.toString();
 	}
 	
-	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File file, int language, int timeout, String serverpath) throws InterruptedException
+	public static StdPipePostExecOutputHandler getProgramOutput(String uuid, File toRun, File input, int language, int timeout, String serverpath) throws InterruptedException
 	{
-		if (!file.getParentFile().exists())
+		if (!toRun.getParentFile().exists())
 		{
-			file.getParentFile().mkdir();
+			toRun.getParentFile().mkdir();
 		}
 		ExecutableLocationUpdator eld = new ExecutableLocationUpdator(serverpath);
-		File programOutputFile = new File(file.getParent(), uuid + "-program-output");
-		File programErrFile = new File(file.getParent(), uuid + "-program-error");
+		File programOutputFile = new File(toRun.getParent(), uuid + "-program-output");
+		File programErrFile = new File(toRun.getParent(), uuid + "-program-error");
 		String command = "";
 		if (language == 0 || language == 1)
 		{
 			command += "";
-			command += file.toString();
+			command += toRun.toString();
 		}
 		else if (language == 2)
 		{
 			command += eld.getJava() + " -cp ";
-			command += file.getParent() + " ";
-			command += file.getName().replaceAll(".class", "");
+			command += toRun.getParent() + " ";
+			command += toRun.getName().replaceAll(".class", "");
 		}
 		else if (language == 3)
 		{
 			command += eld.getPython27() + " ";
-			command += file.toString();
+			command += toRun.toString();
 		}
 		else if (language == 4)
 		{
 			command += eld.getPython36() + " ";
-			command += file.toString();
+			command += toRun.toString();
 		}
 		else if (language == 5)
 		{
 			command += eld.getCSharpRunner() + " ";
-			command += file.toString();
+			command += toRun.toString();
 		}
 		try 
 		{
 			ArrayList<Integer> al = new ArrayList<Integer>();
 			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
-			pb.directory(new File(file.getParent()));
+			pb.directory(new File(toRun.getParent()));
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
 			Process buildProcess = pb.start();
 		    // System.out.println("Waiting for process...");
+			double start = DataStore.stw.getElapsedNanoTime();
 			new Thread(new Runnable() 
 			{
 
@@ -243,26 +244,29 @@ public class ProblemLoaderUtils
 				
 			}).start();
 		    buildProcess.waitFor();
+		    double taken = (DataStore.stw.getElapsedNanoTime() - start) / 1000000.0;
+		    byte[] stdinarr = Files.readAllBytes(input.toPath());
 		    byte[] stdoutarr = Files.readAllBytes(programOutputFile.toPath());
 		    byte[] stderrarr = Files.readAllBytes(programErrFile.toPath());
+		    String stdin = new String(stdinarr);
 		    String stdout = new String(stdoutarr);
 		    String stderr = new String(stderrarr);
 		    // System.out.println("STDOUT: " + stdout + "<");
 		    // System.out.println("STDERR: " + stderr + "<");
 		    if (al.size() == 0)
 		    {
-		    	return new StdPipePostExecOutputHandler(stdout, stderr);
+		    	return new StdPipePostExecOutputHandler(stdin, stdout, stderr, taken);
 		    }
 		    else
 		    {
-		    	return new StdPipePostExecOutputHandler("Process Forcibly Terminated", "The process took too long to run, and was terminated.");
+		    	return new StdPipePostExecOutputHandler(stdin, "Process Forcibly Terminated", "The process took too long to run, and was terminated.", taken);
 		    }
 		} 
 		catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new StdPipePostExecOutputHandler(e.getMessage(), e.getMessage());
+			return new StdPipePostExecOutputHandler(e.getMessage(), e.getMessage(), e.getMessage(), 0.0);
 		}
 	}
 	
@@ -302,7 +306,7 @@ public class ProblemLoaderUtils
 		}
 		else
 		{
-			return new StdPipePostExecOutputHandler("", "");
+			return new StdPipePostExecOutputHandler("", "", "", 0.0);
 		}
 
 		try 
@@ -311,6 +315,7 @@ public class ProblemLoaderUtils
 			pb.directory(new File(file.getParent()));
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
+			double start = DataStore.stw.getElapsedNanoTime();
 			Process buildProcess = pb.start();
 		    // System.out.println("Waiting for process...");
 		    buildProcess.waitFor();
@@ -321,13 +326,14 @@ public class ProblemLoaderUtils
 		    String stderr = new String(stderrarr);
 		    // System.out.println("STDOUT: " + stdout + "<");
 		    // System.out.println("STDERR: " + stderr + "<");
-		    return new StdPipePostExecOutputHandler(stdout, stderr);
+		    double taken = (DataStore.stw.getElapsedNanoTime() - start) / 1000000.0;
+		    return new StdPipePostExecOutputHandler("", stdout, stderr, taken);
 		} 
 		catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new StdPipePostExecOutputHandler(e.getMessage(), e.getMessage());
+			return new StdPipePostExecOutputHandler("", e.getMessage(), e.getMessage(), 0.0);
 		}
 	}
 	
