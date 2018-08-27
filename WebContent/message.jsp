@@ -1,14 +1,330 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Upload Result</title>
-<style>body{ font-family:"monospace"; }</style>
+
+
+ <title>LaunchTestRun</title>
+ <style>body,td,th {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #000;
+}
+a:link {color: #000; text-decoration: underline; }
+a:active {color: #009; text-decoration: underline; }
+a:visited {color: #009; text-decoration: underline; }
+a:hover {color: #33F; text-decoration: none; }
+body {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: #EFEAEA;
+}
+div.main {
+  background-color: #FFFFFF;
+  width: 914px;
+  text-align: left;
+}   
+.navbar {
+  position: relative;
+  top: -60px;
+}
+.form_error {
+  font-weight: bold;
+  color:#800;
+  padding-top:6px;
+}
+.navbar ul {
+  list-style: none;
+  margin: 20px;
+  padding: 0;  
+}
+.navbar li a {
+  display: inline;
+  font-variant: small-caps;  
+  font-size: 16px;
+  background-color: #139;
+  color: #EEE;
+  text-decoration: none;
+  margin: 5px 0; 
+  width: 105px;
+  float: left;
+  text-align:center;
+  border-left:1px solid #fff;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.navbar li a:hover {
+  background-color: #47F;
+  color:#FFF
+}
+
+.shadow1 {
+    margin: 0px;
+    width: 900px;
+        background-color: rgb(68,68,68); /* Needed for IEs */
+        -moz-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+        -webkit-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+        box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+        zoom: 1;
+}
+.shadow1 .content {
+        position: relative; /* This protects the inner element from being blurred */
+    width: 900px;
+        background-color: #FFF;
+
+}
+.panel {
+  background-color: #FFF; 
+  padding: 5px 15px 10px 15px;
+  text-align: left;
+  overflow:auto;
+}
+.panel a:link {color: #000; text-decoration: underline; }
+.panel a:active {color: #009; text-decoration: underline; }
+.panel a:visited {color: #009; text-decoration: underline; }
+.panel a:hover {color: #33F; text-decoration: none; }
+.panel h2 {
+  font-family: Arial, Helvetica, sans-serif;  
+  line-height: 25%;
+}
+.sponsors span {
+  display:inline-block;
+}
+.sponsors a {
+  vertical-align:text-bottom;
+  padding: 1px;
+  text-decoration: none;
+  text-align:center;
+  float: left;
+  border:1px solid #FFF;
+}
+.sponsors a img {
+  border: 0;
+}
+.sponsors a:hover {
+  border:1px solid #CCC;
+}
+.panel li {
+  padding-top: 6px;
+}
+.field label{
+  display: inline-block;
+  width: 80px;
+  font-weight: bold;
+}
+.field2 {
+  padding-top: 5px;
+}
+.field2 label{
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+}
+.forgotpass label {
+  display: inline-block;
+  width: 80px;
+}
+.forgotpass {
+  padding-top: 0px;
+  font-size: 10px;
+}
+.field {
+  padding-top: 5px;
+}
+.historypanel {
+ text-decoration: none; 
+ color: #000;
+}
+.historypanel img {
+ border: none;
+}
+.historypanel:hover {
+  background-color: #EEE;
+}
+.problem-text
+{
+        background: white;
+        border: 1px solid black;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.rcorners2 {
+        border-radius: 25px;
+        border: 2px solid #4286F4;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+pre, code, .mono, .mono * { font-family: monospace !important; }
+.prewrap { white-space: pre-wrap; }
+
+.status-working
+{
+    font-weight: bold;
+    color: black;
+}
+
+.status-yes
+{
+    font-weight: bold;
+    color: green;
+}
+
+.status-no
+{
+    font-weight: bold;
+    color: #900;
+}
+
+.trial-result {
+    border: 1px solid pink;
+    display: inline-block;
+    height: 50px;
+    margin: 3px;
+    position: relative;
+    width: 60px;
+    vertical-align: top;
+}
+.trial-status-no {
+    background-color: #FFE2E2;
+    border: 1px solid #993333;
+    color: #993333;
+}
+.trial-status-partial {
+    background-color: #EEFFEE;
+    border: 1px solid #339933;
+    color: #339933;
+}
+.trial-status-unknown {
+    background-color: #EEEEEE;
+    border: 1px solid black;
+    color: black;
+}
+.trial-num {
+    bottom: 2px;
+    display: inline;
+    float: left;
+    font-size: small;
+    left: 3px;
+    position: absolute;
+    text-align: right;
+}
+.trial-result .info span {
+    display: block;
+    text-align: right;
+}
+.trial-result .info {
+    bottom: 2px;
+    font-size: x-small;
+    position: absolute;
+    right: 3px;
+}
+.res-symbol {
+    font-size: xx-large;
+    text-align: center;
+}
+.trial-status-partial .res-symbol {
+    font-size: x-large !important;
+}
+.trial-status-yes {
+    background-color: #EEFFEE;
+    border: 1px solid #339933;
+    color: #339933;
+}
+.tooltip {
+    display:none;
+    position:absolute;
+    border:1px solid #333;
+    background-color:#161616;
+    border-radius:5px;
+    padding:10px;
+    color:#fff;
+    font-size:12px Arial;
+}
+.bar rect {
+  fill: #47f;
+  shape-rendering: crispEdges;
+}
+.bar text {
+  fill: #fff;
+}
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+</style>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    "HTML-CSS": {
+    scale: 85,
+    preferredFont: "STIX"
+    },
+  tex2jax: {
+    inlineMath: [['$','$'],['\\(','\\)']],
+    processEscapes: true,
+    skipTags: ['pre'],
+    processClass: "mathjax",
+    ignoreClass: "no-mathjax"
+  }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 </head>
-<body>
+
+<body class="no-mathjax">
+ <div align="center">
+  <div class="shadow1">
+
+   <div class="content">
+
+  
+
+   
+    
+
+
+<div class="panel">
+
+<h2> Submission Results! </h2>
+ 
+
+
+
+<div align="left" class="rcorners2" style='width:800px; padding-top:10px;'>
+<span id="probtext-text" class="mathjax">
     ${message}
+</span>
+<br>
+</div>
+
+</div>
+
+   </div>
+  </div>
+ </div>
+
+ <br style="clear:both" />
+ 
+
+<center>LaunchTestRun is (C) copyright of Victor Du.</center>
+
 </body>
+
+
 </html>
+
+
