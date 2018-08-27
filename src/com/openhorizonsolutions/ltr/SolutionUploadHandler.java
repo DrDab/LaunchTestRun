@@ -283,13 +283,18 @@ public class SolutionUploadHandler extends HttpServlet
 						{
 							message += "<br><br><strong>Execution Output w/ Sample Data</strong>";
 							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedSampleOutput) + "</code></pre>\"";
-							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"";
+							if (!executionOutputSample.getStdErr().equals(""))
+							{
+								message += "<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+							}
 						}
 						if (sampleStatus.equals("<font color=\"#e62100\">ERROR</font>"))
 						{
 							message += "<br><br><strong>Execution Output w/ Sample Data</strong>";
 							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedSampleOutput) + "</code></pre>\"";
-							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"";
+							message += "<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
 							message += "<br><br><strong>Compiler Output</strong><br>The compiler wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>The compiler threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br>";
 						}
 						message += "<br><br>";
