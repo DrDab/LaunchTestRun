@@ -8,8 +8,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.security.DigestInputStream;
 import java.security.MessageDigest;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -178,6 +178,7 @@ public class SolutionUploadHandler extends HttpServlet
 						String md5sum = getMD5Checksum(storeFile.getAbsolutePath());
 						
 						DataStore.forensicsLogger.logUpload(uuid, md5sum, request.getRemoteAddr(), DataStore.typeNames[languageType], filePath, fileSize);
+						Date uploadDate = new Date((long) (DataStore.stw.getTime() * 1000.0));
 						
 						String realpath = getServletContext().getRealPath("");
 						
@@ -271,11 +272,12 @@ public class SolutionUploadHandler extends HttpServlet
 						}
 						
 						String message = "";
-						message += "<strong>Upload has been done successfully!</strong>";
+						message += "<strong>File Upload Details</strong>";
 						message += "<br>File Name: " + fileName;
-						message += "<br>Size: " + buffer.length;
+						message += "<br>File Size: " + buffer.length + " B";
+						message += "<br>File MD5 Checksum: " + md5sum;
 						message += "<br>Language: " + DataStore.typeNames[languageType];
-						message += "<br>MD5 Checksum: " + md5sum + "<br><br>";
+						message += "<br>Date Uploaded: " + uploadDate.toString() + "<br><br>";
 						message += "<strong>Your Results</strong>";
 						message += "<br>Results from sample data test: <strong>" + sampleStatus + "</strong> (" + executionOutputSample.getMillis() + "ms)";
 						message += "<br>Results from judge data test: <strong>" + judgeStatus + "</strong> (" + executionOutputJudge.getMillis() + "ms)";
@@ -294,7 +296,10 @@ public class SolutionUploadHandler extends HttpServlet
 							message += "<br><br><strong>Execution Output w/ Sample Data</strong>";
 							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedSampleOutput) + "</code></pre>\"";
 							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"";
-							message += "<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+							if (!executionOutputSample.getStdErr().equals(""))
+							{
+								message += "<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+							}
 							message += "<br><br><strong>Compiler Output</strong><br>The compiler wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>The compiler threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br>";
 						}
 						message += "<br><br>";
