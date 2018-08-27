@@ -238,41 +238,60 @@ public class SolutionUploadHandler extends HttpServlet
 						
 						if (executionOutputSample.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{
-							sampleStatus = "TIMEOUT";
+							sampleStatus = "<font color=\"#e62100\">TIMEOUT</font>";
 						}
 						else if (!executionOutputSample.getStdErr().trim().equals(""))
 						{
-							sampleStatus = "ERROR";
+							sampleStatus = "<font color=\"#e62100\">ERROR</font>";
 						}
 						else if (executionOutputSample.getStdOut().trim().equals(expectedSampleOutput))
 						{
-							sampleStatus = "CORRECT";
+							sampleStatus = "<font color=\"#66e621\">CORRECT</font>";
 						}
 						else
 						{
-							sampleStatus = "WRONG";
+							sampleStatus = "<font color=\"#e62100\">WRONG</font>";
 						}
 						
 						if (executionOutputJudge.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{
-							judgeStatus = "TIMEOUT";
+							judgeStatus = "<font color=\"#e62100\">TIMEOUT</font>";
 						}
 						else if (!executionOutputJudge.getStdErr().trim().equals(""))
 						{
-							judgeStatus = "ERROR";
+							judgeStatus = "<font color=\"#e62100\">ERROR</font>";
 						}
 						else if (executionOutputJudge.getStdOut().trim().equals(expectedJudgeOutput))
 						{
-							judgeStatus = "CORRECT";
+							judgeStatus = "<font color=\"#66e621\">CORRECT</font>";
 						}
 						else
 						{
-							judgeStatus = "WRONG";
+							judgeStatus = "<font color=\"#e62100\">WRONG</font>";
 						}
 						
-						String message = "Upload has been done successfully!<br>File Name: " + fileName + "<br>Size: " + buffer.length + "<br>Language: " + DataStore.typeNames[languageType] + "<br>MD5 Checksum: " + md5sum + "<br><br><strong>YOUR RESULTS</strong><br><br><strong>COMPILER OUTPUT</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br> <strong>EXECUTION OUTPUT WITH SAMPLE DATA</strong><br>STDOUT:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>STDERR:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
-						message += "<br>SAMPLE TEST STATUS: " + sampleStatus + " (" + executionOutputSample.getMillis() + "ms)";
-						message += "<br>JUDGE TEST STATUS: " + judgeStatus + " (" + executionOutputJudge.getMillis() + "ms)";
+						String message = "";
+						message += "<strong>Upload has been done successfully!</strong>";
+						message += "<br>File Name: " + fileName;
+						message += "<br>Size: " + buffer.length;
+						message += "<br>Language: " + DataStore.typeNames[languageType];
+						message += "<br>MD5 Checksum: " + md5sum + "<br><br>";
+						message += "<strong>Your Results</strong>";
+						message += "<br>Results from sample data test: <strong>" + sampleStatus + "</strong> (" + executionOutputSample.getMillis() + "ms)";
+						message += "<br>Results from judge data test: <strong>" + judgeStatus + "</strong> (" + executionOutputJudge.getMillis() + "ms)";
+						if (sampleStatus.equals("<font color=\"#e62100\">WRONG</font>"))
+						{
+							message += "<br><br><strong>Execution Output w/ Sample Data</strong>";
+							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedSampleOutput) + "</code></pre>\"";
+							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+						}
+						if (sampleStatus.equals("<font color=\"#e62100\">ERROR</font>"))
+						{
+							message += "<br><br><strong>Execution Output w/ Sample Data</strong>";
+							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedSampleOutput) + "</code></pre>\"";
+							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+							message += "<br><br><strong>Compiler Output</strong><br>The compiler wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>The compiler threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br>";
+						}
 						message += "<br><br>";
 						request.setAttribute("message", message);
 					}
