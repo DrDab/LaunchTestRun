@@ -90,6 +90,10 @@ public class SolutionUploadHandler extends HttpServlet
 			
 			if (!uploadDir.exists())
 			{
+				if (!uploadDir.getParentFile().exists())
+				{
+					uploadDir.getParentFile().mkdir();
+				}
 				uploadDir.mkdir();
 			}
 			else
