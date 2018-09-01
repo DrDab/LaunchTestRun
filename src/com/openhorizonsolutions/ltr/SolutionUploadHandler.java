@@ -80,26 +80,24 @@ public class SolutionUploadHandler extends HttpServlet
 			upload.setSizeMax(1024 * 512);
 
 			String realPath = getServletContext().getRealPath("");
-			String uploadPath = realPath + File.separator + UPLOAD_DIRECTORY;
-			String logPath = realPath + File.separator + "forensics.txt";
 			String uuid = UUID.randomUUID().toString();
-			uploadPath += File.separator + uuid;
 			
-			File uploadDir = new File(uploadPath);
-			File logFile = new File(logPath);
+			File uploadDirParent = new File(realPath, UPLOAD_DIRECTORY);
+			File uploadDir = new File(uploadDirParent, uuid);
+			File logFile = new File(realPath, "forensics.txt");
 			
 			if (!uploadDir.exists())
 			{
-				if (!uploadDir.getParentFile().exists())
+				if (!uploadDirParent.exists() || !uploadDirParent.isDirectory())
 				{
-					uploadDir.getParentFile().mkdir();
+					uploadDirParent.mkdir();
 				}
 				uploadDir.mkdir();
 			}
 			else
 			{
 				uploadDir.delete();
-				uploadDir = new File(uploadPath);
+				uploadDir = new File(uploadDirParent, uuid);
 				uploadDir.mkdir();
 			}
 
@@ -119,7 +117,6 @@ public class SolutionUploadHandler extends HttpServlet
 				InputStream pidcontent = problemIDPart.getInputStream();
 				InputStream langcontent = languagePart.getInputStream();
 				String fileName = new File(filePart.getSubmittedFileName()).getName();
-				String filePath = uploadPath + File.separator + fileName;
 				String fileExtension = ProblemLoaderUtils.getFileExtension(fileName);
 				byte[] buffer = new byte[filecontent.available()];
 				byte[] pidpartbuffer = new byte[pidcontent.available()];
@@ -129,7 +126,7 @@ public class SolutionUploadHandler extends HttpServlet
 				langcontent.read(languagebuffer, 0, langcontent.available());
 				String problemID = new String(pidpartbuffer);
 				String languageStr = new String(languagebuffer);
-				File storeFile = new File(filePath);
+				File storeFile = new File(uploadDir, fileName);
 				
 				/*
 				System.out.println("Path: " + storeFile.getAbsolutePath());
@@ -167,7 +164,7 @@ public class SolutionUploadHandler extends HttpServlet
 					{
 						if (!(fileExtension.equals(DataStore.types[languageType])) && !(fileExtension.equals(DataStore.altTypes[languageType])))
 						{
-							DataStore.forensicsLogger.logUpload(uuid, "", request.getRemoteAddr(), "Invalid file type: " + fileExtension, filePath, fileSize);
+							DataStore.forensicsLogger.logUpload(uuid, "", request.getRemoteAddr(), "Invalid file type: " + fileExtension, uploadDir.getPath(), fileSize);
 							ok = false;
 						}
 					}
@@ -179,9 +176,9 @@ public class SolutionUploadHandler extends HttpServlet
 						outStream.write(buffer);
 						outStream.close();
 						
-						String md5sum = getMD5Checksum(storeFile.getAbsolutePath());
+						String md5sum = getMD5Checksum(storeFile);
 						
-						DataStore.forensicsLogger.logUpload(uuid, md5sum, request.getRemoteAddr(), DataStore.typeNames[languageType], filePath, fileSize);
+						DataStore.forensicsLogger.logUpload(uuid, md5sum, request.getRemoteAddr(), DataStore.typeNames[languageType], uploadDir.getPath(), fileSize);
 						Date uploadDate = new Date((long) (DataStore.stw.getTime() * 1000.0));
 						
 						String realpath = getServletContext().getRealPath("");
@@ -327,9 +324,9 @@ public class SolutionUploadHandler extends HttpServlet
 		return;
 	}
 	
-	public static byte[] createChecksum(String filename) throws Exception 
+	public static byte[] createChecksum(File file) throws Exception 
 	{
-		InputStream fis = new FileInputStream(filename);
+		InputStream fis = new FileInputStream(file);
 
 		byte[] buffer = new byte[1024];
 		MessageDigest complete = MessageDigest.getInstance("MD5");
@@ -349,9 +346,9 @@ public class SolutionUploadHandler extends HttpServlet
 		return complete.digest();
 	}
 
-	public static String getMD5Checksum(String filename) throws Exception
+	public static String getMD5Checksum(File file) throws Exception
 	{
-		byte[] b = createChecksum(filename);
+		byte[] b = createChecksum(file);
 		String result = "";
 
 		for (int i = 0; i < b.length; i++)
