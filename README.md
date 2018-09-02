@@ -48,6 +48,8 @@ If you would like more security on your LaunchTestRun installation (strongly rec
 cd ~/LaunchTestRun/apache-tomcat-8.5.33
 su root
 useradd launchtestrun
+mkdir work
+chown launchtestrun:launchtestrun -R work
 chown launchtestrun:launchtestrun -R logs
 chown launchtestrun:launchtestrun -R webapps/LaunchTestRun*
 ```
