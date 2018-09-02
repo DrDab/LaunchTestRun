@@ -59,6 +59,8 @@ cd ~/LaunchTestRun/apache-tomcat-8.5.33/bin
 ./startup.sh
 ```
 
+To view a forensic log of all the files uploaded and executed (containing IP, input, output, MD5 hash, time uploaded, etc), view ``webapps/LaunchTestRun/forensics.txt``. 
+
 # Setup
 1. If you haven't installed the LaunchTestRun server before reading this step, please refer back to Running and follow the instructions.
 2. To add a custom problem, go into your Apache Tomcat server directory, and go to ``webapps/LaunchTestRun/problems`` inside your server directory. Create a new directory with the following structure:
