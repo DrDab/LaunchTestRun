@@ -23,7 +23,7 @@ To install Tomcat, run
 cd
 mkdir LaunchTestRun
 cd LaunchTestRun
-curl http://apache.mirrors.tds.net/tomcat/tomcat-8/v8.5.33/bin/apache-tomcat-8.5.33.zip
+curl http://apache.mirrors.tds.net/tomcat/tomcat-8/v8.5.33/bin/apache-tomcat-8.5.33.zip --output apache-tomcat-8.5.33.zip
 unzip apache-tomcat-8.5.33.zip
 rm -r apache-tomcat-8.5.33.zip
 ```
@@ -48,8 +48,8 @@ If you would like more security on your LaunchTestRun installation (strongly rec
 cd ~/LaunchTestRun/apache-tomcat-8.5.33
 su root
 useradd launchtestrun
-chown -R logs launchtestrun:launchtestrun
-chown -R webapps/LaunchTestRun* launchtestrun:launchtestrun
+chown launchtestrun:launchtestrun -R logs
+chown launchtestrun:launchtestrun -R webapps/LaunchTestRun*
 ```
 
 After setting these permissions, when starting the LaunchTestRun server, switch to the ``launchtestrun`` user before running ``startup.sh`` with the following commands:
