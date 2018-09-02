@@ -53,7 +53,7 @@ useradd launchtestrun
 mkdir work
 chown launchtestrun:launchtestrun -R work
 chown launchtestrun:launchtestrun -R logs
-chown launchtestrun:launchtestrun -R webapps/LaunchTestRun*
+chown launchtestrun:launchtestrun -R webapps
 ```
 
 After setting these permissions, when starting the LaunchTestRun server, switch to the ``launchtestrun`` user before running ``startup.sh`` with the following commands:
