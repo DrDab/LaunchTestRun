@@ -1,0 +1,13 @@
+{
+	"cpid":"inspirationalmessage",
+	"title":"Inspirational Message",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/inspirational_message.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"inspiring.txt",
+	"timeout":"2000"
+}

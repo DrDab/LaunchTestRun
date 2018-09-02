@@ -1,0 +1,13 @@
+{
+	"cpid":"sortingdistances",
+	"title":"Sorting Distances",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/sorting_distances.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"sorting.txt",
+	"timeout":"2000"
+}

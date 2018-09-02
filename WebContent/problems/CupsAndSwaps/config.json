@@ -1,0 +1,13 @@
+{
+	"cpid":"cupsandswaps",
+	"title":"Cups and Swaps",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/cups_and_swaps.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"cupsandswaps.txt",
+	"timeout":"2000"
+}

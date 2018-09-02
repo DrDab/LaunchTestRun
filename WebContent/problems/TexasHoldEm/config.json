@@ -1,0 +1,13 @@
+{
+	"cpid":"texasholdem",
+	"title":"Texas Hold 'Em",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/texas_holdem.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"poker.txt",
+	"timeout":"2000"
+}

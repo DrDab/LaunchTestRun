@@ -1,0 +1,13 @@
+{
+	"cpid":"bookcase",
+	"title":"Bookcase",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/bookcase.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"bookcase.txt",
+	"timeout":"2000"
+}

@@ -1,0 +1,13 @@
+{
+	"cpid":"compoundinterest",
+	"title":"Compound Interest",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/compound_interest.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"compound.txt",
+	"timeout":"2000"
+}

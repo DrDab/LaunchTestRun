@@ -1,9 +1,9 @@
 {
-    "cpid":"5",
+    "cpid":"validdna",
     "title":"Valid DNA",
     "description":"",
     "pdf":"https://teamscode.com/assets/problem_pdfs/valid_dna.pdf",
-    "setinfo":"TeamsCode Fall 2017 MIHS Programming Contest",
+    "setinfo":"Easy",
     "samplein":"sample.in",
     "sampleout":"sample.out",
     "judgein":"judge.in",

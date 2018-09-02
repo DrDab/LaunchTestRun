@@ -1,0 +1,13 @@
+{
+	"cpid":"linegraph",
+	"title":"Line Graph",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/line_graph.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"line.txt",
+	"timeout":"2000"
+}

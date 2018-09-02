@@ -1,0 +1,13 @@
+{
+	"cpid":"bunnyisland",
+	"title":"Bunny Island",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/bunny_island.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"bunny.txt",
+	"timeout":"2000"
+}

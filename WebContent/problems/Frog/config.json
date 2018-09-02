@@ -1,8 +1,8 @@
 {
-	"cpid":"smallcar",
-	"title":"Small Car",
+	"cpid":"frog",
+	"title":"Frog",
 	"description":"",
-	"pdf":"https://teamscode.com/assets/problem_pdfs/small_car.pdf",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/frog.pdf",
 	"setinfo":"Easy",
 	"samplein":"",
 	"sampleout":"sample.out",

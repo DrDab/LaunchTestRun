@@ -1,0 +1,13 @@
+{
+	"cpid":"wordspelling",
+	"title":"Word Spelling",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/word_spelling.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"spelling.txt",
+	"timeout":"2000"
+}

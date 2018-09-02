@@ -1,8 +1,8 @@
 {
-	"cpid":"smallcar",
-	"title":"Small Car",
+	"cpid":"hexagons",
+	"title":"Hexagons",
 	"description":"",
-	"pdf":"https://teamscode.com/assets/problem_pdfs/small_car.pdf",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/hexagons.pdf",
 	"setinfo":"Easy",
 	"samplein":"",
 	"sampleout":"sample.out",

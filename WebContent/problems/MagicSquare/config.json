@@ -1,0 +1,13 @@
+{
+	"cpid":"magicsquare",
+	"title":"Magic Square",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/magic_square.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"magic.txt",
+	"timeout":"2000"
+}

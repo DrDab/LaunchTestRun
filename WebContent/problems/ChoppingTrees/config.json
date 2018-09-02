@@ -1,0 +1,13 @@
+{
+	"cpid":"choppingtrees",
+	"title":"Chopping Trees",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/chopping_trees.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"chopping.txt",
+	"timeout":"2000"
+}

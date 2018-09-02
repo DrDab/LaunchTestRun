@@ -1,0 +1,13 @@
+{
+	"cpid":"distancetoshore",
+	"title":"Distance to Shore",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/distance_to_shore.pdf",
+	"setinfo":"Easy",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"distance.txt",
+	"timeout":"2000"
+}
