@@ -33,16 +33,9 @@ rm -r apache-tomcat-8.5.33.zip
 2. Import this as an Eclipse Dynamic Web Project.
 3. Export the project into a .WAR named ``LaunchTestRun.war``.
 4. Move the .WAR file into your Apache Tomcat server, in the ``webapps/`` directory.
-5. In ``bin/catalina.sh``, remove the following lines:
-```
-JDK_JAVA_OPTIONS="$JDK_JAVA_OPTIONS --add-opens=java.base/java.lang=ALL-UNNAMED"
-JDK_JAVA_OPTIONS="$JDK_JAVA_OPTIONS --add-opens=java.base/java.io=ALL-UNNAMED"
-JDK_JAVA_OPTIONS="$JDK_JAVA_OPTIONS --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED"
-export JDK_JAVA_OPTIONS
-```
-
-6. Make the shell scripts in ``bin/`` executable with ``chmod +x bin/*.sh``.
-7. Run ``bin/startup.sh`` to start LaunchTestRun.
+5. Replace ``bin/catalina.sh`` in your Apache Tomcat installation with the ``catalina.sh`` in this directory (Patches issues with Java 9 and Tomcat 8).
+6. Make the shell scripts in the ``bin/`` directory in your Tomcat installation executable by running ``chmod +x *.sh`` in the ``bin/`` directory of your Tomcat installation..
+7. Run ``bin/startup.sh`` in your Tomcat installation directory to start LaunchTestRun.
 
 ### Securing your setup
 If you would like more security on your LaunchTestRun installation (strongly recommended as others will be running code on your server!), you should create a new user that only has permissions to run and access the files within the Tomcat installation directory. To do this, run the following commands:
