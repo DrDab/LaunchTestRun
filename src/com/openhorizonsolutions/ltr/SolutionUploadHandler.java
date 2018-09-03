@@ -286,8 +286,9 @@ public class SolutionUploadHandler extends HttpServlet
 						if (sampleStatus.equals("<font color=\"#e62100\">WRONG</font>") || sampleStatus.equals("<font color=\"#e62100\">ERROR</font>"))
 						{
 							message += "<br><br><strong>Execution Output w/ Sample Data</strong>";
+							message += "<br>The data inputted was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdIn()) + "</code></pre>\"";
 							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedSampleOutput) + "</code></pre>\"";
-							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"";
+							message += "<br>Your program wrote this to standard output instead:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"";
 							if (!executionOutputSample.getStdErr().equals(""))
 							{
 								message += "<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
@@ -297,8 +298,9 @@ public class SolutionUploadHandler extends HttpServlet
 						if (judgeStatus.equals("<font color=\"#e62100\">WRONG</font>") || judgeStatus.equals("<font color=\"#e62100\">ERROR</font>"))
 						{
 							message += "<br><br><strong>Execution Output w/ Judge Data</strong>";
+							message += "<br>The data inputted was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputJudge.getStdIn()) + "</code></pre>\"";
 							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedJudgeOutput) + "</code></pre>\"";
-							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputJudge.getStdOut()) + "</code></pre>\"";
+							message += "<br>Your program wrote this to standard output instead:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputJudge.getStdOut()) + "</code></pre>\"";
 							if (!executionOutputJudge.getStdErr().equals(""))
 							{
 								message += "<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputJudge.getStdErr()) + "</code></pre>\"<br>";
