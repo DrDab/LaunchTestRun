@@ -46,8 +46,7 @@ public class ProblemLoaderUtils
 				File configJson = new File(subFolder, "config.json");
 				if (configJson.exists() && configJson.isFile())
 				{
-					// parse this json
-					// format:
+					// parse this json format:
 					/**
 					 * {
 					 * 	"cpid":"12345",

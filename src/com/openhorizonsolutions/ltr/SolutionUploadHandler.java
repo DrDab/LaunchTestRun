@@ -282,7 +282,8 @@ public class SolutionUploadHandler extends HttpServlet
 						message += "<strong>Your Results</strong>";
 						message += "<br>Results from sample data test: <strong>" + sampleStatus + "</strong> (" + executionOutputSample.getMillis() + "ms)";
 						message += "<br>Results from judge data test: <strong>" + judgeStatus + "</strong> (" + executionOutputJudge.getMillis() + "ms)";
-						if (sampleStatus.equals("<font color=\"#e62100\">WRONG</font>"))
+						
+						if (sampleStatus.equals("<font color=\"#e62100\">WRONG</font>") || sampleStatus.equals("<font color=\"#e62100\">ERROR</font>"))
 						{
 							message += "<br><br><strong>Execution Output w/ Sample Data</strong>";
 							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedSampleOutput) + "</code></pre>\"";
@@ -292,17 +293,39 @@ public class SolutionUploadHandler extends HttpServlet
 								message += "<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
 							}
 						}
-						if (sampleStatus.equals("<font color=\"#e62100\">ERROR</font>"))
+						
+						if (judgeStatus.equals("<font color=\"#e62100\">WRONG</font>") || judgeStatus.equals("<font color=\"#e62100\">ERROR</font>"))
 						{
-							message += "<br><br><strong>Execution Output w/ Sample Data</strong>";
-							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedSampleOutput) + "</code></pre>\"";
-							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>\"";
-							if (!executionOutputSample.getStdErr().equals(""))
+							message += "<br><br><strong>Execution Output w/ Judge Data</strong>";
+							message += "<br>The expected standard output was:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(expectedJudgeOutput) + "</code></pre>\"";
+							message += "<br>Your program wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputJudge.getStdOut()) + "</code></pre>\"";
+							if (!executionOutputJudge.getStdErr().equals(""))
 							{
-								message += "<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdErr()) + "</code></pre>\"<br>";
+								message += "<br>Your program threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputJudge.getStdErr()) + "</code></pre>\"<br>";
 							}
-							message += "<br><br><strong>Compiler Output</strong><br>The compiler wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "</code></pre>\"<br>The compiler threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "</code></pre>\"<br>";
 						}
+						
+						
+						boolean sampleError = sampleStatus.equals("<font color=\"#e62100\">ERROR</font>");
+						boolean judgeError = judgeStatus.equals("<font color=\"#e62100\">ERROR</font>");
+						if (sampleError || judgeError)
+						{
+							boolean stdOutNotNull = !compilerOutput.getStdOut().equals("");
+							boolean stdErrNotNull = !compilerOutput.getStdErr().equals("");
+							if (stdOutNotNull || stdErrNotNull)
+							{
+								message += "<br><br><strong>Compiler Output</strong>";
+							}
+							if (stdOutNotNull)
+							{
+								message += "<br>The compiler wrote this to standard output:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdOut()) + "<br>\"<br>";
+							}
+							if (stdErrNotNull)
+							{
+								message += "<br>The compiler threw the following errors:<br>\"<pre><code>" + ProblemLoaderUtils.escapeHTML(compilerOutput.getStdErr()) + "<br>\"<br>";
+							}	
+						}
+						
 						message += "<br><br>";
 						request.setAttribute("message", message);
 					}
