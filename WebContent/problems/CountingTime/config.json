@@ -8,6 +8,6 @@
 	"sampleout":"sample.out",
 	"judgein":"judge.in",
 	"judgeout":"judge.out",
-	"inputname":"clocks.txt",
+	"inputname":"time.txt",
 	"timeout":"2000"
 }
