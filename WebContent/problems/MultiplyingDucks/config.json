@@ -1,0 +1,13 @@
+{
+	"cpid":"multiplyingducks",
+	"title":"Multiplying Ducks",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/multiplying_ducks.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"ducks.txt",
+	"timeout":"2000"
+}

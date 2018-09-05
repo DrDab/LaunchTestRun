@@ -1,0 +1,13 @@
+{
+	"cpid":"patternsequence",
+	"title":"Pattern Sequence",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/pattern_sequence.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"pattern.txt",
+	"timeout":"2000"
+}

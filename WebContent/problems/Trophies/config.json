@@ -1,0 +1,13 @@
+{
+	"cpid":"trophies",
+	"title":"Trophies",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/trophies.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"trophies.txt",
+	"timeout":"2000"
+}

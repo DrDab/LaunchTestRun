@@ -1,0 +1,13 @@
+{
+	"cpid":"decoder",
+	"title":"Decoder",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/decoder.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"decoder.txt",
+	"timeout":"2000"
+}

@@ -1,0 +1,13 @@
+{
+	"cpid":"bestfootballteam",
+	"title":"Best Football Team",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/best_football_team.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"football.txt",
+	"timeout":"2000"
+}

@@ -1,0 +1,13 @@
+{
+	"cpid":"digitsearch",
+	"title":"Digit Search",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/digit_search.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"digit.txt",
+	"timeout":"2000"
+}

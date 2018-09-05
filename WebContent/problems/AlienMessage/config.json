@@ -1,0 +1,13 @@
+{
+	"cpid":"alienmessage",
+	"title":"Alien Message",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/alien_message.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"alien.txt",
+	"timeout":"2000"
+}

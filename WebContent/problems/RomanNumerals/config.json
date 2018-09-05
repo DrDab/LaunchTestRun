@@ -1,0 +1,13 @@
+{
+	"cpid":"romannumerals",
+	"title":"Roman Numerals",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/roman_numerals.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"roman.txt",
+	"timeout":"2000"
+}

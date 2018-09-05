@@ -1,0 +1,13 @@
+{
+	"cpid":"countingtime",
+	"title":"Counting Time",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/counting_time.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"clocks.txt",
+	"timeout":"2000"
+}

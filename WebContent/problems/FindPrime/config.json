@@ -1,0 +1,13 @@
+{
+	"cpid":"findprime",
+	"title":"Find Prime",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/find_prime.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"prime.txt",
+	"timeout":"2000"
+}

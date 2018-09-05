@@ -1,0 +1,13 @@
+{
+	"cpid":"password",
+	"title":"Password",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/password.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"password.txt",
+	"timeout":"2000"
+}

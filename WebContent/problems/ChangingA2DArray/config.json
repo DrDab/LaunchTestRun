@@ -1,0 +1,13 @@
+{
+	"cpid":"changinga2darray",
+	"title":"Changing a 2D array",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/changing_a_2d_array.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"array2d.txt",
+	"timeout":"2000"
+}

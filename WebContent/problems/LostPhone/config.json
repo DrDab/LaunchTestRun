@@ -1,0 +1,13 @@
+{
+	"cpid":"lostphone",
+	"title":"Lost Phone",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/lost_phone.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"lostphone.txt",
+	"timeout":"2000"
+}

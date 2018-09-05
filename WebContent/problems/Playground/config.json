@@ -1,0 +1,13 @@
+{
+	"cpid":"playground",
+	"title":"Playground",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/playground.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"decoder.txt",
+	"timeout":"2000"
+}

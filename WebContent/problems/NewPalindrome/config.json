@@ -1,0 +1,13 @@
+{
+	"cpid":"newpalindrome",
+	"title":"New Palindrome",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/new_palindrome.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"palindrome.txt",
+	"timeout":"2000"
+}

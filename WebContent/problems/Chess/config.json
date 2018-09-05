@@ -1,0 +1,13 @@
+{
+	"cpid":"chess_OwO_whats_this",
+	"title":"Chess",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/chess.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"chess.txt",
+	"timeout":"2000"
+}

@@ -1,0 +1,13 @@
+{
+	"cpid":"streetcrossing",
+	"title":"Street Crossing",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/street_crossing.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"streetcrossing.txt",
+	"timeout":"2000"
+}

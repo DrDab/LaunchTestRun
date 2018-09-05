@@ -1,0 +1,13 @@
+{
+	"cpid":"intersectinglines",
+	"title":"Intersecting Lines",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/intersecting_lines.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"intersect.txt",
+	"timeout":"2000"
+}

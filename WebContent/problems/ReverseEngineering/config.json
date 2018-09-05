@@ -1,0 +1,13 @@
+{
+	"cpid":"reverseengineering",
+	"title":"Reverse Engineering",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/reverse_engineering.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"reverse.txt",
+	"timeout":"2000"
+}

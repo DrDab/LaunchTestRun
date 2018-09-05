@@ -1,0 +1,13 @@
+{
+	"cpid":"outlier",
+	"title":"Outlier",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/outlier.pdf",
+	"setinfo":"Medium",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"outlier.txt",
+	"timeout":"2000"
+}
