@@ -20,15 +20,12 @@ import org.json.JSONObject;
 
 public class ProblemLoaderUtils
 {
-	// the folowing methods are sample methods that return dummy output.
-	// these will return dynamic data based on reading config files from a designated directory later.
-	private static ArrayList<Problem> tmpLst = new ArrayList<Problem>();
-	private static HashMap<String, Integer> tmpMap = new HashMap<String, Integer>();
 	private static final String UPLOAD_DIRECTORY = "problems";
 	
-	public static void refreshIO(String realPath)
+	public static ProblemListHandler refreshIO(String realPath)
 	{
 		ArrayList<Problem> tmp = new ArrayList<Problem>();
+		HashMap<String, Integer> problemMap = new HashMap<String, Integer>();
 		String problemsPath = realPath + File.separator + UPLOAD_DIRECTORY;
 		File problemsFolder = new File(problemsPath);
 		if (!problemsFolder.exists())
@@ -89,7 +86,7 @@ public class ProblemLoaderUtils
 						File sampleOutFile = new File(subFolder, sampleOut);
 						File judgeInFile = new File(subFolder, judgeIn);
 						File judgeOutFile = new File(subFolder, judgeOut);
-						tmpMap.put(cpid, tmp.size());
+						problemMap.put(cpid, tmp.size());
 						tmp.add(new Problem(cpid, title, setInfo, description, pdf, sampleInFile, sampleOutFile, judgeInFile, judgeOutFile, inputName, timeout));
 					}
 					catch (JSONException je0)
@@ -103,31 +100,12 @@ public class ProblemLoaderUtils
 				}
 			}
 		}
-		tmpLst = tmp;
+		return new ProblemListHandler(tmp, problemMap);
 	}
 	
-	public static boolean problemExists(String cpid)
+	public static String getJSONDataFromFile(File location) 
 	{
-		return tmpMap.containsKey(cpid);
-	}
-	
-	public static Problem getProblem(String cpid)
-	{
-		if (tmpMap.containsKey(cpid))
-		{
-			return tmpLst.get(tmpMap.get(cpid));
-		}
-		return null;
-	}
-	
-	public static ArrayList<Problem> getProblemList()
-	{
-		return tmpLst;
-	}
-	
-	 public static String getJSONDataFromFile(File location)
-	 {
-		try 
+		try
 		{
 			BufferedReader br = new BufferedReader(new FileReader(location));
 			String s = "";
@@ -144,8 +122,8 @@ public class ProblemLoaderUtils
 				e.printStackTrace();
 			}
 			return s;
-		} 
-		catch (FileNotFoundException e)
+		}
+		catch (FileNotFoundException e) 
 		{
 			e.printStackTrace();
 			return null;

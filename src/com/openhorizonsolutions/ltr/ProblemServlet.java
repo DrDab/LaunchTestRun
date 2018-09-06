@@ -333,12 +333,12 @@ public class ProblemServlet extends HttpServlet
 				"</head>\n" + 
 				"";
 		
-		ProblemLoaderUtils.refreshIO(getServletContext().getRealPath(""));
+		ProblemListHandler tmp = ProblemLoaderUtils.refreshIO(getServletContext().getRealPath(""));
 		if (cpid.equals("listproblems.html"))
 		{
 			String generatedLinkPart = "";
 			HashMap<String, ArrayList<Problem>> categoryMap = new HashMap<String, ArrayList<Problem>>();
-			ArrayList<Problem> linkGenList = ProblemLoaderUtils.getProblemList();
+			ArrayList<Problem> linkGenList = tmp.getProblemList();
 			for(Problem problem : linkGenList)
 			{
 				String setdetails = problem.getSetInfo();
@@ -419,9 +419,9 @@ public class ProblemServlet extends HttpServlet
 					" <br style=\"clear:both\" />\n" + 
 					"\n";
 		}
-		else if (ProblemLoaderUtils.problemExists(cpid))
+		else if (tmp.problemExists(cpid))
 		{
-			p = ProblemLoaderUtils.getProblem(cpid);
+			p = tmp.getProblem(cpid);
 			try
 			{
 				String choices = "";
@@ -571,7 +571,7 @@ public class ProblemServlet extends HttpServlet
 		{
 			String generatedLinkPart = "";
 			HashMap<String, ArrayList<Problem>> categoryMap = new HashMap<String, ArrayList<Problem>>();
-			ArrayList<Problem> linkGenList = ProblemLoaderUtils.getProblemList();
+			ArrayList<Problem> linkGenList = tmp.getProblemList();
 			
 			for(Problem problem : linkGenList)
 			{

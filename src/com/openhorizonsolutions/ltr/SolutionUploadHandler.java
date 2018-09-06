@@ -203,7 +203,8 @@ public class SolutionUploadHandler extends HttpServlet
 							executableFile = new File(storeFile.getParent(), "toExecute.exe");
 						}
 						
-						Problem curProblem = ProblemLoaderUtils.getProblem(problemID);
+						ProblemListHandler tmp = ProblemLoaderUtils.refreshIO(realpath);
+						Problem curProblem = tmp.getProblem(problemID);
 						int timeout = curProblem.getTimeOutMillis();
 						File sampleInput = curProblem.getSampleInput();
 						File judgeInput = curProblem.getJudgeInput();

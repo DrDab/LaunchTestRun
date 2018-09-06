@@ -1,0 +1,13 @@
+{
+	"cpid":"undergroundmaze",
+	"title":"Underground Maze",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/underground_maze.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"maze.txt",
+	"timeout":"2000"
+}
