@@ -1,0 +1,13 @@
+{
+	"cpid":"fasttravel",
+	"title":"Fast Travel",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/fast_travel.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"fasttravel.txt",
+	"timeout":"2000"
+}

@@ -1,0 +1,13 @@
+{
+	"cpid":"binarycode",
+	"title":"Binary Code",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/binary_code.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"binary.txt",
+	"timeout":"2000"
+}

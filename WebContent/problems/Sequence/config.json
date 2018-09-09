@@ -1,0 +1,13 @@
+{
+	"cpid":"sequence",
+	"title":"Sequence",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/sequence.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"sequence.txt",
+	"timeout":"2000"
+}

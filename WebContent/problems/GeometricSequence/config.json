@@ -1,0 +1,13 @@
+{
+	"cpid":"geometricsequence",
+	"title":"Geometric Sequence",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/geometric_sequence.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"geometric.txt",
+	"timeout":"2000"
+}

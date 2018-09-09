@@ -1,0 +1,13 @@
+{
+	"cpid":"mirrorsandlasers",
+	"title":"Mirrors and Lasers",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/mirrors_and_lasers.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"mirrorslasers.txt",
+	"timeout":"2000"
+}

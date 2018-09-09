@@ -1,0 +1,13 @@
+{
+	"cpid":"basepalindrome",
+	"title":"Base Palindrome",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/base_palindrome.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"palindrome2.txt",
+	"timeout":"2000"
+}

@@ -1,0 +1,13 @@
+{
+	"cpid":"24game",
+	"title":"24 Game",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/24_game.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"24game.txt",
+	"timeout":"2000"
+}

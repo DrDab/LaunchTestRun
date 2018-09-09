@@ -1,0 +1,13 @@
+{
+	"cpid":"swap",
+	"title":"Swap",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/swap.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"swap.txt",
+	"timeout":"2000"
+}

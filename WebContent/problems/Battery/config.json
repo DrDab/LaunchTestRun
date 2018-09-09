@@ -1,0 +1,13 @@
+{
+	"cpid":"battery",
+	"title":"Battery",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/battery.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"battery.txt",
+	"timeout":"2000"
+}

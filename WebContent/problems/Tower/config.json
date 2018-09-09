@@ -1,0 +1,13 @@
+{
+	"cpid":"tower",
+	"title":"Tower",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/tower.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"tower.txt",
+	"timeout":"2000"
+}

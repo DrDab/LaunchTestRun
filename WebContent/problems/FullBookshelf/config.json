@@ -1,0 +1,13 @@
+{
+	"cpid":"fullbookshelf",
+	"title":"Full Bookshelf",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/full_bookshelf.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"bookshelf.txt",
+	"timeout":"2000"
+}
