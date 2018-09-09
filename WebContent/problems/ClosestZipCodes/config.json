@@ -1,0 +1,13 @@
+{
+	"cpid":"closestzipcodes",
+	"title":"Closest Zip Codes",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/closest_zip_codes.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"zipcode.txt",
+	"timeout":"2000"
+}

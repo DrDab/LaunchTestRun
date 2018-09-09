@@ -247,7 +247,7 @@ public class SolutionUploadHandler extends HttpServlet
 						{
 							sampleStatus = "<font color=\"#e62100\">ERROR</font>";
 						}
-						else if (executionOutputSample.getStdOut().trim().equals(expectedSampleOutput))
+						else if (executionOutputSample.getStdOut().trim().matches(expectedSampleOutput))
 						{
 							sampleStatus = "<font color=\"#66e621\">CORRECT</font>";
 						}
@@ -264,7 +264,7 @@ public class SolutionUploadHandler extends HttpServlet
 						{
 							judgeStatus = "<font color=\"#e62100\">ERROR</font>";
 						}
-						else if (executionOutputJudge.getStdOut().trim().equals(expectedJudgeOutput))
+						else if (executionOutputJudge.getStdOut().trim().matches(expectedJudgeOutput))
 						{
 							judgeStatus = "<font color=\"#66e621\">CORRECT</font>";
 						}

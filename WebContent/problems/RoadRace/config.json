@@ -1,0 +1,13 @@
+{
+	"cpid":"roadrace",
+	"title":"Road Race",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/road_race.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"roadrace.txt",
+	"timeout":"2000"
+}

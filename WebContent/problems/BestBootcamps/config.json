@@ -1,0 +1,13 @@
+{
+	"cpid":"bestbootcamps",
+	"title":"Best Bootcamps",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/best_bootcamps.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"camps.txt",
+	"timeout":"2000"
+}

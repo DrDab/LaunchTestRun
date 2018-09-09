@@ -1,0 +1,13 @@
+{
+	"cpid":"longestcommonsubsequence",
+	"title":"Longest Common Subsequence",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/lcs.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"longestcs.txt",
+	"timeout":"2000"
+}

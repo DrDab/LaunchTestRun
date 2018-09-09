@@ -1,0 +1,13 @@
+{
+	"cpid":"hiking",
+	"title":"Hiking",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/hiking.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"hiking.txt",
+	"timeout":"2000"
+}

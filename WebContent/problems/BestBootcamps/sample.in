@@ -1,0 +1,10 @@
+5 4
+CodeNow 50 SmartCoder 75 BasicOOP 55 BigHack 65 CodingTeam 80
+7
+BasicOOP SmartCoder 35
+CodeNow CodingTeam 15
+BigHack BasicOOP -10
+SmartCoder BigHack 20
+CodingTeam BasicOOP -5
+BigHack CodeNow 10
+SmartCoder CodingTeam 5

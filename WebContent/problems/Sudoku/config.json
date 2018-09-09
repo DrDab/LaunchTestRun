@@ -1,0 +1,13 @@
+{
+	"cpid":"commitsudoku",
+	"title":"Sudoku",
+	"description":"",
+	"pdf":"https://teamscode.com/assets/problem_pdfs/sudoku.pdf",
+	"setinfo":"Hard",
+	"samplein":"sample.in",
+	"sampleout":"sample.out",
+	"judgein":"judge.in",
+	"judgeout":"judge.out",
+	"inputname":"sudoku.txt",
+	"timeout":"2000"
+}
