@@ -23,7 +23,7 @@ To install Tomcat, run
 cd
 mkdir LaunchTestRun
 cd LaunchTestRun
-curl http://us.mirrors.quenda.co/apache/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53.zip --output apache-tomcat-8.5.33.zip
+curl http://us.mirrors.quenda.co/apache/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53.zip --output apache-tomcat-8.0.53.zip
 unzip apache-tomcat-8.0.53.zip
 rm -r apache-tomcat-8.0.53.zip
 ```
@@ -40,7 +40,7 @@ rm -r apache-tomcat-8.0.53.zip
 ### Securing your setup
 If you would like more security on your LaunchTestRun installation (strongly recommended as others will be running code on your server!), you should create a new user that only has permissions to run and access the files within the Tomcat installation directory. To secure your setup, after running ``bin/startup.sh`` the first time after moving the .WAR file, run the following commands:
 ```
-cd ~/LaunchTestRun/apache-tomcat-8.5.33
+cd ~/LaunchTestRun/apache-tomcat-8.0.53
 su root
 useradd launchtestrun
 mkdir work
@@ -52,7 +52,7 @@ chown launchtestrun:launchtestrun -R webapps/LaunchTestRun/upload
 After setting these permissions, when starting the LaunchTestRun server, switch to the ``launchtestrun`` user before running ``startup.sh`` with the following commands:
 ```
 su launchtestrun
-cd ~/LaunchTestRun/apache-tomcat-8.5.33/bin
+cd ~/LaunchTestRun/apache-tomcat-8.0.53/bin
 ./startup.sh
 ```
 
