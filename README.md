@@ -4,7 +4,7 @@ A platform that lets you submit and test code snippets online for practice.
 # Dependencies
 LaunchTestRun depends on the following software to run:
 - Apache Tomcat 8.5.33 or higher
-- Java 1.7 or higher
+- Java 1.8 or higher
 - GCC 5 or higher
 - Python 2
 - Python 3
