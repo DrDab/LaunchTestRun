@@ -44,9 +44,11 @@ cd ~/LaunchTestRun/apache-tomcat-8.0.53
 su root
 useradd launchtestrun
 mkdir work
+touch webapps/LaunchTestRun/forensics.txt
 chown launchtestrun:launchtestrun -R work
 chown launchtestrun:launchtestrun -R logs
 chown launchtestrun:launchtestrun -R webapps/LaunchTestRun/upload
+chown launchtestrun:launchtestrun -R webapps/LaunchTestRun/forensics.txt
 ```
 
 After setting these permissions, when starting the LaunchTestRun server, switch to the ``launchtestrun`` user before running ``startup.sh`` with the following commands:
