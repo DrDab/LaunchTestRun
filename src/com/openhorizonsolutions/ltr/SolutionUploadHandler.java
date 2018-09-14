@@ -363,7 +363,7 @@ public class SolutionUploadHandler extends HttpServlet
 				request.setAttribute("message", "There was an error: " + ex.getMessage());
 				ex.printStackTrace();
 			}
-			getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/assets/message.jsp").forward(request, response);
 
 		}
 

@@ -38,7 +38,7 @@ rm -r apache-tomcat-8.5.33.zip
 7. Run ``bin/startup.sh`` in your Tomcat installation directory to start LaunchTestRun.
 
 ### Securing your setup
-If you would like more security on your LaunchTestRun installation (strongly recommended as others will be running code on your server!), you should create a new user that only has permissions to run and access the files within the Tomcat installation directory. To do this, run the following commands:
+If you would like more security on your LaunchTestRun installation (strongly recommended as others will be running code on your server!), you should create a new user that only has permissions to run and access the files within the Tomcat installation directory. To secure your setup, after running ``bin/startup.sh`` the first time after moving the .WAR file, run the following commands:
 ```
 cd ~/LaunchTestRun/apache-tomcat-8.5.33
 su root
@@ -46,7 +46,7 @@ useradd launchtestrun
 mkdir work
 chown launchtestrun:launchtestrun -R work
 chown launchtestrun:launchtestrun -R logs
-chown launchtestrun:launchtestrun -R webapps
+chown launchtestrun:launchtestrun -R webapps/LaunchTestRun/upload
 ```
 
 After setting these permissions, when starting the LaunchTestRun server, switch to the ``launchtestrun`` user before running ``startup.sh`` with the following commands:

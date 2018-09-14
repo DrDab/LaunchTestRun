@@ -22,7 +22,21 @@ public class ExecutableLocationUpdator
 		try
 		{
 			this.directory = directory;
-			jsonFile = new File(directory, "settings.json");
+			File configFolder = new File(directory, "config");
+			if (configFolder.exists())
+			{
+				if (configFolder.isFile())
+				{
+					configFolder.delete();
+					configFolder = new File(directory, "config");
+					configFolder.mkdir();
+				}
+			}
+			else
+			{
+				configFolder.mkdir();
+			}
+			jsonFile = new File(configFolder, "settings.json");
 			if (!jsonFile.exists())
 			{
 				jsonFile.createNewFile();

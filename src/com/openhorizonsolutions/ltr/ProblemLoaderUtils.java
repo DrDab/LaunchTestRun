@@ -125,7 +125,21 @@ public class ProblemLoaderUtils
 		try
 		{
 			String jsonData = "";
-			File jsonFile = new File(location, "flavortext.json");
+			File configFolder = new File(location, "config");
+			if (configFolder.exists())
+			{
+				if (configFolder.isFile())
+				{
+					configFolder.delete();
+					configFolder = new File(location, "config");
+					configFolder.mkdir();
+				}
+			}
+			else
+			{
+				configFolder.mkdir();
+			}
+			File jsonFile = new File(configFolder, "flavortext.json");
 			if (!jsonFile.exists())
 			{
 				return "";
@@ -158,11 +172,21 @@ public class ProblemLoaderUtils
 		try
 		{
 			String jsonData = "";
-			File jsonFile = new File(location, "flavortext.json");
-			if (!jsonFile.exists())
+			File configFolder = new File(location, "config");
+			if (configFolder.exists())
 			{
-				return "";
+				if (configFolder.isFile())
+				{
+					configFolder.delete();
+					configFolder = new File(location, "config");
+					configFolder.mkdir();
+				}
 			}
+			else
+			{
+				configFolder.mkdir();
+			}
+			File jsonFile = new File(configFolder, "flavortext.json");
 			jsonData = new String(Files.readAllBytes((jsonFile.toPath())));
 			JSONObject mainObject = new JSONObject(jsonData);
 			JSONArray winnerArray = mainObject.getJSONArray("inspirational");
