@@ -1,9 +1,7 @@
 package com.openhorizonsolutions.ltr;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,10 +12,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Random;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@SuppressWarnings("all")
 public class ProblemLoaderUtils
 {
 	private static final String UPLOAD_DIRECTORY = "problems";
@@ -26,8 +27,7 @@ public class ProblemLoaderUtils
 	{
 		ArrayList<Problem> tmp = new ArrayList<Problem>();
 		HashMap<String, Integer> problemMap = new HashMap<String, Integer>();
-		String problemsPath = realPath + File.separator + UPLOAD_DIRECTORY;
-		File problemsFolder = new File(problemsPath);
+		File problemsFolder = new File(realPath, UPLOAD_DIRECTORY);
 		if (!problemsFolder.exists())
 		{
 			problemsFolder.mkdir();
@@ -61,7 +61,16 @@ public class ProblemLoaderUtils
 					 */
 					try
 					{
-						String jsonData = getJSONDataFromFile(configJson);
+						String jsonData = "";
+						try
+						{
+							jsonData = new String(Files.readAllBytes((configJson.toPath())));
+						} 
+						catch (IOException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						JSONObject mainObj = new JSONObject(jsonData);
 						String cpid = mainObj.getString("cpid");
 						String title = mainObj.getString("title");
@@ -103,6 +112,73 @@ public class ProblemLoaderUtils
 		return new ProblemListHandler(tmp, problemMap);
 	}
 	
+	public static String getWinnerFlavorText(String location)
+	{
+		// parse this json format:
+		/**
+		 * {
+		 * 	"winner":["good job!","great job!","you're winner!"],
+		 * 	"inspirational":["stay determined!", "keep going!"],
+		 * }
+		 */
+		String flavorText = "";
+		try
+		{
+			String jsonData = "";
+			File jsonFile = new File(location, "flavortext.json");
+			if (!jsonFile.exists())
+			{
+				return "";
+			}
+			jsonData = new String(Files.readAllBytes((jsonFile.toPath())));
+			JSONObject mainObject = new JSONObject(jsonData);
+			JSONArray winnerArray = mainObject.getJSONArray("winner");
+			Random rnd = new Random();
+			flavorText = winnerArray.getString(rnd.nextInt(winnerArray.length()));
+		} 
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		}
+		return flavorText;
+	}
+	
+	public static String getInspirationalFlavorText(String location)
+	{
+		// parse this json format:
+		/**
+		 * {
+		 * 	"winner":["good job!","great job!","you're winner!"],
+		 * 	"inspirational":["stay determined!", "keep going!"],
+		 * }
+		 */
+		String flavorText = "";
+		try
+		{
+			String jsonData = "";
+			File jsonFile = new File(location, "flavortext.json");
+			if (!jsonFile.exists())
+			{
+				return "";
+			}
+			jsonData = new String(Files.readAllBytes((jsonFile.toPath())));
+			JSONObject mainObject = new JSONObject(jsonData);
+			JSONArray winnerArray = mainObject.getJSONArray("inspirational");
+			Random rnd = new Random();
+			flavorText = winnerArray.getString(rnd.nextInt(winnerArray.length()));
+		} 
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		}
+		return flavorText;
+	}
+	
+	/*
 	public static String getJSONDataFromFile(File location) 
 	{
 		try
@@ -129,6 +205,7 @@ public class ProblemLoaderUtils
 			return null;
 		}
 	}
+	*/
 	
 	public static String escapeHTML(String s) 
 	{

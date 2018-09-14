@@ -1,0 +1,28 @@
+{
+    "winner":[
+    "Good job!", 
+    "Congratulations!", 
+    "Awesome!", 
+    "#1 - Victory Royale!", 
+    "Well done!"
+    ],
+    "inspirational":
+    [
+    "Don't cry about dreams that don't come true today.<br>Sometimes ya needs to try another way!", 
+    "And remember that bad times...<br>are just times that are bad.",
+    "Life's a journey, it ain't pass or fail.<br>(so is writing good code)",
+    "Don't pine for the past.",
+    "Your enemy is the old you! The new you will get<br>a little bit faster every day until you're the best around!'",
+    "Debugging Tip #1: Print things out a lot.",
+    "Debugging Tip #2: Start with code that already works.",
+    "Debugging Tip #3: If you're not sure what the problem is, divide and conquer.",
+    "Debugging Tip #4: Read out your problem and what you want to do.<br>Even if it's to a rubber duck.",
+    "Debugging Tip #5: Plan out your code. Every edit can throw more bugs on the wall.",
+    "Debugging Tip #6: Get up and drink some water. Give yourself a break!",
+    "Debugging Tip #7: Don't rush to fix your bug. Take your time.",
+    "Debugging Tip #8: Name your variables appropriately.",
+    "The best preparation for tomorrow is doing your best today. - H. Jackson Brown. Jr.",
+    "It does not matter how slowly you go as long as you don't stop. - Confucius",
+    "Difficult roads often lead to beautiful destinations."
+    ]
+}

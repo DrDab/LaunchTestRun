@@ -239,13 +239,17 @@ public class SolutionUploadHandler extends HttpServlet
 						DataStore.forensicsLogger.logUploadResult(false, uuid, executionOutputSample.getStdIn(), executionOutputSample.getStdOut(), executionOutputSample.getStdErr(), executionOutputSample.getMillis());
 						DataStore.forensicsLogger.logUploadResult(true, uuid, executionOutputJudge.getStdIn(), executionOutputJudge.getStdOut(), executionOutputJudge.getStdErr(), executionOutputJudge.getMillis());
 						
+						boolean success = true;
+						
 						if (executionOutputSample.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{
 							sampleStatus = "<font color=\"#e62100\">TIMEOUT</font>";
+							success = false;
 						}
 						else if (!executionOutputSample.getStdErr().trim().equals(""))
 						{
 							sampleStatus = "<font color=\"#e62100\">ERROR</font>";
+							success = false;
 						}
 						else if (executionOutputSample.getStdOut().trim().matches(expectedSampleOutput))
 						{
@@ -254,15 +258,18 @@ public class SolutionUploadHandler extends HttpServlet
 						else
 						{
 							sampleStatus = "<font color=\"#e62100\">WRONG</font>";
+							success = false;
 						}
 						
 						if (executionOutputJudge.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{
 							judgeStatus = "<font color=\"#e62100\">TIMEOUT</font>";
+							success = false;
 						}
 						else if (!executionOutputJudge.getStdErr().trim().equals(""))
 						{
 							judgeStatus = "<font color=\"#e62100\">ERROR</font>";
+							success = false;
 						}
 						else if (executionOutputJudge.getStdOut().trim().matches(expectedJudgeOutput))
 						{
@@ -271,6 +278,7 @@ public class SolutionUploadHandler extends HttpServlet
 						else
 						{
 							judgeStatus = "<font color=\"#e62100\">WRONG</font>";
+							success = false;
 						}
 						
 						boolean compileSuccessful = executableFile.exists();
@@ -285,6 +293,14 @@ public class SolutionUploadHandler extends HttpServlet
 						message += "<strong>Your Results</strong>";
 						message += "<br>Results from sample data test: <strong>" + sampleStatus + "</strong> (" + executionOutputSample.getMillis() + "ms)";
 						message += "<br>Results from judge data test: <strong>" + judgeStatus + "</strong> (" + executionOutputJudge.getMillis() + "ms)";
+						if (success)
+						{
+							message += ("<br><br>" + ProblemLoaderUtils.getWinnerFlavorText(realPath) + "<br>");
+						}
+						else
+						{
+							message += ("<br><br>" + ProblemLoaderUtils.getInspirationalFlavorText(realPath) + "<br>");
+						}
 						
 						if (compileSuccessful)
 						{

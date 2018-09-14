@@ -3,10 +3,13 @@ package com.openhorizonsolutions.ltr;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 
 import org.json.JSONObject;
 
+@SuppressWarnings("all")
 public class ExecutableLocationUpdator
 {
 	private String directory;
@@ -36,7 +39,16 @@ public class ExecutableLocationUpdator
 				pw.println("}");
 				pw.close();
 			}
-			jsonData = ProblemLoaderUtils.getJSONDataFromFile(jsonFile);
+			String jsonData = "";
+			try
+			{
+				jsonData = new String(Files.readAllBytes((jsonFile.toPath())));
+			} 
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			mainObject = new JSONObject(jsonData);
 		}
 		catch (Exception e)
