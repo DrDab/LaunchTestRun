@@ -23,9 +23,9 @@ To install Tomcat, run
 cd
 mkdir LaunchTestRun
 cd LaunchTestRun
-curl http://apache.mirrors.tds.net/tomcat/tomcat-8/v8.5.33/bin/apache-tomcat-8.5.33.zip --output apache-tomcat-8.5.33.zip
-unzip apache-tomcat-8.5.33.zip
-rm -r apache-tomcat-8.5.33.zip
+curl http://us.mirrors.quenda.co/apache/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53.zip --output apache-tomcat-8.5.33.zip
+unzip apache-tomcat-8.0.53.zip
+rm -r apache-tomcat-8.0.53.zip
 ```
 
 # Installation
