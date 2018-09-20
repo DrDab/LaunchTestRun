@@ -35,6 +35,7 @@ public class ProblemServlet extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
+		String contextPath = request.getContextPath();
 		String requestURI = request.getRequestURI();
 		String[] sep = requestURI.split("/");
 		String cpid = sep[sep.length - 1];
@@ -363,7 +364,7 @@ public class ProblemServlet extends HttpServlet
 				{
 					String pCPID = problem.getCPID();
 					String title = problem.getTitle();
-					generatedLinkPart += "<a href=\"/LaunchTestRun/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
+					generatedLinkPart += "<a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
 				}
 			}
 			
@@ -478,7 +479,7 @@ public class ProblemServlet extends HttpServlet
 						"\n" + 
 						"    \n" + 
 						"	<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px; border:solid #f4419d'>\n" + 
-						"		<form class=\"submission\" method=\"POST\" action=\"/LaunchTestRun/submit-solution\" enctype=\"multipart/form-data\">\n" + 
+						"		<form class=\"submission\" method=\"POST\" action=\"" + contextPath + "/submit-solution\" enctype=\"multipart/form-data\">\n" + 
 						"		<div id=\"solution\">\n" + 
 						"			<input type=\"hidden\" name=\"cpid\" value=\"" + cpid + "\"/>\n" + 
 						"		\n" + 
@@ -597,7 +598,7 @@ public class ProblemServlet extends HttpServlet
 				{
 					String pCPID = problem.getCPID();
 					String title = problem.getTitle();
-					generatedLinkPart += "<a href=\"/LaunchTestRun/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
+					generatedLinkPart += "<a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
 				}
 			}
 			

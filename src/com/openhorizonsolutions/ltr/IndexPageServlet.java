@@ -23,6 +23,7 @@ public class IndexPageServlet extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
+		String contextPath = request.getContextPath();
 		// String requestURI = request.getRequestURI();
 		// String[] sep = requestURI.split("/");
 		// String cpid = sep[sep.length - 1];
@@ -355,7 +356,7 @@ public class IndexPageServlet extends HttpServlet
 				"<span id=\"probtext-text\">" +
 				"<strong id=\"greeting\">Hello!</strong><br><br>You have reached the homepage for the LaunchTestRun server, a automated platform for testing competitive programming solutions. " +
 				"LaunchTestRun lets you view programming problems, and test your solutions to these problems at any time you want.<br><br>" +
-				"To view a list of problems, please click <a href=\"/LaunchTestRun/listproblems.html\">here</a>." +
+				"To view a list of problems, please click <a href=\"" + contextPath + "/listproblems.html\">here</a>." +
 				"" +
 				"</span>\n" + 
 				"</div>\n" + 
