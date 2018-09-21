@@ -282,6 +282,8 @@ MathJax.Hub.Config({
 });
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="icon" href="/LaunchTestRun/assets/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/LaunchTestRun/assets/favicon.ico" type="image/x-icon">
 
 </head>
 

@@ -329,7 +329,9 @@ public class ProblemServlet extends HttpServlet
 				"  }\n" + 
 				"});\n" + 
 				"</script>\n" + 
-				"<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n" + 
+				"<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n" +
+				"<link rel=\"icon\" href=\"" + contextPath + "/assets/favicon.ico\" type=\"image/x-icon\">\n" + 
+				"<link rel=\"shortcut icon\" href=\"" + contextPath + "/assets/favicon.ico\" type=\"image/x-icon\">\n" + 
 				"\n" + 
 				"</head>\n" + 
 				"";
