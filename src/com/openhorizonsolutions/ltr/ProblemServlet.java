@@ -106,13 +106,14 @@ public class ProblemServlet extends HttpServlet
 			
 			for(Object setdetails : toSort)
 			{
-				generatedLinkPart += "<strong>" + setdetails + "</strong><br>";
+				generatedLinkPart += "<subsection>" + setdetails + "</subsection><br>";
 				for (Problem problem : categoryMap.get(setdetails))
 				{
 					String pCPID = problem.getCPID();
 					String title = problem.getTitle();
-					generatedLinkPart += "<a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
+					generatedLinkPart += "<plain><a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title  + "</a></plain><br>\n";
 				}
+				generatedLinkPart += "<br><br>";
 			}
 			
 			s += "\n" + 
@@ -148,7 +149,8 @@ public class ProblemServlet extends HttpServlet
 					"\n" + 
 					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
 					"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
-					"A list of the problems: <br>" +
+					"<br>" +
+					"<center><mezzoforte>PROBLEM MENU</mezzoforte></center>" +
 					"<br>" +
 					generatedLinkPart +
 					"<br>" +
@@ -219,7 +221,7 @@ public class ProblemServlet extends HttpServlet
 						"\n" + 
 						"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
 						"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
-						"<strong><font size=\"4\">Problem Description</font></strong><br><br>\n" +
+						"<subsection>Problem Description</subsection><br><br>\n" +
 						"<span id=\"probtext-text\" class=\"mathjax\">" +
 						accumDescription +
 						"</span>\n" + 
@@ -231,15 +233,15 @@ public class ProblemServlet extends HttpServlet
 						"		<div id=\"solution\">\n" + 
 						"			<input type=\"hidden\" name=\"cpid\" value=\"" + cpid + "\"/>\n" + 
 						"		\n" + 
-						"			<strong><font size=\"4\">Test Your Solution Here!</font></strong><br>\n" + 
+						"			<subsection>Test Your Solution Here!</subsection><br>\n" + 
 						"			<div class=\"field2\">\n" + 
-						"				<label for=\"language\">Language:</label>\n" + 
+						"				<label for=\"language\"><plainbold>Language:</plainbold></label>\n" + 
 						"				<select name=\"language\">\n" + 
 						choices +
 						"				</select></div>\n" + 
 						"			\n" + 
 						"			<div class=\"field2\">\n" + 
-						"				<label for=\"sourcefile\">Source File:</label>\n" + 
+						"				<label for=\"sourcefile\"><plainbold>Source File:</plainbold></label>\n" + 
 						"				<input name=\"sourcefile\" size=\"50\" type=\"file\" class=\"required\" /></div>\n" + 
 						"		\n" + 
 						"			<div class=\"field2\">\n" + 
@@ -342,13 +344,14 @@ public class ProblemServlet extends HttpServlet
 			
 			for(Object setdetails : toSort)
 			{
-				generatedLinkPart += "<strong>" + setdetails + "</strong><br>";
+				generatedLinkPart += "<subsection>" + setdetails + "</subsection><br>";
 				for (Problem problem : categoryMap.get(setdetails))
 				{
 					String pCPID = problem.getCPID();
 					String title = problem.getTitle();
-					generatedLinkPart += "<a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title  + "</a><br>\n";
+					generatedLinkPart += "<plain><a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title  + "</a></plain><br>\n";
 				}
+				generatedLinkPart += "<br><br>";
 			}
 			
 			s += "\n" + 
@@ -384,9 +387,10 @@ public class ProblemServlet extends HttpServlet
 					"\n" + 
 					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
 					"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
-					"The problem that you existed does not exist: " + cpid +
 					"<br><br>" +
-					"A list of the problems: " +
+					"<center><mezzoforte>PROBLEM MENU</mezzoforte></center>" +
+					"<br>" +
+					"<center><plain>The problem that you wanted to access does not exist: " + cpid + "</plain></center>" +
 					"<br>" +
 					generatedLinkPart +
 					"<br>" + 
