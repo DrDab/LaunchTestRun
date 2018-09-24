@@ -106,7 +106,10 @@ public class ProblemServlet extends HttpServlet
 			
 			for(Object setdetails : toSort)
 			{
-				generatedLinkPart += "<subsection>" + setdetails + "</subsection><br>";
+				generatedLinkPart += "<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n";
+				generatedLinkPart += "<div class=\"container\">\n";
+				generatedLinkPart += "<p>\n";
+				generatedLinkPart += "<subsection style=\"font-size: 1.9em;\">" + setdetails + "</subsection><br><br>";
 				for (Problem problem : categoryMap.get(setdetails))
 				{
 					String pCPID = problem.getCPID();
@@ -114,6 +117,7 @@ public class ProblemServlet extends HttpServlet
 					generatedLinkPart += "<plain><a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title  + "</a></plain><br>\n";
 				}
 				generatedLinkPart += "<br><br>";
+				generatedLinkPart += "</p></div></div><br><br>";
 			}
 			
 			s += "\n" + 
@@ -143,20 +147,17 @@ public class ProblemServlet extends HttpServlet
 					"\n" + 
 					"<br style=\"clear:both\" />\n" + 
 					"\n" + 
+					"" +
 					"<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n" +  
 					"\n" + 
 					"</div>\n" + 
 					"\n" + 
-					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
-					"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
-					"<br>" +
-					"<center><mezzoforte>PROBLEM MENU</mezzoforte></center>" +
-					"<br>" +
+					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" +
+					"<br><p>" +
 					generatedLinkPart +
-					"<br>" +
-					"</div>\n" + 
-					"\n" + 
-					"</div>\n" + 
+					"</p><br>" + 
+					"\n" +
+					"</div>\n" +
 					"\n" + 
 					"\n" + 
 					"<br style=\"clear:both\" />\n" + 
@@ -220,15 +221,20 @@ public class ProblemServlet extends HttpServlet
 						"</div>\n" + 
 						"\n" + 
 						"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
-						"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
+						"<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n" + 
+						"<div class=\"container\">\n" +
 						"<subsection>Problem Description</subsection><br><br>\n" +
 						"<span id=\"probtext-text\" class=\"mathjax\">" +
 						accumDescription +
-						"</span>\n" + 
+						"</span>\n" +
+						"</div>\n" +
 						"</div>\n" + 
 						"\n" + 
 						"    \n" + 
-						"	<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px; border:solid #f4419d'>\n" + 
+						"	<br>" +
+						"	 \n" +
+						"	<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n" + 
+						"		<div class=\"container\">\n" +
 						"		<form class=\"submission\" method=\"POST\" action=\"" + contextPath + "/submit-solution\" enctype=\"multipart/form-data\">\n" + 
 						"		<div id=\"solution\">\n" + 
 						"			<input type=\"hidden\" name=\"cpid\" value=\"" + cpid + "\"/>\n" + 
@@ -247,7 +253,10 @@ public class ProblemServlet extends HttpServlet
 						"			<div class=\"field2\">\n" + 
 						"				    <input name=\"solution-submit\" id=\"solution-submit\" type=\"submit\" value=\"Submit Solution\" /></div>\n" + 
 						"			</div>\n" + 
+						"			<br>" +
 						"		</form>\n" + 
+						"	</div>" +
+						"\n" +
 						"	</div>" +
 						"    \n" + 
 						"</div>\n" + 
@@ -282,9 +291,9 @@ public class ProblemServlet extends HttpServlet
 						"\n" + 
 						"<div class=\"panel\">\n" + 
 						"\n" + 
-						"<h2> Error </h2>\n" + 
+						"<h2> Problems </h2>\n" + 
 						" \n" + 
-						"</div><br><br><br>\n" + 
+						"</div><br>\n" + 
 						"\n" + 
 						"<br style=\"clear:both\" />\n" + 
 						"\n" + 
@@ -299,10 +308,12 @@ public class ProblemServlet extends HttpServlet
 						"</div>\n" + 
 						"\n" + 
 						"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
-						"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
+						"<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n" + 
+						"<div class=\"container\">\n" +
 						"<span id=\"probtext-text\">" +
 						"Oops, something went wrong: " + e +
 						"</span>\n" + 
+						"</div>\n" +
 						"</div>\n" + 
 						"\n" + 
 						"</div>\n" + 
@@ -324,7 +335,6 @@ public class ProblemServlet extends HttpServlet
 			String generatedLinkPart = "";
 			HashMap<String, ArrayList<Problem>> categoryMap = new HashMap<String, ArrayList<Problem>>();
 			ArrayList<Problem> linkGenList = tmp.getProblemList();
-			
 			for(Problem problem : linkGenList)
 			{
 				String setdetails = problem.getSetInfo();
@@ -344,7 +354,10 @@ public class ProblemServlet extends HttpServlet
 			
 			for(Object setdetails : toSort)
 			{
-				generatedLinkPart += "<subsection>" + setdetails + "</subsection><br>";
+				generatedLinkPart += "<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n";
+				generatedLinkPart += "<div class=\"container\">\n";
+				generatedLinkPart += "<p>\n";
+				generatedLinkPart += "<subsection style=\"font-size: 1.9em;\">" + setdetails + "</subsection><br><br>";
 				for (Problem problem : categoryMap.get(setdetails))
 				{
 					String pCPID = problem.getCPID();
@@ -352,6 +365,7 @@ public class ProblemServlet extends HttpServlet
 					generatedLinkPart += "<plain><a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title  + "</a></plain><br>\n";
 				}
 				generatedLinkPart += "<br><br>";
+				generatedLinkPart += "</p></div></div><br><br>";
 			}
 			
 			s += "\n" + 
@@ -381,22 +395,23 @@ public class ProblemServlet extends HttpServlet
 					"\n" + 
 					"<br style=\"clear:both\" />\n" + 
 					"\n" + 
+					"" +
 					"<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n" +  
 					"\n" + 
 					"</div>\n" + 
 					"\n" + 
-					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
-					"<div align=\"left\" class=\"rcorners2\" style='width:800px; padding-top:10px;'>\n" + 
-					"<br><br>" +
-					"<center><mezzoforte>PROBLEM MENU</mezzoforte></center>" +
+					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" +
 					"<br>" +
-					"<center><plain>The problem that you wanted to access does not exist: " + cpid + "</plain></center>" +
-					"<br>" +
+					"<div class=\"card\" style=\"Background-color: #ea4335; width:800px; padding-top:10px; padding-bottom:10px;\">" +
+					"<div class=\"container\">" +
+					"<center><plain style=\"color:#ffffff; font-size=0.8em;\">The problem that you requested does not exist: " + cpid + "</plain></center>" +
+					"</div>" +
+					"</div>" +
+					"<br><p>" +
 					generatedLinkPart +
-					"<br>" + 
-					"</div>\n" + 
-					"\n" + 
-					"</div>\n" + 
+					"</p><br>" + 
+					"\n" +
+					"</div>\n" +
 					"\n" + 
 					"\n" + 
 					"<br style=\"clear:both\" />\n" + 
@@ -408,6 +423,11 @@ public class ProblemServlet extends HttpServlet
 					"\n" + 
 					" <br style=\"clear:both\" />\n" + 
 					"\n";
+			/**
+			 * "<br>" +
+					"<center><plain>The problem that you wanted to access does not exist: " + cpid + "</plain></center>" +
+					"<br>" +
+			 */
 		}
 		
 		
