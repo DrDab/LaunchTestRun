@@ -423,11 +423,6 @@ public class ProblemServlet extends HttpServlet
 					"\n" + 
 					" <br style=\"clear:both\" />\n" + 
 					"\n";
-			/**
-			 * "<br>" +
-					"<center><plain>The problem that you wanted to access does not exist: " + cpid + "</plain></center>" +
-					"<br>" +
-			 */
 		}
 		
 		
