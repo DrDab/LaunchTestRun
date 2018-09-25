@@ -79,4 +79,27 @@ public class ForensicsLogger
 			pw.flush();
 		}
 	}
+	
+	public void logError(String exception, String IP)
+	{
+		double time = stw.getTime();
+		String writeOut = "\n\n[ " + time + " ] [!] (ERROR) Exception:\n" + exception + " IP: " + IP + "\n";
+		if (!logfile.exists())
+		{
+			try 
+			{
+				logfile.createNewFile();
+			}
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (pw != null)
+		{
+			pw.println(writeOut);
+			pw.flush();
+		}
+	}
 }

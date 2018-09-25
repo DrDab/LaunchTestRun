@@ -42,9 +42,11 @@ MathJax.Hub.Config({
 					<div align="left" class="card"
 						style='width: 800px; padding-top: 10px;'>
 						<div class="container">
-						  <span id="probtext-text" class="mathjax"> ${message} </span> <br>
+						  <span id="probtext-text" class="mathjax"> ${message} <br></span>
 						</div>
+						<br>
 					</div>
+					<br><br>
 			</div>
 		</div>
 	</div>
