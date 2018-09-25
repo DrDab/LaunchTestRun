@@ -127,17 +127,11 @@ public class ProblemServlet extends HttpServlet
 					"\n" + 
 					"   <div class=\"content\">\n" + 
 					"\n" + 
-					"  \n" + 
-					"\n" + 
-					"   \n" + 
-					"    \n" + 
-					"\n" + 
-					"\n" + 
 					"<div class=\"panel\">\n" + 
 					"\n" + 
 					"<h2> Problems </h2>\n" + 
 					" \n" + 
-					"</div><br><br><br>\n" + 
+					"</div><br><br>\n" + 
 					"\n" + 
 					"<br style=\"clear:both\" />\n" + 
 					"\n" + 
@@ -152,7 +146,7 @@ public class ProblemServlet extends HttpServlet
 					"\n" + 
 					"</div>\n" + 
 					"\n" + 
-					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" +
+					"<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n" +
 					"<br><p>" +
 					generatedLinkPart +
 					"</p><br>" + 
@@ -220,7 +214,7 @@ public class ProblemServlet extends HttpServlet
 						"\n" + 
 						"</div>\n" + 
 						"\n" + 
-						"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
+						"<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
 						"<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n" + 
 						"<div class=\"container\">\n" +
 						"<subsection>Problem Description</subsection><br><br>\n" +
@@ -307,7 +301,7 @@ public class ProblemServlet extends HttpServlet
 						"\n" + 
 						"</div>\n" + 
 						"\n" + 
-						"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
+						"<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
 						"<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n" + 
 						"<div class=\"container\">\n" +
 						"<span id=\"probtext-text\">" +
@@ -400,7 +394,7 @@ public class ProblemServlet extends HttpServlet
 					"\n" + 
 					"</div>\n" + 
 					"\n" + 
-					"<div align=\"left\" style=\"position:relative; float:left; left:30px; top:-100px; width:840px; z-index:1;\"> \n" +
+					"<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n" +
 					"<br>" +
 					"<div class=\"card\" style=\"Background-color: #ea4335; width:800px; padding-top:10px; padding-bottom:10px;\">" +
 					"<div class=\"container\">" +
@@ -411,9 +405,6 @@ public class ProblemServlet extends HttpServlet
 					generatedLinkPart +
 					"</p><br>" + 
 					"\n" +
-					"</div>\n" +
-					"\n" + 
-					"\n" + 
 					"<br style=\"clear:both\" />\n" + 
 					"\n" + 
 					"\n" + 

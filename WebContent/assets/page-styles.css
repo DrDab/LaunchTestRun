@@ -95,7 +95,7 @@ div.main {
 
 .shadow1 {
 	margin: 0px;
-	width: 900px;
+	width: 1200px;
 	background-color: rgb(68, 68, 68); /* Needed for IEs */
 	-moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
 	-webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
@@ -110,7 +110,7 @@ div.main {
 .shadow1 .content {
 	position: relative;
 	/* This protects the inner element from being blurred */
-	width: 900px;
+	width: 1200px;
 	background-color: #FFF;
 }
 

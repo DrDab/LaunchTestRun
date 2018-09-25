@@ -38,16 +38,17 @@ MathJax.Hub.Config({
 			<div class="content">
 				<div class="panel">
 					<h2>Submission Results!</h2>
+				</div>
 					<div align="left" class="card"
 						style='width: 800px; padding-top: 10px;'>
 						<div class="container">
 						  <span id="probtext-text" class="mathjax"> ${message} </span> <br>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>
+	
 	<br style="clear: both" />
 	<center>LaunchTestRun is (C) copyright of Victor Du.</center>
 </body>
