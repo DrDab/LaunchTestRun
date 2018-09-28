@@ -243,56 +243,57 @@ public class SolutionUploadHandler extends HttpServlet
 						
 						if (executionOutputSample.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{
-							sampleStatus = "<font color=\"#e62100\">TIMEOUT</font>";
+							sampleStatus = "<plainbold><font color=\"#e62100\">TIMEOUT</font></plainbold>";
 							success = false;
 						}
 						else if (!executionOutputSample.getStdErr().trim().equals(""))
 						{
-							sampleStatus = "<font color=\"#e62100\">ERROR</font>";
+							sampleStatus = "<plainbold><font color=\"#e62100\">ERROR</font></plainbold>";
 							success = false;
 						}
 						else if (executionOutputSample.getStdOut().trim().matches(expectedSampleOutput))
 						{
-							sampleStatus = "<font color=\"#66e621\">CORRECT</font>";
+							sampleStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
 						}
 						else
 						{
-							sampleStatus = "<font color=\"#e62100\">WRONG</font>";
+							sampleStatus = "<plainbold><font color=\"#e62100\">WRONG</font></plainbold>";
 							success = false;
 						}
 						
 						if (executionOutputJudge.getStdErr().trim().equals("The process took too long to run, and was terminated."))
 						{
-							judgeStatus = "<font color=\"#e62100\">TIMEOUT</font>";
+							judgeStatus = "<plainbold><font color=\"#e62100\">TIMEOUT</font></plainbold>";
 							success = false;
 						}
 						else if (!executionOutputJudge.getStdErr().trim().equals(""))
 						{
-							judgeStatus = "<font color=\"#e62100\">ERROR</font>";
+							judgeStatus = "<plainbold><font color=\"#e62100\">ERROR</font></plainbold>";
 							success = false;
 						}
 						else if (executionOutputJudge.getStdOut().trim().matches(expectedJudgeOutput))
 						{
-							judgeStatus = "<font color=\"#66e621\">CORRECT</font>";
+							judgeStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
 						}
 						else
 						{
-							judgeStatus = "<font color=\"#e62100\">WRONG</font>";
+							judgeStatus = "<plainbold><font color=\"#e62100\">WRONG</font></plainbold>";
 							success = false;
 						}
 						
 						boolean compileSuccessful = executableFile.exists();
 						
 						String message = "";
-						message += "<strong>File Upload Details</strong>";
+						message += "<plainbold>File Upload Details</plainbold>";
+						message += "<plain>";
 						message += "<br>File Name: " + fileName;
 						message += "<br>File Size: " + buffer.length + " B";
 						message += "<br>File MD5 Checksum: " + md5sum;
 						message += "<br>Language: " + DataStore.typeNames[languageType];
 						message += "<br>Date Uploaded: " + uploadDate.toString() + "<br><br>";
-						message += "<strong>Your Results</strong>";
-						message += "<br>Results from sample data test: <strong>" + sampleStatus + "</strong> (" + executionOutputSample.getMillis() + "ms)";
-						message += "<br>Results from judge data test: <strong>" + judgeStatus + "</strong> (" + executionOutputJudge.getMillis() + "ms)";
+						message += "<plainbold>Your Results</plainbold>";
+						message += "<plain><br>Results from sample data test:</plain> <plainbold>" + sampleStatus + "</plainbold> (" + executionOutputSample.getMillis() + "ms)";
+						message += "<plain><br>Results from judge data test:</plain> <plainbold>" + judgeStatus + "</plainbold> (" + executionOutputJudge.getMillis() + "ms)";
 						if (success)
 						{
 							message += ("<br><br>" + ProblemLoaderUtils.getWinnerFlavorText(realPath) + "<br>");
@@ -306,7 +307,7 @@ public class SolutionUploadHandler extends HttpServlet
 						{
 							if (sampleStatus.equals("<font color=\"#e62100\">WRONG</font>") || sampleStatus.equals("<font color=\"#e62100\">ERROR</font>"))
 							{
-								message += "<br><br><strong>Execution Output w/ Sample Data</strong>";
+								message += "<br><br><plainbold>Execution Output w/ Sample Data</plainbold>";
 								message += "<br>The data inputted was:<br><pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdIn()) + "</code></pre>";
 								message += "<br>The expected standard output was:<br><pre><code>" + ProblemLoaderUtils.escapeHTML(expectedSampleOutput) + "</code></pre>";
 								message += "<br>Your program wrote this to standard output instead:<br><pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdOut()) + "</code></pre>";
@@ -318,7 +319,7 @@ public class SolutionUploadHandler extends HttpServlet
 							
 							if (judgeStatus.equals("<font color=\"#e62100\">WRONG</font>") || judgeStatus.equals("<font color=\"#e62100\">ERROR</font>"))
 							{
-								message += "<br><br><strong>Execution Output w/ Judge Data</strong>";
+								message += "<br><br><plainbold>Execution Output w/ Judge Data</plainbold>";
 								message += "<br>The data inputted was:<br><pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputJudge.getStdIn()) + "</code></pre>";
 								message += "<br>The expected standard output was:<br><pre><code>" + ProblemLoaderUtils.escapeHTML(expectedJudgeOutput) + "</code></pre>";
 								message += "<br>Your program wrote this to standard output instead:<br><pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputJudge.getStdOut()) + "</code></pre>";
@@ -338,7 +339,7 @@ public class SolutionUploadHandler extends HttpServlet
 							toFilterCompilerStdErr = toFilterCompilerStdErr.replaceAll(executableFile.getParent(), "");
 							if (stdOutNotNull || stdErrNotNull)
 							{
-								message += "<br><br><strong>Compiler Output</strong>";
+								message += "<br><br><plainbold>Compiler Output</plainbold>";
 							}
 							if (stdOutNotNull)
 							{
@@ -349,7 +350,7 @@ public class SolutionUploadHandler extends HttpServlet
 								message += "<br>The compiler threw the following errors:<br><pre><code>" + toFilterCompilerStdErr + "<br><br>";
 							}
 						}
-						message += "<br><br>";
+						message += "</plain><br><br>";
 						request.setAttribute("message", message);
 					}
 					else
