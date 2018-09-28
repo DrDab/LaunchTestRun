@@ -78,7 +78,7 @@ Oops, something went wrong. Pwease repowt the fowwowing error to the webmaster. 
 <br>
 Error message:
 <br>
-<%=out.println(exception.getMessage());%>
+<% out.println(exception.getMessage()); %>
 <br>
 <br>
 Stack trace:
