@@ -78,7 +78,7 @@ Oops, something went wrong. Pwease repowt the fowwowing error to the webmaster. 
 <br>
 Error message:
 <br>
-<%=exception.getMessage()%>
+<%=out.println(exception.getMessage());%>
 <br>
 <br>
 Stack trace:
@@ -111,7 +111,7 @@ Stack trace:
 
  <br style="clear:both" />
 
-<center>Page requested: <% out.print(request.getRequestURI()); %><br>Page generated in: <% out.print((double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0)); %><br>LaunchTestRun is (C) copyright of Victor Du.</center></body>
+<center>Page requested: <% out.print(request.getRequestURI()); %><br>Page generated in: <% out.print((double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0)); %> seconds [ 100% Tomcat 8 ]<br>LaunchTestRun is (C) copyright of Victor Du.</center></body>
 
 </html>
 
