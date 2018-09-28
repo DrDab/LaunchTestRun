@@ -96,7 +96,36 @@ public class ProblemServlet extends HttpServlet
 			}
 
 			Object[] toSort = categoryMap.keySet().toArray();
-			Arrays.sort(toSort);
+			int ec = -1;
+			int mc = -1;
+			int fc = -1;
+			for(int i = 0; i < toSort.length; i++)
+			{
+				String dif = toSort[i].toString();
+				if (dif.equals("Easy") && ec == -1)
+				{
+					ec = i;
+				}
+				else if (dif.equals("Medium") && mc == -1)
+				{
+					mc = i;
+				}
+				else if (dif.equals("Hard") && fc == -1)
+				{
+					fc = i;
+				}
+			}
+			
+			if (ec != -1 && mc != -1 && fc != -1)
+			{
+				toSort[0] = "Easy";
+				toSort[1] = "Medium";
+				toSort[2] = "Hard";
+			}
+			else
+			{
+				Arrays.sort(toSort);
+			}
 
 			for (Object setdetails : toSort) 
 			{
@@ -279,7 +308,37 @@ public class ProblemServlet extends HttpServlet
 			}
 
 			Object[] toSort = categoryMap.keySet().toArray();
-			Arrays.sort(toSort);
+			
+			int ec = -1;
+			int mc = -1;
+			int fc = -1;
+			for(int i = 0; i < toSort.length; i++)
+			{
+				String dif = toSort[i].toString();
+				if (dif.equals("Easy") && ec == -1)
+				{
+					ec = i;
+				}
+				else if (dif.equals("Medium") && mc == -1)
+				{
+					mc = i;
+				}
+				else if (dif.equals("Hard") && fc == -1)
+				{
+					fc = i;
+				}
+			}
+			
+			if (ec != -1 && mc != -1 && fc != -1)
+			{
+				toSort[0] = "Easy";
+				toSort[1] = "Medium";
+				toSort[2] = "Hard";
+			}
+			else
+			{
+				Arrays.sort(toSort);
+			}
 
 			for (Object setdetails : toSort) 
 			{
