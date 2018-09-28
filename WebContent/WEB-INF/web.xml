@@ -51,6 +51,10 @@
         <error-code>404</error-code>
         <location>/assets/404.jsp</location>
     </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/assets/403.jsp</location>
+    </error-page>
     <security-constraint>
 	   <web-resource-collection>
 	   	<web-resource-name>HTTP-Protected-Resource-1</web-resource-name>
@@ -59,14 +63,8 @@
 		<http-method>GET</http-method>
 		<http-method>POST</http-method>
 	   </web-resource-collection>
-    </security-constraint>
-    <security-constraint>
-       <web-resource-collection>
-        <web-resource-name>HTTP-Protected-Resource-2</web-resource-name>
-        <description>This resource is restricted</description>
-        <url-pattern>/upload/*</url-pattern>
-        <http-method>GET</http-method>
-        <http-method>POST</http-method>
-       </web-resource-collection>
+	    <auth-constraint>
+            <role-name>manager</role-name>
+        </auth-constraint>
     </security-constraint>
 </web-app>
