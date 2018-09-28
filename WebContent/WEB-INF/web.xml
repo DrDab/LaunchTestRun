@@ -43,4 +43,8 @@
 		<servlet-name>IndexPageServlet</servlet-name>
 		<url-pattern>/index.html/*</url-pattern>
 	</servlet-mapping>
+	<error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/assets/exception.jsp</location>
+    </error-page>
 </web-app>
