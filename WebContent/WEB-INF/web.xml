@@ -13,7 +13,7 @@
 	</servlet>
 	<servlet>
 		<servlet-name>IndexPageServlet</servlet-name>
-		<servlet-class>com.openhorizonsolutions.ltr.IndexPageServlet</servlet-class>
+		<jsp-file>/assets/welcome.jsp</jsp-file>
 	</servlet>
 	<servlet>
 		<servlet-name>SolutionUploadHandler</servlet-name>
