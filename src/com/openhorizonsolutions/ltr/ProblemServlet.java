@@ -45,23 +45,34 @@ public class ProblemServlet extends HttpServlet
 		Problem p = null;
 
 		String s = "";
-		String header = "\n" + "\n" + "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \n"
-				+ "\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" + "\n"
-				+ "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + "\n" + "<head>\n" + "\n" + "\n"
-				+ " <title>LaunchTestRun</title>\n" + " <META HTTP-EQUIV=\"EXPIRES\" CONTENT=\"0\">\n"
-				+ " <META HTTP-EQUIV=\"CACHE-CONTROL\" CONTENT=\"NO-CACHE\">\n"
-				+ " <META HTTP-EQUIV=\"PRAGMA\" CONTENT=\"NO-CACHE\">\n" + "\n"
-				+ "<script type=\"text/x-mathjax-config\">\n" + "MathJax.Hub.Config({\n" + "    \"HTML-CSS\": {\n"
-				+ "	scale: 85,\n" + "	preferredFont: \"STIX\"\n" + "    },\n" + "  tex2jax: {\n"
-				+ "    inlineMath: [['$','$'],['\\\\(','\\\\)']],\n" + "    processEscapes: true,\n"
-				+ "    skipTags: ['pre'],\n" + "    processClass: \"mathjax\",\n" + "    ignoreClass: \"no-mathjax\"\n"
-				+ "  }\n" + "});\n" + "</script>\n"
-				+ "<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n"
-				+ "<link rel=\"icon\" href=\"" + contextPath + "/assets/favicon.ico\" type=\"image/x-icon\">\n"
-				+ "<link rel=\"shortcut icon\" href=\"" + contextPath + "/assets/favicon.ico\" type=\"image/x-icon\">\n"
-				+ "<link rel=\"stylesheet\" href=\"" + contextPath + "/assets/fonts.css\">\n"
-				+ "<link rel=\"stylesheet\" href=\"" + contextPath + "/assets/page-styles.css\">\n" + "\n" + "</head>\n"
-				+ "";
+		String header = "\n" + 
+				"\n" + "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \n" + 
+				"\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+				"\n" + 
+				"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" + 
+				"\n" + 
+				"<head>\n" + 
+				"\n" + 
+				"\n" + 
+				" <title>LaunchTestRun</title>\n" + 
+				" <META HTTP-EQUIV=\"EXPIRES\" CONTENT=\"0\">\n" + 
+				" <META HTTP-EQUIV=\"CACHE-CONTROL\" CONTENT=\"NO-CACHE\">\n" + 
+				" <META HTTP-EQUIV=\"PRAGMA\" CONTENT=\"NO-CACHE\">\n" + "\n" + 
+				"<script type=\"text/x-mathjax-config\">\n" + "MathJax.Hub.Config({\n" + 
+				"    \"HTML-CSS\": {\n" + 
+				"	scale: 85,\n" + "	preferredFont: \"STIX\"\n" + "    },\n" + "  tex2jax: {\n" + 
+				"    inlineMath: [['$','$'],['\\\\(','\\\\)']],\n" + "    processEscapes: true,\n" + 
+				"    skipTags: ['pre'],\n" + "    processClass: \"mathjax\",\n" + 
+				"    ignoreClass: \"no-mathjax\"\n" + 
+				"  }\n" + "});\n" + "</script>\n" + 
+				"<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n" + 
+				"<link rel=\"icon\" href=\"" + contextPath + "/assets/favicon.ico\" type=\"image/x-icon\">\n" + 
+				"<link rel=\"shortcut icon\" href=\"" + contextPath + "/assets/favicon.ico\" type=\"image/x-icon\">\n" + 
+				"<link rel=\"stylesheet\" href=\"" + contextPath + "/assets/fonts.css\">\n" + 
+				"<link rel=\"stylesheet\" href=\"" + contextPath + "/assets/page-styles.css\">\n" + 
+				"\n" + 
+				"</head>\n" +
+				"";
 		s += header;
 
 		ProblemListHandler tmp = ProblemLoaderUtils.refreshIO(getServletContext().getRealPath(""));
@@ -104,18 +115,49 @@ public class ProblemServlet extends HttpServlet
 				generatedLinkPart += "</p></div></div><br><br>";
 			}
 
-			s += "\n" + "<body class=\"no-mathjax\">\n" + " <div align=\"center\">\n" + "  <div class=\"shadow1\">\n"
-					+ "\n" + "   <div class=\"content\">\n" + "\n" + "<div class=\"panel\">\n" + "\n"
-					+ "<h2> Problems </h2>\n" + " \n" + "</div><br><br>\n" + "\n" + "<br style=\"clear:both\" />\n"
-					+ "\n" + "\n" + "<div id=\"trial-information\"></div>\n"
-					+ "<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" + "\n"
-					+ "<br style=\"clear:both\" />\n" + "\n" + ""
-					+ "<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n"
-					+ "\n" + "</div>\n" + "\n"
-					+ "<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n"
-					+ "<br><p>" + generatedLinkPart + "</p><br>" + "\n" + "</div>\n" + "\n" + "\n"
-					+ "<br style=\"clear:both\" />\n" + "\n" + "\n" + "   </div>\n" + "  </div>\n" + " </div>\n" + "\n"
-					+ " <br style=\"clear:both\" />\n" + "\n";
+			s += "\n" + 
+				"<body class=\"no-mathjax\">\n" + 
+				" <div align=\"center\">\n" + 
+				"  <div class=\"shadow1\">\n" + 
+				"\n" +
+				"   <div class=\"content\">\n" +
+				"\n" +
+				"<div class=\"panel\">\n" + 
+				"\n" + 
+				"<h2> Problems </h2>\n" + 
+				" \n" + 
+				"</div><br><br>\n" + 
+				"\n" + 
+				"<br style=\"clear:both\" />\n" + 
+				"\n" + 
+				"\n" + 
+				"<div id=\"trial-information\"></div>\n" + 
+				"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" + 
+				"\n" + 
+				"<br style=\"clear:both\" />\n" +
+				"\n" + 
+				""	+
+				"<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n" + 
+				"\n" + 
+				"</div>\n" + 
+				"\n" + 
+				"<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n" + 
+				"<br><p>" + 
+				generatedLinkPart + 
+				"</p><br>" + 
+				"\n" + 
+				"</div>\n" + 
+				"\n" + 
+				"\n" + 
+				"<br style=\"clear:both\" />\n" +
+				"\n" +
+				"\n" + 
+				"   </div>\n" +
+				"  </div>\n" +
+				" </div>\n" +
+				"\n" +
+				" <br style=\"clear:both\" />\n" + 
+				"\n";
 		} 
 		else if (tmp.problemExists(cpid))
 		{
@@ -134,37 +176,87 @@ public class ProblemServlet extends HttpServlet
 						+ "\" type=\"application/pdf\" width=\"100%\" height=\"600px\" />\n<br>\n";
 			}
 			accumDescription += p.getDescription();
-			s += "\n" + "<body class=\"no-mathjax\">\n" + " <div align=\"center\">\n" + "  <div class=\"shadow1\">\n"
-					+ "\n" + "   <div class=\"content\">\n" + "\n" + "  \n" + "\n" + "   \n" + "    \n" + "\n" + "\n"
-					+ "<div class=\"panel\">\n" + "\n" + "<h2> " + p.getTitle() + "</h2>\n" + "<h2> " + p.getSetInfo()
-					+ " </h2>\n" + " \n" + "</div><br><br><br>\n" + "\n" + "<br style=\"clear:both\" />\n" + "\n" + "\n"
-					+ "<div id=\"trial-information\"></div>\n"
-					+ "<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" + "\n"
-					+ "<br style=\"clear:both\" />\n" + "\n"
-					+ "<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n"
-					+ "\n" + "</div>\n" + "\n"
-					+ "<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n"
-					+ "<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n"
-					+ "<div class=\"container\">\n" + "<subsection>Problem Description</subsection><br><br>\n"
-					+ "<span id=\"probtext-text\" class=\"mathjax\">" + accumDescription + "</span>\n" + "</div>\n"
-					+ "</div>\n" + "\n" + "    \n" + "	<br>" + "	 \n"
-					+ "	<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n"
-					+ "		<div class=\"container\">\n"
-					+ "		<form class=\"submission\" method=\"POST\" action=\"" + contextPath
-					+ "/submit-solution\" enctype=\"multipart/form-data\">\n" + "		<div id=\"solution\">\n"
-					+ "			<input type=\"hidden\" name=\"cpid\" value=\"" + cpid + "\"/>\n" + "		\n"
-					+ "			<subsection>Test Your Solution Here!</subsection><br>\n"
-					+ "			<div class=\"field2\">\n"
-					+ "				<label for=\"language\"><plainbold>Language:</plainbold></label>\n"
-					+ "				<select name=\"language\">\n" + choices + "				</select></div>\n"
-					+ "			\n" + "			<div class=\"field2\">\n"
-					+ "				<label for=\"sourcefile\"><plainbold>Source File:</plainbold></label>\n"
-					+ "				<input name=\"sourcefile\" size=\"50\" type=\"file\" class=\"required\" /></div>\n"
-					+ "		\n" + "			<div class=\"field2\">\n"
-					+ "				    <input name=\"solution-submit\" id=\"solution-submit\" type=\"submit\" value=\"Submit Solution\" /></div>\n"
-					+ "			</div>\n" + "			<br>" + "		</form>\n" + "	</div>" + "\n" + "	</div>"
-					+ "    \n" + "</div>\n" + "\n" + "\n" + "<br style=\"clear:both\" />\n" + "\n" + "\n"
-					+ "   </div>\n" + "  </div>\n" + " </div>\n" + "\n" + " <br style=\"clear:both\" />\n" + "\n";
+			s += "\n" +
+					"<body class=\"no-mathjax\">\n" +
+					" <div align=\"center\">\n" + 
+					"  <div class=\"shadow1\">\n" + "\n" +
+					"   <div class=\"content\">\n" + "\n" + 
+					"  \n" +
+					"\n" +
+					"   \n" +
+					"    \n" +
+					"\n" +
+					"\n" + 
+					"<div class=\"panel\">\n" +
+					"\n" + 
+					"<h2> " +
+					p.getTitle() + 
+					"</h2>\n" + 
+					"<h2> " +
+					p.getSetInfo() +
+					" </h2>\n" + " \n" +
+					"</div><br><br><br>\n" +
+					"\n" +
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + 
+					"\n" +
+					"<div id=\"trial-information\"></div>\n" +
+					"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" +
+					"\n" +
+					"<br style=\"clear:both\" />\n" +
+					"\n" +
+					"<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n" +
+					"\n" +
+					"</div>\n" + 
+					"\n" +
+					"<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n" +
+					"<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n" +
+					"<div class=\"container\">\n" + "<subsection>Problem Description</subsection><br><br>\n" +
+					"<span id=\"probtext-text\" class=\"mathjax\">" + accumDescription + "</span>\n" + 
+					"</div>\n" +
+					"</div>\n" + 
+					"\n" +
+					"    \n" + 
+					"	<br>" +
+					"	 \n" +
+					"	<div align=\"left\" class=\"card\" style='width:800px; padding-top:10px;'>\n" +
+					"		<div class=\"container\">\n" +
+					"		<form class=\"submission\" method=\"POST\" action=\"" +
+					contextPath +
+					"/submit-solution\" enctype=\"multipart/form-data\">\n" +
+					"		<div id=\"solution\">\n" +
+					"			<input type=\"hidden\" name=\"cpid\" value=\"" + cpid + "\"/>\n" +
+					"		\n" +
+					"			<subsection>Test Your Solution Here!</subsection><br>\n" +
+					"			<div class=\"field2\">\n" +
+					"				<label for=\"language\"><plainbold>Language:</plainbold></label>\n" +
+					"				<select name=\"language\">\n" + choices + "				</select></div>\n" +
+					"			\n" +
+					"			<div class=\"field2\">\n" +
+					"				<label for=\"sourcefile\"><plainbold>Source File:</plainbold></label>\n" +
+					"				<input name=\"sourcefile\" size=\"50\" type=\"file\" class=\"required\" /></div>\n" +
+					"		\n" + 
+					"			<div class=\"field2\">\n" +
+					"				    <input name=\"solution-submit\" id=\"solution-submit\" type=\"submit\" value=\"Submit Solution\" /></div>\n" +
+					"			</div>\n" +
+					"			<br>" +
+					"		</form>\n" + 
+					"	</div>" + 
+					"\n" +
+					"	</div>" +
+					"    \n" +
+					"</div>\n" +
+					"\n" +
+					"\n" +
+					"<br style=\"clear:both\" />\n" +
+					"\n" +
+					"\n" +
+					"   </div>\n" +
+					"  </div>\n" +
+					" </div>\n" + 
+					"\n" +
+					" <br style=\"clear:both\" />\n" + 
+					"\n";
 
 		} 
 		else 
@@ -206,22 +298,56 @@ public class ProblemServlet extends HttpServlet
 				generatedLinkPart += "</p></div></div><br><br>";
 			}
 
-			s += "\n" + "<body class=\"no-mathjax\">\n" + " <div align=\"center\">\n" + "  <div class=\"shadow1\">\n"
-					+ "\n" + "   <div class=\"content\">\n" + "\n" + "  \n" + "\n" + "   \n" + "    \n" + "\n" + "\n"
-					+ "<div class=\"panel\">\n" + "\n" + "<h2> Error </h2>\n" + " \n" + "</div><br><br><br>\n" + "\n"
-					+ "<br style=\"clear:both\" />\n" + "\n" + "\n" + "<div id=\"trial-information\"></div>\n"
-					+ "<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" + "\n"
-					+ "<br style=\"clear:both\" />\n" + "\n" + ""
-					+ "<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n"
-					+ "\n" + "</div>\n" + "\n"
-					+ "<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n"
-					+ "<br>"
-					+ "<div class=\"card\" style=\"Background-color: #ea4335; width:800px; padding-top:10px; padding-bottom:10px;\">"
-					+ "<div class=\"container\">"
-					+ "<center><plain style=\"color:#ffffff; font-size=0.8em;\">The problem that you requested does not exist: "
-					+ cpid + "</plain></center>" + "</div>" + "</div>" + "<br><p>" + generatedLinkPart + "</p><br>"
-					+ "\n" + "<br style=\"clear:both\" />\n" + "\n" + "\n" + "   </div>\n" + "  </div>\n" + " </div>\n"
-					+ "\n" + " <br style=\"clear:both\" />\n" + "\n";
+			s += "\n" +
+					"<body class=\"no-mathjax\">\n" + 
+					" <div align=\"center\">\n" +
+					"  <div class=\"shadow1\">\n" +
+					"\n" +
+					"   <div class=\"content\">\n" +
+					"\n" +
+					"  \n" + 
+					"\n" +
+					"   \n" +
+					"    \n" +
+					"\n" + 
+					"\n" +
+					"<div class=\"panel\">\n" +
+					"\n" + 
+					"<h2> Error </h2>\n" + 
+					" \n" +
+					"</div><br><br><br>\n" +
+					"\n" +
+					"<br style=\"clear:both\" />\n" +
+					"\n" +
+					"\n" +
+					"<div id=\"trial-information\"></div>\n" +
+					"<p style=\"text-align:left;\" class=\"mono prewrap output-data\"></p>\n" +
+					"\n" +
+					"<br style=\"clear:both\" />\n" +
+					"\n" +
+					"" +
+					"<div align=\"right\" style=\"position:relative; float:right; right:40px; top:-93px; width:350px; z-index:2; padding:0px;\">\n" +
+					"\n" +
+					"</div>\n" +
+					"\n" +
+					"<div align=\"center\" style=\"position:relative; float:center; left:30px; top:-100px; width:840px; z-index:1;\"> \n" +
+					"<br>" +
+					"<div class=\"card\" style=\"Background-color: #ea4335; width:800px; padding-top:10px; padding-bottom:10px;\">" +
+					"<div class=\"container\">" +
+					"<center><plain style=\"color:#ffffff; font-size=0.8em;\">The problem that you requested does not exist: " + cpid + "</plain></center>" +
+					"</div>" +
+					"</div>" +
+					"<br><p>" +
+					generatedLinkPart +
+					"</p><br>" +
+					"\n" +
+					"<br style=\"clear:both\" />\n" + 
+					"\n" + "\n" +
+					"   </div>\n" + 
+					"  </div>\n" + 
+					" </div>\n" +
+					"\n" +
+					" <br style=\"clear:both\" />\n" + "\n";
 		}
 
 		String end = "<center>Page requested: " + request.getRequestURI() + "<br>Page generated in: "
