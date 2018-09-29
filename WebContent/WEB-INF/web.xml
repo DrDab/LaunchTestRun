@@ -60,8 +60,6 @@
 	   	<web-resource-name>HTTP-Protected-Resource-1</web-resource-name>
 		<description>This resource is restricted</description>
 		<url-pattern>/forensics.txt</url-pattern>
-		<http-method>GET</http-method>
-		<http-method>POST</http-method>
 	   </web-resource-collection>
 	    <auth-constraint>
             <role-name>manager</role-name>

@@ -305,7 +305,7 @@ public class SolutionUploadHandler extends HttpServlet
 						
 						if (compileSuccessful)
 						{
-							if (sampleStatus.equals("<font color=\"#e62100\">WRONG</font>") || sampleStatus.equals("<font color=\"#e62100\">ERROR</font>"))
+							if (sampleStatus.equals("<plainbold><font color=\"#e62100\">WRONG</font></plainbold>") || sampleStatus.equals("<plainbold><font color=\"#e62100\">ERROR</font></plainbold>"))
 							{
 								message += "<br><br><plainbold>Execution Output w/ Sample Data</plainbold>";
 								message += "<br>The data inputted was:<br><pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputSample.getStdIn()) + "</code></pre>";
@@ -317,7 +317,7 @@ public class SolutionUploadHandler extends HttpServlet
 								}
 							}
 							
-							if (judgeStatus.equals("<font color=\"#e62100\">WRONG</font>") || judgeStatus.equals("<font color=\"#e62100\">ERROR</font>"))
+							if (judgeStatus.equals("<plainbold><font color=\"#e62100\">WRONG</font></plainbold>") || judgeStatus.equals("<plainbold><font color=\"#e62100\">ERROR</font></plainbold>"))
 							{
 								message += "<br><br><plainbold>Execution Output w/ Judge Data</plainbold>";
 								message += "<br>The data inputted was:<br><pre><code>" + ProblemLoaderUtils.escapeHTML(executionOutputJudge.getStdIn()) + "</code></pre>";
@@ -367,7 +367,6 @@ public class SolutionUploadHandler extends HttpServlet
 			getServletContext().getRequestDispatcher("/assets/message.jsp").forward(request, response);
 
 		}
-
 		return;
 	}
 	
