@@ -100,14 +100,6 @@ div.main {
 .shadow1 {
 	margin: 0px;
 	width: 1200px;
-	background-color: rgb(68, 68, 68); /* Needed for IEs */
-	-moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
-	-webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
-	box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
-	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3, MakeShadow=true,
-		ShadowOpacity=0.30);
-	-ms-filter:
-		"progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
 	zoom: 1;
 }
 
