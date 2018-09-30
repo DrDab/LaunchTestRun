@@ -290,6 +290,10 @@ public class SolutionUploadHandler extends HttpServlet
 					{
 						sampleStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
 					}
+					else if (executionOutputSample.getStdOut().trim().equals(expectedSampleOutput))
+					{
+						sampleStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
+					}
 					else
 					{
 						sampleStatus = "<plainbold><font color=\"#e62100\">WRONG</font></plainbold>";
@@ -307,6 +311,10 @@ public class SolutionUploadHandler extends HttpServlet
 						success = false;
 					}
 					else if (executionOutputJudge.getStdOut().trim().matches(expectedJudgeOutput))
+					{
+						judgeStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
+					}
+					else if (executionOutputJudge.getStdOut().trim().equals(expectedJudgeOutput))
 					{
 						judgeStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
 					}
