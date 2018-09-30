@@ -40,6 +40,11 @@ MathJax.Hub.Config({
 </head>
 
 <body class="no-mathjax">
+<ul>
+  <li><plain><a href="<%= response.encodeURL(request.getContextPath() + "/index.html") %>">Home</a></plain></li>
+  <li><plain><a href="<%= response.encodeURL(request.getContextPath() + "/listproblems.html") %>">Problems</a></plain></li>
+</ul>
+<br>
  <div align="center">
   <div class="shadow1">
 

@@ -113,6 +113,11 @@ public class ProblemServlet extends HttpServlet
 
 			s += "\n" + 
 				"<body class=\"no-mathjax\">\n" + 
+				"<ul>\n" + 
+				"  <li><plain><a href=\"" + contextPath + "/index.html\">Home</a></plain></li>\n" + 
+				"  <li><plain><a href=\"" + contextPath +"/listproblems.html\">Problems</a></plain></li>\n" + 
+				"</ul>\n" +
+				"<br>\n" +
 				" <div align=\"center\">\n" + 
 				"  <div class=\"shadow1\">\n" + 
 				"\n" +
@@ -174,6 +179,11 @@ public class ProblemServlet extends HttpServlet
 			accumDescription += p.getDescription();
 			s += "\n" +
 					"<body class=\"no-mathjax\">\n" +
+					"<ul>\n" + 
+					"  <li><plain><a href=\"" + contextPath + "/index.html\">Home</a></plain></li>\n" + 
+					"  <li><plain><a href=\"" + contextPath +"/listproblems.html\">Problems</a></plain></li>\n" + 
+					"</ul>\n" +
+					"<br>\n" +
 					" <div align=\"center\">\n" + 
 					"  <div class=\"shadow1\">\n" + "\n" +
 					"   <div class=\"content\">\n" + "\n" + 
@@ -254,7 +264,6 @@ public class ProblemServlet extends HttpServlet
 					"\n" +
 					" <br style=\"clear:both\" />\n" + 
 					"\n";
-
 		} 
 		else 
 		{
@@ -296,6 +305,11 @@ public class ProblemServlet extends HttpServlet
 
 			s += "\n" +
 					"<body class=\"no-mathjax\">\n" + 
+					"<ul>\n" + 
+					"  <li><plain><a href=\"" + contextPath + "/index.html\">Home</a></plain></li>\n" + 
+					"  <li><plain><a href=\"" + contextPath +"/listproblems.html\">Problems</a></plain></li>\n" + 
+					"</ul>\n" +
+					"<br>\n" +
 					" <div align=\"center\">\n" +
 					"  <div class=\"shadow1\">\n" +
 					"\n" +

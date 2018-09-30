@@ -4,26 +4,6 @@ body, td, th {
 	color: #000;
 }
 
-a:link {
-	color: #000;
-	text-decoration: underline;
-}
-
-a:active {
-	color: #009;
-	text-decoration: underline;
-}
-
-a:visited {
-	color: #009;
-	text-decoration: underline;
-}
-
-a:hover {
-	color: #33F;
-	text-decoration: none;
-}
-
 body {
 	background-color: #FFFFFF;
 }
@@ -66,33 +46,6 @@ div.main {
 	font-weight: bold;
 	color: #800;
 	padding-top: 6px;
-}
-
-.navbar ul {
-	list-style: none;
-	margin: 20px;
-	padding: 0;
-}
-
-.navbar li a {
-	display: inline;
-	font-variant: small-caps;
-	font-size: 16px;
-	background-color: #139;
-	color: #EEE;
-	text-decoration: none;
-	margin: 5px 0;
-	width: 105px;
-	float: left;
-	text-align: center;
-	border-left: 1px solid #fff;
-	padding-top: 3px;
-	padding-bottom: 3px;
-}
-
-.navbar li a:hover {
-	background-color: #47F;
-	color: #FFF
 }
 
 .shadow1 {
@@ -365,4 +318,30 @@ mezzoforte {
 	fill: none;
 	stroke: #000;
 	shape-rendering: crispEdges;
+}
+
+ul {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #ddd;
 }
