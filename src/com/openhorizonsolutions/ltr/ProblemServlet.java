@@ -112,10 +112,12 @@ public class ProblemServlet extends HttpServlet
 
 			s += "\n" + 
 				"<body class=\"no-mathjax\">\n" + 
-				"<ul>\n" + 
-				"  <li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
-				"  <li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
-				"</ul>\n" +
+				"<div id=\"lulz\">\n" +
+				"	<ul>\n" + 
+				"  		<li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+				"  		<li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+				"	</ul>\n" +
+				"</div>\n" +
 				"<br>\n" +
 				" <div align=\"center\">\n" + 
 				"  <div class=\"shadow1\">\n" + 
@@ -176,12 +178,14 @@ public class ProblemServlet extends HttpServlet
 						+ "\" type=\"application/pdf\" width=\"100%\" height=\"600px\" />\n<br>\n";
 			}
 			accumDescription += p.getDescription();
-			s += "\n" +
+			s += 	"\n" +
 					"<body class=\"no-mathjax\">\n" +
-					"<ul>\n" + 
-					"  <li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
-					"  <li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
-					"</ul>\n" +
+					"<div id=\"lulz\">\n" +
+					"	<ul>\n" + 
+					"  		<li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+					"  		<li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+					"	</ul>\n" +
+					"</div>\n" +
 					"<br>\n" +
 					" <div align=\"center\">\n" + 
 					"  <div class=\"shadow1\">\n" + "\n" +
@@ -304,10 +308,12 @@ public class ProblemServlet extends HttpServlet
 
 			s += "\n" +
 					"<body class=\"no-mathjax\">\n" + 
-					"<ul>\n" + 
-					"  <li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
-					"  <li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
-					"</ul>\n" +
+					"<div id=\"lulz\">\n" +
+					"	<ul>\n" + 
+					"  		<li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+					"  		<li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+					"	</ul>\n" +
+					"</div>\n" +
 					"<br>\n" +
 					" <div align=\"center\">\n" +
 					"  <div class=\"shadow1\">\n" +

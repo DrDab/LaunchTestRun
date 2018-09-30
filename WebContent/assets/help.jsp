@@ -2,9 +2,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 
-<title>LaunchTestRun</title>
+
+ <title>LaunchTestRun</title>
+ <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+ <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+ <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -21,8 +26,7 @@ MathJax.Hub.Config({
   }
 });
 </script>
-<script type="text/javascript"
-    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <link rel="stylesheet" href="<%= response.encodeURL(request.getContextPath() + "/assets/fonts.css") %>">
 <link rel="stylesheet" href="<%= response.encodeURL(request.getContextPath() + "/assets/page-styles.css") %>">
 
@@ -30,6 +34,7 @@ MathJax.Hub.Config({
     href="<%= response.encodeURL(request.getContextPath() + "/assets/favicon.ico") %>">
 <link rel="shortcut icon " 
     href="<%= response.encodeURL(request.getContextPath() + "/assets/favicon.ico") %>">
+
 </head>
 
 <body class="no-mathjax">
@@ -44,41 +49,37 @@ MathJax.Hub.Config({
         <div class="shadow1">
             <div class="content">
                 <div class="panel">
-                    <h2>Error</h2>
+                    <h2>Information</h2>
                 </div>
-                <div class="card"
-                    style="Background-color: #ea4335; width: 800px; padding-top: 10px; padding-bottom: 10px;">
-                    <div class="container">
-                        <center>
-                            <plain style="color:#ffffff; font-size=0.8em;"> <subsection>Error 403: Access Denied</subsection> </plain>
-                        </center>
+                    <div align="left" class="card"
+                        style='width: 800px; padding-top: 10px;'>
+                        <div class="container">
+                          <span id="probtext-text" class="mathjax">
+                            <plain>
+                                <subsection>General Technical Details</subsection>
+								<ul>
+								    <li>Lorem ipsum<br></li>
+									<li>Boeing 747<br></li>
+									<li>Airbus A380<br></li>
+									<li>Lockheed F-22<br></li>
+									<li>Supermarine Spitfire<br></li>
+								</ul>
+							</plain>
+                          </span>
+                        </div>
+                        <br>
                     </div>
-                </div>
-                <br>
-                <div align="left" class="card"
-                    style='width: 800px; padding-top: 10px;'>
-                    <div class="container">
-                        <span id="probtext-text" class="mathjax">
-                          <plain>
-                          The page that you have requested has been denied, due to inadequate permissions.
-                          <br>
-                          <br>
-                          To return to the homepage, please click <a href="<%= response.encodeURL(request.getContextPath() + "/index.html") %>">here</a>.
-                          <br>
-                          To view a list of problems, please click <a href="<%= response.encodeURL(request.getContextPath() + "/listproblems.html") %>">here</a>.
-                          </plain>
-                          <br>
-                       </span>
-                    </div>
-                    <br>
-                </div>
-                <br><br>
+                    <br><br>
             </div>
         </div>
     </div>
-
+    
     <br style="clear: both" />
     <center>LaunchTestRun is (C) copyright of Victor Du.</center>
+    
+<br style="clear:both" />
+<br style="clear:both" />
+
 </body>
 
 </html>
