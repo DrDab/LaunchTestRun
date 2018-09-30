@@ -114,8 +114,8 @@ public class ProblemServlet extends HttpServlet
 			s += "\n" + 
 				"<body class=\"no-mathjax\">\n" + 
 				"<ul>\n" + 
-				"  <li><plain><a href=\"" + contextPath + "/index.html\">Home</a></plain></li>\n" + 
-				"  <li><plain><a href=\"" + contextPath +"/listproblems.html\">Problems</a></plain></li>\n" + 
+				"  <li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+				"  <li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
 				"</ul>\n" +
 				"<br>\n" +
 				" <div align=\"center\">\n" + 
@@ -180,8 +180,8 @@ public class ProblemServlet extends HttpServlet
 			s += "\n" +
 					"<body class=\"no-mathjax\">\n" +
 					"<ul>\n" + 
-					"  <li><plain><a href=\"" + contextPath + "/index.html\">Home</a></plain></li>\n" + 
-					"  <li><plain><a href=\"" + contextPath +"/listproblems.html\">Problems</a></plain></li>\n" + 
+					"  <li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+					"  <li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
 					"</ul>\n" +
 					"<br>\n" +
 					" <div align=\"center\">\n" + 
@@ -306,8 +306,8 @@ public class ProblemServlet extends HttpServlet
 			s += "\n" +
 					"<body class=\"no-mathjax\">\n" + 
 					"<ul>\n" + 
-					"  <li><plain><a href=\"" + contextPath + "/index.html\">Home</a></plain></li>\n" + 
-					"  <li><plain><a href=\"" + contextPath +"/listproblems.html\">Problems</a></plain></li>\n" + 
+					"  <li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+					"  <li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
 					"</ul>\n" +
 					"<br>\n" +
 					" <div align=\"center\">\n" +
