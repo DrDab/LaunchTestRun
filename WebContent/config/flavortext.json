@@ -1,10 +1,13 @@
 {
-    "winner":[
+    "winner":
+    [
     "Good job!", 
     "Congratulations!", 
     "Awesome!", 
     "#1 - Victory Royale!", 
-    "Well done!"
+    "Well done!",
+    "You did it!",
+    "* The challenge was defeated!<br><br>*      Y O U   W O N !<br><br>* You and your team gained 50 exp each."
     ],
     "inspirational":
     [
@@ -23,6 +26,8 @@
     "Debugging Tip #8: Name your variables appropriately.",
     "The best preparation for tomorrow is doing your best today. - H. Jackson Brown. Jr.",
     "It does not matter how slowly you go as long as you don't stop. - Confucius",
-    "Difficult roads often lead to beautiful destinations."
+    "Difficult roads often lead to beautiful destinations.",
+    "* Seeing this quote fills you with DETERMINATION!",
+    "So close!",
     ]
 }
