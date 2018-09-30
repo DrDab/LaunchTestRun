@@ -328,10 +328,10 @@ public class SolutionUploadHandler extends HttpServlet
 					
 					String message = "";
 					message += "<plainbold>Problem</plainbold>";
+					message += "<plain>";
 					message += "<br>" + curProblem.getTitle() + " (" + curProblem.getSetInfo() + ")";
 					message += "<br><br>";
 					message += "<plainbold>File Upload Details</plainbold>";
-					message += "<plain>";
 					message += "<br>File Name: " + fileName;
 					message += "<br>File Size: " + buffer.length + " B";
 					message += "<br>File MD5 Checksum: " + md5sum;
