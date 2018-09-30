@@ -104,8 +104,7 @@ public class ProblemServlet extends HttpServlet
 				{
 					String pCPID = problem.getCPID();
 					String title = problem.getTitle();
-					generatedLinkPart += "<plain><a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title
-							+ "</a></plain><br>\n";
+					generatedLinkPart += "<plain><a href=\"" + contextPath + "/problem.html/" + pCPID + "\">" + title + "</a></plain><br>\n";
 				}
 				generatedLinkPart += "<br><br>";
 				generatedLinkPart += "</p></div></div><br><br>";
