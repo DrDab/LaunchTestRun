@@ -1,9 +1,6 @@
 package com.openhorizonsolutions.ltr;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -193,7 +190,8 @@ public class ProblemServlet extends HttpServlet
 					"</h2>\n" + 
 					"<h2> " +
 					p.getSetInfo() +
-					" </h2>\n" + " \n" +
+					" </h2>\n" + 
+					" \n" +
 					"</div><br><br><br>\n" +
 					"\n" +
 					"<br style=\"clear:both\" />\n" + 
