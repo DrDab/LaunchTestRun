@@ -327,6 +327,9 @@ public class SolutionUploadHandler extends HttpServlet
 					boolean compileSuccessful = executableFile.exists();
 					
 					String message = "";
+					message += "<plainbold>Problem</plainbold>";
+					message += "<br>" + curProblem.getTitle() + " (" + curProblem.getSetInfo() + ")";
+					message += "<br><br>";
 					message += "<plainbold>File Upload Details</plainbold>";
 					message += "<plain>";
 					message += "<br>File Name: " + fileName;
