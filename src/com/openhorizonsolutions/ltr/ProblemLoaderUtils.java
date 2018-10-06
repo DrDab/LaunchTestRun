@@ -392,15 +392,40 @@ public class ProblemLoaderUtils
 		{
 			return new StdPipePostExecOutputHandler("", "", "", 0.0);
 		}
-
+		
 		try 
 		{
+			ArrayList<Integer> al = new ArrayList<Integer>();
 			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
 			pb.directory(new File(file.getParent()));
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
 			double start = DataStore.stw.getElapsedNanoTime();
 			Process buildProcess = pb.start();
+			new Thread(new Runnable() 
+			{
+
+				@Override
+				public void run()
+				{
+					// TODO Auto-generated method stub
+					try 
+					{
+						Thread.sleep(30000);
+						if (buildProcess.isAlive())
+						{
+							buildProcess.destroy();
+							al.add(1);
+						}
+					} 
+					catch (InterruptedException e) 
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			}).start();
 		    // System.out.println("Waiting for process...");
 		    buildProcess.waitFor();
 		    // System.out.println("Done! Yiff yiff!~");
@@ -411,7 +436,14 @@ public class ProblemLoaderUtils
 		    // System.out.println("STDOUT: " + stdout + "<");
 		    // System.out.println("STDERR: " + stderr + "<");
 		    double taken = (DataStore.stw.getElapsedNanoTime() - start) / 1000000.0;
-		    return new StdPipePostExecOutputHandler("", stdout, stderr, taken);
+		    if (al.size() == 0)
+		    {
+		    	 return new StdPipePostExecOutputHandler("", stdout, stderr, taken);
+		    }
+		    else
+		    {
+		    	return new StdPipePostExecOutputHandler("", "Process Forcibly Terminated", "The process took too long to run, and was terminated.", taken);
+		    }
 		} 
 		catch (IOException e)
 		{

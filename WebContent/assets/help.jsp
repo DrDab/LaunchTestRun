@@ -51,31 +51,98 @@ MathJax.Hub.Config({
                 <div class="panel">
                     <h2>Information</h2>
                 </div>
-                    <div align="left" class="card"
+					<div align="left" class="card"
+						style='width: 800px; padding-top: 10px;'>
+						<div class="container">
+							<span id="probtext-text" class="mathjax"> <plain>
+								<subsection>General Technical Details</subsection>
+								<ul>
+									<li>Your program must be less than 2MB in size. Your
+										program may take up to 30 seconds to compile, but keep it
+										reasonable. Unless otherwise stated, your program will be
+										given 2 seconds to execute.</li>
+									<li>Do not submit programs that open data files that
+										aren't related to the problem at hand. Read only the specified
+										input files and write only the specified output files. Do not
+										use `temporary' data files.</li>
+									<li>Progams must not pause and wait for keypresses. For
+										example, if you call system("pause") from your code, the
+										grading environment might time out waiting for a non-existant
+										keypress.</li>
+									<li>Virtually every program's output is in the form of
+										"lines". Since this is a UNIX environment, lines in all
+										input/output files are terminated with a single newline "\n",
+										rather than a carriage return plus newline "\r\n" (although
+										properly-designed programs generally should not care which
+										convention is being used). If your output does not contain a
+										newline at the end of every line, it may be graded as
+										incorrect.</li>
+								</ul>
+								</plain>
+							</span>
+						</div>
+						<br>
+					</div>
+					<br>
+					<br>
+					<div align="left" class="card"
                         style='width: 800px; padding-top: 10px;'>
                         <div class="container">
-                          <span id="probtext-text" class="mathjax">
-                            <plain>
-                                <subsection>General Technical Details</subsection>
-								<ul>
-								    <li>Lorem ipsum<br></li>
-									<li>Boeing 747<br></li>
-									<li>Airbus A380<br></li>
-									<li>Lockheed F-22<br></li>
-									<li>Supermarine Spitfire<br></li>
-								</ul>
-							</plain>
-                          </span>
+                            <span id="probtext-text" class="mathjax"> <plain>
+                                <subsection>Language-Specific Technical Details</subsection>
+                                <ul>
+                                    <li>For <b>C/C++</b> programmers: Programs are compiled
+                                        with gcc/g++ using the "-O2" optimization flag and "-lm"
+                                        to access the math library, and also "-std=c++11" to enable
+                                        support for C++11. Ints are 32 bits in size; use a "long long"
+                                        if you need a 64-bit integer. To read or write a long long
+                                        variable with C-style I/O (e.g., scanf, printf), use the
+                                        "%lld" format string.
+                                    </li>
+
+									<li>For <b>C#</b> programmers: Programs are compiled with
+										the mono free implementation of Microsoft .NET. You must
+										submit your entire program in one file, and this file must
+										have exactly one public class named the same as the file (for
+										example, if your file is called "MyFile.cs", then it should
+										contain "public class MyFile"). This class needs to have your
+										main method. All other clases in the file should be defined
+										without the "public" tag (e.g., as "class MyOtherClass"). Do
+										not include a "package" line in your source code.
+									</li>
+
+									<li>For <b>Java</b> programmers: Programs are compiled
+										with Java version 1.8 or above, and the Java standard library
+										is provided.. You must submit your entire program in one file,
+										and this file must have exactly one public class named the
+										same as the file (for example, if your file is called
+										"MyFile.java", then it should contain "public class MyFile").
+										This class needs to have your public static void main
+										function. All other clases in the file should be defined
+										without the "public" tag (e.g., as "class MyOtherClass"). Do
+										not include a "package" line in your source code.
+									</li>
+
+									<li>For <b>Python</b> programmers: We offer both Python
+                                        2 and Python 3. Please be sure to select the correct
+                                        version when you submit, since it is often the case that
+                                        programs developed for one version will not work properly in
+                                        the other (use "python --version" to check the version of your
+                                        local Python interpreter).
+                                    </li>
+                                </ul>
+                                </plain>
+                            </span>
                         </div>
                         <br>
                     </div>
-                    <br><br>
+					<br><br>
             </div>
         </div>
     </div>
     
     <br style="clear: both" />
-    <center>LaunchTestRun is (C) copyright of Victor Du.</center>
+    <center>This page was adapted from the USACO contest rules.<br>LaunchTestRun is (C) copyright of Victor Du.</center>
     
 <br style="clear:both" />
 <br style="clear:both" />
