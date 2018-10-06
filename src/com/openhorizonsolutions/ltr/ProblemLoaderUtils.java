@@ -366,6 +366,7 @@ public class ProblemLoaderUtils
 		{
 			command += eld.getGCC() + " ";
 			command += file.getAbsolutePath() + " ";
+			command += "-lm -O2 ";
 			command += "-o " + file.getParent() + "/toExecute";
 		}
 		else if (language == 1)
@@ -373,6 +374,7 @@ public class ProblemLoaderUtils
 			command += eld.getGPP() + " ";
 			command += file.getAbsolutePath() + " ";
 			command += "--std=c++11 ";
+			command += "-lm -O2 ";
 			command += "-o " + file.getParent() + "/toExecute";
 		}
 		else if (language == 2)
