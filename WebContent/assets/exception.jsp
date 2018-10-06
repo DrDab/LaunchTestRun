@@ -118,7 +118,12 @@ Stack trace:
 
  <br style="clear:both" />
 
-<center>Page requested: <% out.print(request.getRequestURI()); %><br>Page generated in: <% out.print((double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0)); %> seconds [ 100% Tomcat 8 ]<br>LaunchTestRun is (C) copyright of Victor Du.</center></body>
+<center>
+<%
+double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0); 
+out.print(String.format("<center>Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.</center>", request.getRequestURI(), totalTimeUsed)); 
+%>
+</center></body>
 
 </html>
 

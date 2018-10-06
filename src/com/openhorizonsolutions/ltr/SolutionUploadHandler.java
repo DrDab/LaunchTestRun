@@ -61,6 +61,7 @@ public class SolutionUploadHandler extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		// TODO Auto-generated method stub
+		double start = DataStore.stw.getElapsedNanoTime();
 		PrintWriter writer = response.getWriter();
 		if (!ServletFileUpload.isMultipartContent(request)) 
 		{
@@ -188,10 +189,10 @@ public class SolutionUploadHandler extends HttpServlet
 					
 					DataStore.forensicsLogger.logUpload(uuid, md5sum, request.getRemoteAddr(), DataStore.typeNames[languageType], uploadDir.getPath(), fileSize);
 					Date uploadDate = new Date((long) (DataStore.stw.getTime() * 1000.0));
+					double ioDone = (DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0;
 					
 					String realpath = getServletContext().getRealPath("");
-					
-					ProblemLoaderUtils.refreshIO(realpath);
+
 					StdPipePostExecOutputHandler compilerOutput = null;
 					try 
 					{
@@ -237,6 +238,7 @@ public class SolutionUploadHandler extends HttpServlet
 					{
 					}
 					
+					double runningStart = DataStore.stw.getElapsedNanoTime();
 					String inputname = curProblem.getInputName();
 					File inputfile = new File(uploadDir, inputname);
 					sampleInputLocal.renameTo(inputfile);
@@ -263,6 +265,7 @@ public class SolutionUploadHandler extends HttpServlet
 						e.printStackTrace();
 					}
 					judgeInputLocal.delete();
+					double runningDone = (DataStore.stw.getElapsedNanoTime() - runningStart) / 1000000000.0;
 
 					String sampleStatus = "SYSTEM ERROR";
 					String judgeStatus = "SYSTEM ERROR";
@@ -398,13 +401,25 @@ public class SolutionUploadHandler extends HttpServlet
 					}
 					message += "</plain><br><br>";
 					request.setAttribute("message", message);
+					
+					double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
+					double compilerTime = (double)(compilerOutput.getMillis() / 1000.0);
+					
+					String end = String.format("Page requested: %s <br>Page generated in: %5.2f seconds<br>" +
+							"Upload processed in: %5.3f seconds<br>" +
+							"Code compiled in: %5.3f seconds<br>" +
+							"Code judged in: %5.3f seconds<br><br>" +
+							"LaunchTestRun is (C) copyright of Victor Du.", request.getRequestURI(), totalTimeUsed, ioDone, compilerTime, runningDone);
+					request.setAttribute("debuginfo", end);
 				}
 				else
 				{
 					request.setAttribute("message", "The selected language type is doesn't match the file-type uploaded.");
+					double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
+					String end = String.format("Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.", request.getRequestURI(), totalTimeUsed);
+					request.setAttribute("debuginfo", end);
 				}
 			}
-			
 			getServletContext().getRequestDispatcher("/assets/message.jsp").forward(request, response);
 
 		}

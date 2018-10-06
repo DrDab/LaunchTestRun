@@ -365,9 +365,9 @@ public class ProblemServlet extends HttpServlet
 					" <br style=\"clear:both\" />\n" + "\n";
 		}
 
-		String end = "<center>Page requested: " + request.getRequestURI() + "<br>Page generated in: "
-				+ (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0)
-				+ " seconds [ 100% Tomcat 8 ]<br>LaunchTestRun is (C) copyright of Victor Du.</center>";
+		
+		double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
+		String end = String.format("<center>Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.</center>", request.getRequestURI(), totalTimeUsed);
 		response.getWriter().append(s).append(end + "</body>\n" + "\n" + "</html>\n" + "\n" + "\n");
 	}
 
