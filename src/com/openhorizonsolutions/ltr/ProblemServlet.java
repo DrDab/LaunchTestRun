@@ -115,7 +115,8 @@ public class ProblemServlet extends HttpServlet
 				"<div id=\"lulz\">\n" +
 				"	<ul>\n" + 
 				"  		<li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
-				"  		<li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+				"  		<li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" +
+				"  		<li><plain><a href=\"" + contextPath + "/help.html\"><img src=\"" + contextPath + "/assets/images/baseline-info-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
 				"	</ul>\n" +
 				"</div>\n" +
 				"<br>\n" +
@@ -183,7 +184,8 @@ public class ProblemServlet extends HttpServlet
 					"<div id=\"lulz\">\n" +
 					"	<ul>\n" + 
 					"  		<li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
-					"  		<li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+					"  		<li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" +
+					"  		<li><plain><a href=\"" + contextPath + "/help.html\"><img src=\"" + contextPath + "/assets/images/baseline-info-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
 					"	</ul>\n" +
 					"</div>\n" +
 					"<br>\n" +
@@ -311,7 +313,8 @@ public class ProblemServlet extends HttpServlet
 					"<div id=\"lulz\">\n" +
 					"	<ul>\n" + 
 					"  		<li><plain><a href=\"" + contextPath + "/index.html\"><img src=\"" + contextPath + "/assets/images/baseline-home-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
-					"  		<li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
+					"  		<li><plain><a href=\"" + contextPath + "/listproblems.html\"><img src=\"" + contextPath + "/assets/images/baseline-list-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" +
+					"  		<li><plain><a href=\"" + contextPath + "/help.html\"><img src=\"" + contextPath + "/assets/images/baseline-info-24px.svg\" height=\"24\" width=\"24\"></a></plain></li>\n" + 
 					"	</ul>\n" +
 					"</div>\n" +
 					"<br>\n" +
