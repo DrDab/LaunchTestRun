@@ -49,15 +49,29 @@ MathJax.Hub.Config({
     <div align="center">
         <div class="shadow1">
             <div class="content">
-                <div class="panel">
-                    <center><h2>LaunchTestRun</h2></center>
-                </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+                
+                    <div class="container">
+                        <center>
+                            <forte style="color:#8bc34a;">Launch</forte>
+                            <forte style="color:#ffc107;">Test</forte>
+                            <forte style="color:#0ca9f4;">Run</forte>
+                        </center>
+                    </div>
+                <br>
+                <br>
                     <div align="left" class="card"
                         style='width: 800px; padding-top: 10px;'>
                         <div class="container">
                           <span id="probtext-text" class="mathjax">
                             <plain>
-                                You have reached the homepage for the LaunchTestRun server, a automated platform for testing competitive programming solutions. LaunchTestRun lets you view programming problems, and test your solutions to these problems at any time you want.<br><br>To view a list of problems, please click <a href="<%= response.encodeURL(request.getContextPath() + "/listproblems.html") %>">here</a>. <br>
+                                You have reached the homepage for LaunchTestRun, an automated platform for testing programming solutions. LaunchTestRun lets you view programming problems, and test your solutions to these problems at any time you want.<br><br>To view a list of problems, please click <a href="<%= response.encodeURL(request.getContextPath() + "/listproblems.html") %>"><strong style=″color:#0ca9f4;″>here</strong></a>. <br>
                             </plain>
                           </span>
                         </div>
@@ -69,6 +83,26 @@ MathJax.Hub.Config({
     </div>
     
     <br style="clear: both" />
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <center><font size="1">LaunchTestRun is (C) copyright of Victor Du.</font></center>
 
 <br style="clear:both" />
