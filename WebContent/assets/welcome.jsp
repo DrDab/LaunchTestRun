@@ -71,7 +71,7 @@ MathJax.Hub.Config({
                         <div class="container">
                           <span id="probtext-text" class="mathjax">
                             <plain>
-                                You have reached the homepage for LaunchTestRun, an automated platform for testing programming solutions. LaunchTestRun lets you view programming problems, and test your solutions to these problems at any time you want.<br><br>To view a list of problems, please click <a href="<%= response.encodeURL(request.getContextPath() + "/listproblems.html") %>"><strong style=″color:#0ca9f4;″>here</strong></a>. <br>
+                                You have reached the homepage for LaunchTestRun, an automated platform for testing programming solutions. LaunchTestRun lets you view programming problems, and test your solutions to these problems at any time you want.<br><br>To view a list of problems, please click <a href="<%= response.encodeURL(request.getContextPath() + "/listproblems.html") %>"><strong style="color:#0ca9f4;">here</strong></a>. <br>
                             </plain>
                           </span>
                         </div>
