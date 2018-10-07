@@ -143,7 +143,7 @@ MathJax.Hub.Config({
     </div>
     
     <br style="clear: both" />
-    <center>This page was adapted from the USACO contest rules.<br>LaunchTestRun is (C) copyright of Victor Du.</center>
+    <center><font size="1">This page was adapted from the USACO contest rules.<br>LaunchTestRun is (C) copyright of Victor Du.</font></center>
     
 <br style="clear:both" />
 <br style="clear:both" />

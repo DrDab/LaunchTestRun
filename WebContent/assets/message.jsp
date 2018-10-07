@@ -60,7 +60,7 @@ MathJax.Hub.Config({
 	</div>
 	
 	<br style="clear: both" />
-	<center>${debuginfo }</center>
+	<center><font size="1">${debuginfo }</font></center>
 </body>
 
 </html>

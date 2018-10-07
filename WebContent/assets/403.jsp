@@ -79,7 +79,7 @@ MathJax.Hub.Config({
     </div>
 
     <br style="clear: both" />
-    <center>LaunchTestRun is (C) copyright of Victor Du.</center>
+    <center><font size="1">LaunchTestRun is (C) copyright of Victor Du.</font></center>
 </body>
 
 </html>

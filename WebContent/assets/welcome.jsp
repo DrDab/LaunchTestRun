@@ -50,14 +50,14 @@ MathJax.Hub.Config({
         <div class="shadow1">
             <div class="content">
                 <div class="panel">
-                    <h2>Welcome!</h2>
+                    <center><h2>LaunchTestRun</h2></center>
                 </div>
                     <div align="left" class="card"
                         style='width: 800px; padding-top: 10px;'>
                         <div class="container">
                           <span id="probtext-text" class="mathjax">
                             <plain>
-                                <strong id="greeting">Hello!</strong><br><br>You have reached the homepage for the LaunchTestRun server, a automated platform for testing competitive programming solutions. LaunchTestRun lets you view programming problems, and test your solutions to these problems at any time you want.<br><br>To view a list of problems, please click <a href="<%= response.encodeURL(request.getContextPath() + "/listproblems.html") %>">here</a>. <br>
+                                You have reached the homepage for the LaunchTestRun server, a automated platform for testing competitive programming solutions. LaunchTestRun lets you view programming problems, and test your solutions to these problems at any time you want.<br><br>To view a list of problems, please click <a href="<%= response.encodeURL(request.getContextPath() + "/listproblems.html") %>">here</a>. <br>
                             </plain>
                           </span>
                         </div>
@@ -69,21 +69,7 @@ MathJax.Hub.Config({
     </div>
     
     <br style="clear: both" />
-    <center>LaunchTestRun is (C) copyright of Victor Du.</center>
- 
-<script>
-    var greeting = document.getElementById("greeting");
-    var today = new Date()
-    var curHr = today.getHours()
-
-    if (curHr < 12) {
-        greeting.innerHTML = "Good morning!";
-    } else if (curHr < 18) {
-        greeting.innerHTML = "Good afternoon!";
-    } else {
-        greeting.innerHTML = "Good evening!";
-    }
-</script>
+    <center><font size="1">LaunchTestRun is (C) copyright of Victor Du.</font></center>
 
 <br style="clear:both" />
 <br style="clear:both" />

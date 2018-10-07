@@ -370,7 +370,7 @@ public class ProblemServlet extends HttpServlet
 
 		
 		double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
-		String end = String.format("<center>Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.</center>", request.getRequestURI(), totalTimeUsed);
+		String end = String.format("<center><font size=\"1\">Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.</font></center>", request.getRequestURI(), totalTimeUsed);
 		response.getWriter().append(s).append(end + "</body>\n" + "\n" + "</html>\n" + "\n" + "\n");
 	}
 
