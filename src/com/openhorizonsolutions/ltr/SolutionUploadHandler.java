@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -62,6 +63,35 @@ public class SolutionUploadHandler extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
+		String ip = request.getRemoteAddr();
+		if (((start - DataStore.lastTimeListRefreshed) / 1000000000.0) >= 60.0)
+		{
+			DataStore.lastTimeListRefreshed = start;
+			DataStore.ipMap.clear();
+		}
+		
+		if (DataStore.ipMap != null)
+		{
+			if (DataStore.ipMap.containsKey(ip))
+			{
+				DataStore.ipMap.put(ip, (int)(DataStore.ipMap.get(ip) + 1));
+			}
+			else
+			{
+				DataStore.ipMap.put(ip, 1);
+			}
+			
+			if (DataStore.ipMap.get(ip) > 6)
+			{
+				request.setAttribute("message", "<subsection>Upload Blocked</subsection><br><br><plain>Reason: You have attempted to upload too many files at a time. Please wait 60 seconds, relax and try again.</plain>");
+				double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
+				String end = String.format("Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.", request.getRequestURI(), totalTimeUsed);
+				request.setAttribute("debuginfo", end);
+				getServletContext().getRequestDispatcher("/assets/message.jsp").forward(request, response);
+				return;
+			}
+		}
+		
 		PrintWriter writer = response.getWriter();
 		if (!ServletFileUpload.isMultipartContent(request)) 
 		{
@@ -164,7 +194,7 @@ public class SolutionUploadHandler extends HttpServlet
 				{
 					if (!(fileExtension.equals(DataStore.types[languageType])) && !(fileExtension.equals(DataStore.altTypes[languageType])))
 					{
-						DataStore.forensicsLogger.logUpload(uuid, "", request.getRemoteAddr(), "Invalid file type: " + fileExtension, uploadDir.getPath(), fileSize);
+						DataStore.forensicsLogger.logUpload(uuid, "", ip, "Invalid file type: " + fileExtension, uploadDir.getPath(), fileSize);
 						ok = false;
 					}
 				}
@@ -187,7 +217,7 @@ public class SolutionUploadHandler extends HttpServlet
 						e.printStackTrace();
 					}
 					
-					DataStore.forensicsLogger.logUpload(uuid, md5sum, request.getRemoteAddr(), DataStore.typeNames[languageType], uploadDir.getPath(), fileSize);
+					DataStore.forensicsLogger.logUpload(uuid, md5sum, ip, DataStore.typeNames[languageType], uploadDir.getPath(), fileSize);
 					Date uploadDate = new Date((long) (DataStore.stw.getTime() * 1000.0));
 					double ioDone = (DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0;
 					
