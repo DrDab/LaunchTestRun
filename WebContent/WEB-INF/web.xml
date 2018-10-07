@@ -8,8 +8,8 @@
     </session-config>
 	<display-name>LaunchTestRun</display-name>
 	<welcome-file-list>
-		<welcome-file>upload.jsp</welcome-file>
-	</welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list> 
 	<servlet>
 		<servlet-name>ProblemServlet</servlet-name>
 		<servlet-class>com.openhorizonsolutions.ltr.ProblemServlet</servlet-class>
