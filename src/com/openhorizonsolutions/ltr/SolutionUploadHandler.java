@@ -1,8 +1,10 @@
 package com.openhorizonsolutions.ltr;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,6 +26,7 @@ import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.json.JSONObject;
 
 /**
  * Servlet implementation class SolutionUploadHandler
@@ -64,6 +67,8 @@ public class SolutionUploadHandler extends HttpServlet
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
 		String ip = request.getRemoteAddr();
+		String realPath = getServletContext().getRealPath("");
+		
 		if (((start - DataStore.lastTimeListRefreshed) / 1000000000.0) >= 60.0)
 		{
 			DataStore.lastTimeListRefreshed = start;
@@ -78,17 +83,23 @@ public class SolutionUploadHandler extends HttpServlet
 			}
 			else
 			{
-				DataStore.ipMap.put(ip, 1);
+				if (!ip.equals("127.0.0.1"))
+				{
+					DataStore.ipMap.put(ip, 1);
+				}
 			}
 			
-			if (DataStore.ipMap.get(ip) > 6)
+			if (DataStore.ipMap.containsKey(ip))
 			{
-				request.setAttribute("message", "<subsection>Upload Blocked</subsection><br><br><plain>Reason: You have attempted to upload too many files at a time. Please wait 60 seconds, relax and try again.</plain>");
-				double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
-				String end = String.format("Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.", request.getRequestURI(), totalTimeUsed);
-				request.setAttribute("debuginfo", end);
-				getServletContext().getRequestDispatcher("/assets/message.jsp").forward(request, response);
-				return;
+				if (DataStore.ipMap.get(ip) > 6)
+				{
+					request.setAttribute("message", "<subsection>Upload Blocked</subsection><br><br><plain>Reason: You have attempted to upload too many files at a time. Please wait 60 seconds, relax and try again.</plain>");
+					double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
+					String end = String.format("Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.", request.getRequestURI(), totalTimeUsed);
+					request.setAttribute("debuginfo", end);
+					getServletContext().getRequestDispatcher("/assets/message.jsp").forward(request, response);
+					return;
+				}
 			}
 		}
 		
@@ -111,7 +122,6 @@ public class SolutionUploadHandler extends HttpServlet
 
 			upload.setSizeMax(1024 * 512);
 
-			String realPath = getServletContext().getRealPath("");
 			String uuid = UUID.randomUUID().toString();
 			
 			File uploadDirParent = new File(realPath, UPLOAD_DIRECTORY);
