@@ -60,6 +60,15 @@ MathJax.Hub.Config({
 	</div>
 	
 	<br style="clear: both" />
+	<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 	<center><font size="1">${debuginfo }</font></center>
 </body>
 
