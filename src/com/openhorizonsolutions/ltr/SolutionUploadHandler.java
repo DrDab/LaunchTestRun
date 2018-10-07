@@ -432,11 +432,11 @@ public class SolutionUploadHandler extends HttpServlet
 						}
 						if (stdOutNotNull)
 						{
-							message += "<br>The compiler wrote this to standard output:<br><pre><code>" + toFilterCompilerStdOut + "<br><br>";
+							message += "<br>The compiler wrote this to standard output:<br><pre><code>" + toFilterCompilerStdOut + "</code><br><br>";
 						}
 						if (stdErrNotNull)
 						{
-							message += "<br>The compiler threw the following errors:<br><pre><code>" + toFilterCompilerStdErr + "<br><br>";
+							message += "<br>The compiler threw the following errors:<br><pre><code>" + toFilterCompilerStdErr + "</code><br><br>";
 						}
 					}
 					message += "</plain><br><br>";
