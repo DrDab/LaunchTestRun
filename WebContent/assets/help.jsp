@@ -55,6 +55,67 @@ MathJax.Hub.Config({
 <link rel="shortcut icon " 
     href="<%= response.encodeURL(request.getContextPath() + "/assets/favicon.ico") %>">
 
+<!--
+
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      `hhhhhhhhhhhhhhhhhhhhhhho                                                     
+```````````````````````hhhhhhhhhhhhhhhhhhhhhhhs      ```````````````````````````````````````````````
+yyyyyyyyyyyyyyyyyyyyyyyhhhhhhhhhhhhhhhhhhhhhhhy      +yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+yyyyyyyyyyyyyyyyyyyyyyyhhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhyyyyyyyyyyyyyyyyyyyyyyy
+```````````````````````hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh-``````````````````````
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.``````````````````````
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhyyyyyyyyyyyyyyyyyyyyyyy
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       yhhhhhhhhhhhhhhhhhhhhhhy      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       yhhhhhhhhhhhhhhhhhhhhhhh      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       
+                       
+-->
+
+
 </head>
 
 <body class="no-mathjax">
