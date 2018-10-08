@@ -103,6 +103,20 @@ public class SolutionUploadHandler extends HttpServlet
 			}
 		}
 		
+		if (((start - DataStore.lastTimeOnlineRefreshed) / 1000000000.0) >= 900.0) 
+		{
+			DataStore.lastTimeOnlineRefreshed = start;
+			DataStore.onlineMap.clear();
+		}
+		
+		if (DataStore.onlineMap != null) 
+		{
+			if (!DataStore.onlineMap.containsKey(ip))
+			{
+				DataStore.onlineMap.put(ip, 1);
+			}
+		}
+		
 		PrintWriter writer = response.getWriter();
 		if (!ServletFileUpload.isMultipartContent(request)) 
 		{
@@ -445,18 +459,30 @@ public class SolutionUploadHandler extends HttpServlet
 					double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
 					double compilerTime = (double)(compilerOutput.getMillis() / 1000.0);
 					
-					String end = String.format("Page requested: %s <br>Page generated in: %5.2f seconds<br>" +
+					String end = String.format("Page requested: %s <br>" +
+							"%d Users online<br>" +
+							"Page generated in: %5.2f seconds<br>" +
 							"Upload processed in: %5.3f seconds<br>" +
 							"Code compiled in: %5.3f seconds<br>" +
-							"Code judged in: %5.3f seconds<br><br>" +
-							"LaunchTestRun is (C) copyright of Victor Du.", request.getRequestURI(), totalTimeUsed, ioDone, compilerTime, runningDone);
+							"Code judged in: %5.3f seconds<br><br>",
+							request.getRequestURI(),
+							DataStore.onlineMap.size(),
+							totalTimeUsed,
+							ioDone,
+							compilerTime,
+							runningDone);
 					request.setAttribute("debuginfo", end);
 				}
 				else
 				{
 					request.setAttribute("message", "The selected language type is doesn't match the file-type uploaded.");
 					double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
-					String end = String.format("Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.", request.getRequestURI(), totalTimeUsed);
+					String end = String.format("Page requested: %s <br>" +
+							  "%d Users online<br>" +
+							  "Page generated in: %5.3f seconds<br>", 
+							  request.getRequestURI(),
+							  DataStore.onlineMap.size(),
+							  totalTimeUsed);
 					request.setAttribute("debuginfo", end);
 				}
 			}

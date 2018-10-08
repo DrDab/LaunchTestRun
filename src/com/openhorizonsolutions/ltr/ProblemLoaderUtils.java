@@ -487,4 +487,9 @@ public class ProblemLoaderUtils
 		}
 	}
 	
+	public static boolean isMobileBrowser(String userAgent)
+	{
+		return userAgent.toLowerCase().contains("mobile");
+	}
+	
 }

@@ -35,12 +35,28 @@ public class ProblemServlet extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
+		boolean isMobile = ProblemLoaderUtils.isMobileBrowser(request.getHeader("User-Agent"));
+		String ip = request.getRemoteAddr();
 		String contextPath = request.getContextPath();
 		String requestURI = request.getRequestURI();
 		String[] sep = requestURI.split("/");
 		String cpid = sep[sep.length - 1];
 		Problem p = null;
 
+		if (((start - DataStore.lastTimeOnlineRefreshed) / 1000000000.0) >= 900.0) 
+		{
+			DataStore.lastTimeOnlineRefreshed = start;
+			DataStore.onlineMap.clear();
+		}
+		
+		if (DataStore.onlineMap != null) 
+		{
+			if (!DataStore.onlineMap.containsKey(ip))
+			{
+				DataStore.onlineMap.put(ip, 1);
+			}
+		}
+		
 		String s = "";
 		String header = "\n" + 
 				"\n" + "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \n" + 
@@ -175,8 +191,16 @@ public class ProblemServlet extends HttpServlet
 			String pdfLink = p.getPDFLink();
 			if (!(pdfLink.equals(""))) 
 			{
-				accumDescription += "<embed src=\"" + pdfLink
-						+ "\" type=\"application/pdf\" width=\"100%\" height=\"600px\" />\n<br>\n";
+				if (isMobile)
+				{
+					accumDescription += "<embed src=\"" + pdfLink
+							+ "\" type=\"application/pdf\" width=\"100%\" height=\"100%\" />\n<br>\n";
+				}
+				else
+				{
+					accumDescription += "<embed src=\"" + pdfLink
+							+ "\" type=\"application/pdf\" width=\"100%\" height=\"600px\" />\n<br>\n";
+				}
 			}
 			accumDescription += p.getDescription();
 			s += 	"\n" +
@@ -370,7 +394,14 @@ public class ProblemServlet extends HttpServlet
 
 		
 		double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
-		String end = String.format("<center><font size=\"1\">Page requested: %s <br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.</font></center>", request.getRequestURI(), totalTimeUsed);
+		String end = String.format("<center><font size=\"1\">" +
+				"Page requested: %s <br>" +
+				"%d Users online<br>" +
+				"Page generated in: %5.3f seconds<br>" +
+				"</font></center>",
+				request.getRequestURI(),
+				DataStore.onlineMap.size(),
+				totalTimeUsed);
 		response.getWriter().append(s).append(end + "</body>\n" + "\n" + "</html>\n" + "\n" + "\n");
 	}
 

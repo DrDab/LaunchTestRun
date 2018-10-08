@@ -1,3 +1,23 @@
+<%@ page import="java.io.*, com.openhorizonsolutions.ltr.*" contentType="text/html"%>
+
+<%
+    double start = DataStore.stw.getElapsedNanoTime();
+    String ip = request.getRemoteAddr();
+    if (((start - DataStore.lastTimeOnlineRefreshed) / 1000000000.0) >= 900.0) 
+    {
+        DataStore.lastTimeOnlineRefreshed = start;
+        DataStore.onlineMap.clear();
+    }
+    
+    if (DataStore.onlineMap != null) 
+    {
+        if (!DataStore.onlineMap.containsKey(ip))
+        {
+            DataStore.onlineMap.put(ip, 1);
+        }
+    }
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -79,7 +99,12 @@ MathJax.Hub.Config({
 	</div>
 
 	<br style="clear: both" />
-	<center><font size="1">LaunchTestRun is (C) copyright of Victor Du.</font></center>
+	<center><font size="1">
+	<%
+	double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0); 
+	out.print(String.format("Page requested: %s <br>%d Users online<br>Page generated in: %5.3f seconds", request.getRequestURI(), DataStore.onlineMap.size(), totalTimeUsed)); 
+    %>
+    </font></center>
 </body>
 
 </html>

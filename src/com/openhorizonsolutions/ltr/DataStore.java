@@ -16,4 +16,6 @@ public class DataStore
 	public static HashMap<String, Integer> ipMap = new HashMap<String, Integer>();
 	public static double lastTimeListRefreshed = 0.0; // in nanotime
 	
+	public static HashMap<String, Integer> onlineMap = new HashMap<String, Integer>();
+	public static double lastTimeOnlineRefreshed = 0.0; // in nanotime
 }
