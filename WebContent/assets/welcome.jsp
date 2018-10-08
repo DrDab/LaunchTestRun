@@ -126,7 +126,7 @@ MathJax.Hub.Config({
     <center><font size="1">
     <%
     double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0); 
-    out.print(String.format("Page requested: %s <br>%d Users online<br>Page generated in: %5.3f seconds<br>LaunchTestRun is (C) copyright of Victor Du.", request.getRequestURI(), DataStore.onlineMap.size(), totalTimeUsed)); 
+    out.print(String.format("Page requested: %s <br>%d Users online<br>Page generated in: %5.3f seconds<br>LaunchTestRun is open-source and freely redistributable under the MIT License.", request.getRequestURI(), DataStore.onlineMap.size(), totalTimeUsed)); 
     %>
     </font></center>
 
