@@ -18,16 +18,6 @@ sudo apt-get update
 sudo apt-get install default-jre default-jdk build-essential python2 python3 mono-devel
 ```
 
-To install Tomcat, run
-```
-cd
-mkdir LaunchTestRun
-cd LaunchTestRun
-curl http://us.mirrors.quenda.co/apache/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53.zip --output apache-tomcat-8.0.53.zip
-unzip apache-tomcat-8.0.53.zip
-rm -r apache-tomcat-8.0.53.zip
-```
-
 # Installation
 1. If you would like to build from source, continue to step 2. Otherwise, copy the .WAR file in ``release/`` to the ``webapps/`` directory in your Apache Tomcat server (if you used the previous steps Tomcat should be installed in ~/LaunchTestRun), and skip to step 5.
 2. Import this as an Eclipse Dynamic Web Project.
@@ -38,9 +28,9 @@ rm -r apache-tomcat-8.0.53.zip
 7. Run ``bin/startup.sh`` in your Tomcat installation directory to start LaunchTestRun.
 
 ### Securing your setup
-If you would like more security on your LaunchTestRun installation (strongly recommended as others will be running code on your server!), you should create a new user that only has permissions to run and access the files within the Tomcat installation directory. To secure your setup, after running ``bin/startup.sh`` the first time after moving the .WAR file, run the following commands:
+If you would like more security on your LaunchTestRun installation (strongly recommended as others will be running code on your server!), you should create a new user that only has permissions to run and access the files within the Tomcat installation directory. To secure your setup, after running ``bin/startup.sh`` the first time after moving the .WAR file, run the following commands (replace all text in brackets with locations applicable to your specific installation) :
 ```
-cd ~/LaunchTestRun/apache-tomcat-8.0.53
+cd [ YOUR TOMCAT DIRECTORY HERE ]
 su root
 useradd launchtestrun
 mkdir work
@@ -54,15 +44,16 @@ chown launchtestrun:launchtestrun -R webapps/LaunchTestRun/forensics.txt
 After setting these permissions, when starting the LaunchTestRun server, switch to the ``launchtestrun`` user before running ``startup.sh`` with the following commands:
 ```
 su launchtestrun
-cd ~/LaunchTestRun/apache-tomcat-8.0.53/bin
+cd [ YOUR TOMCAT DIRECTORY HERE ]/bin
 ./startup.sh
 ```
 
 To view a forensic log of all the files uploaded and executed (containing IP, input, output, MD5 hash, time uploaded, etc), view ``webapps/LaunchTestRun/forensics.txt``. 
 
 # Setup
+NOTE: It is recommended to initalize a git repository in ``webapps/LaunchTestRun/problems`` so that problems can be remotely uploaded, edited and reverted if needed.
 1. If you haven't installed the LaunchTestRun server before reading this step, please refer back to Running and follow the instructions.
-2. To add a custom problem, go into your Apache Tomcat server directory, and go to ``webapps/LaunchTestRun/problems`` inside your server directory. Create a new directory with the following structure:
+2. To add a custom problem, go into your Apache Tomcat server directory, and go to ``webapps/LaunchTestRun/problems`` inside your Apache Tomcat directory. Create a new directory with the following structure:
 ```
 [+] Name of problem
  |- config.json
@@ -103,4 +94,5 @@ Where:
 3. To set the locations of the compilers, you can edit ``webapps/LaunchTestRun/settings.json``, which contains the paths that LaunchTestRun will look for the compilers in.
 
 # Using
-The LaunchTestRun server can be accessed by default from: ``http://127.0.0.1:8080/LaunchTestRun/listproblems.html/`` after it is configured with Tomcat in the previous sections.
+The LaunchTestRun server can be accessed by default from: ``http://127.0.0.1:8080/LaunchTestRun/index.html/`` after it is configured with Tomcat in the previous sections.
+A list of problems added can be accessed by default from: ``http://127.0.0.1:8080/LaunchTestRun/listproblems.html/``.
