@@ -3,6 +3,7 @@
 <%
     double start = DataStore.stw.getElapsedNanoTime();
     String ip = request.getRemoteAddr();
+    response.addHeader("X-Clacks-Overhead", "GNU Terry Pratchett");
     if (((start - DataStore.lastTimeOnlineRefreshed) / 1000000000.0) >= 900.0) 
     {
         DataStore.lastTimeOnlineRefreshed = start;

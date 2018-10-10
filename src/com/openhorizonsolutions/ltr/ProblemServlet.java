@@ -54,6 +54,7 @@ public class ProblemServlet extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
+		response.addHeader("X-Clacks-Overhead", "GNU Terry Pratchett");
 		boolean isMobile = ProblemLoaderUtils.isMobileBrowser(request.getHeader("User-Agent"));
 		String ip = request.getRemoteAddr();
 		String contextPath = request.getContextPath();
@@ -458,9 +459,24 @@ public class ProblemServlet extends HttpServlet
 		
 		if (ec != -1 && mc != -1 && fc != -1)
 		{
+			String[] reOrganized = new String[toSort.length - 3];
+			int tmpIdx = 0;
+			for (int i = 0; i < toSort.length; i++)
+			{
+				if (!toSort[i].equals("Easy") && !toSort[i].equals("Medium") && !toSort[i].equals("Hard"))
+				{
+					reOrganized[tmpIdx] = toSort[i].toString();
+					tmpIdx++;
+				}
+			}
+			Arrays.sort(reOrganized);
 			toSort[0] = "Easy";
 			toSort[1] = "Medium";
 			toSort[2] = "Hard";
+			for(int i = 0; i < reOrganized.length; i++)
+			{
+				toSort[3 + i] = reOrganized[i];
+			}
 		}
 		else
 		{

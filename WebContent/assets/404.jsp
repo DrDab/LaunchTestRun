@@ -1,21 +1,22 @@
 <%@ page import="java.io.*, com.openhorizonsolutions.ltr.*" contentType="text/html"%>
 
 <%
-    double start = DataStore.stw.getElapsedNanoTime();
-    String ip = request.getRemoteAddr();
-    if (((start - DataStore.lastTimeOnlineRefreshed) / 1000000000.0) >= 900.0) 
-    {
-        DataStore.lastTimeOnlineRefreshed = start;
-        DataStore.onlineMap.clear();
-    }
-    
-    if (DataStore.onlineMap != null) 
-    {
-        if (!DataStore.onlineMap.containsKey(ip))
-        {
-            DataStore.onlineMap.put(ip, 1);
-        }
-    }
+	double start = DataStore.stw.getElapsedNanoTime();
+	response.addHeader("X-Clacks-Overhead", "GNU Terry Pratchett");
+	String ip = request.getRemoteAddr();
+	if (((start - DataStore.lastTimeOnlineRefreshed) / 1000000000.0) >= 900.0) 
+	{
+		DataStore.lastTimeOnlineRefreshed = start;
+		DataStore.onlineMap.clear();
+	}
+
+	if (DataStore.onlineMap != null)
+	{
+		if (!DataStore.onlineMap.containsKey(ip)) 
+		{
+			DataStore.onlineMap.put(ip, 1);
+		}
+	}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 

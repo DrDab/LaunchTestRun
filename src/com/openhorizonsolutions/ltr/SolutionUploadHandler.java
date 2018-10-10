@@ -84,6 +84,7 @@ public class SolutionUploadHandler extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		double start = DataStore.stw.getElapsedNanoTime();
+		response.addHeader("X-Clacks-Overhead", "GNU Terry Pratchett");
 		String ip = request.getRemoteAddr();
 		String realPath = getServletContext().getRealPath("");
 		
