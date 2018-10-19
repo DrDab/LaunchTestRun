@@ -30,13 +30,15 @@ sudo apt-get install default-jre default-jdk build-essential python2 python3 mon
 ### Securing your setup
 If you would like more security on your LaunchTestRun installation (strongly recommended as others will be running code on your server!), you should create a new user that only has permissions to run and access the files within the Tomcat installation directory. To secure your setup, after running ``bin/startup.sh`` the first time after moving the .WAR file, run the following commands (replace all text in brackets with locations applicable to your specific installation) :
 ```
-cd [ YOUR TOMCAT DIRECTORY HERE ]
 su root
+chmod 755 [ YOUR TOMCAT DIRECTORY HERE ] -R
+cd [ YOUR TOMCAT DIRECTORY HERE ]
 useradd launchtestrun
 mkdir work
 touch webapps/LaunchTestRun/forensics.txt
 chown launchtestrun:launchtestrun -R work
 chown launchtestrun:launchtestrun -R logs
+chown launchtestrun:launchtestrun -R webapps/LaunchTestRun
 chown launchtestrun:launchtestrun -R webapps/LaunchTestRun/upload
 chown launchtestrun:launchtestrun -R webapps/LaunchTestRun/forensics.txt
 ```
