@@ -4,6 +4,66 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
+<!--
+
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      .hhhhhhhhhhhhhhhhhhhhhhho                                                     
+                      `hhhhhhhhhhhhhhhhhhhhhhho                                                     
+```````````````````````hhhhhhhhhhhhhhhhhhhhhhhs      ```````````````````````````````````````````````
+yyyyyyyyyyyyyyyyyyyyyyyhhhhhhhhhhhhhhhhhhhhhhhy      +yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+yyyyyyyyyyyyyyyyyyyyyyyhhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhyyyyyyyyyyyyyyyyyyyyyyy
+```````````````````````hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh-``````````````````````
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.                      
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhh.``````````````````````
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhyyyyyyyyyyyyyyyyyyyyyyy
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      /hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       hhhhhhhhhhhhhhhhhhhhhhhy      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       yhhhhhhhhhhhhhhhhhhhhhhy      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       yhhhhhhhhhhhhhhhhhhhhhhh      -hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                       
+                       
+-->
+
 <title>LaunchTestRun</title>
 
 <script type="text/x-mathjax-config">
@@ -30,47 +90,7 @@ MathJax.Hub.Config({
 	href="<%= response.encodeURL(request.getContextPath() + "/assets/favicon.ico") %>">
 <link rel="shortcut icon " 
     href="<%= response.encodeURL(request.getContextPath() + "/assets/favicon.ico") %>">
-<!-- 
-
- ____________________________________
-/ If you're reading this, you should \
-\ really take a break.               /
- ------------------------------------
-        \          .             .
-         \        / \           / \
-          \      /   \         / . \
-           \     | .  \       /  . |
-            \    | .   |     |  .. |
-             \   | ..  | _._ |  .. |
-              \   \..  ./   \.  .. |
-               \   \. | xxxxx |  ./
-                    \/ x ,-. x\__/
-                 .--/ ,-'ZZZ`-.  \--.
-                 (  ,'ZZ;ZZ;Z;Z`..  )
-                 .,'ZZ;; ;; ; ;ZZ `..
-               ._###ZZ @  .  @  Z####`
-                ````Z._  ~~~  _.Z``\
-                 _/ ZZ `-----'  Z   \
-                ;   ZZ /.....\  Z    \;;
-               ;/__ ZZ/..  ...\ Z     \;
-              ##'#.\_/.      _.\ZZ     |
-              ##....../      |..\Z     |;
-             / `-.___/|      |../Z     |
-            |    ZZ   |      |./  Z    |;;
-           ;|   Z    /x\____/x     Z   |;
-           ;\  Z   /xxxxxxxxxxx\   Z __|
-            ;\Z  /'##xxxxxxxx###`\__Z .\_
-             Z|/#| ####xxxx####  |##\Z ..|
-          __Z /#/   ####x####    |###\Z_..|
-         /NN\|#|      `###`      \###|NN\..\
-         |NN|\#\  _____.......  _/\/ \__/..|
-         `-'  `-..###########\_/##/  /.../
-                `|#####/   \####|   /../
-                  .xxx#|   |xxx.   |./
-                 |x' `x|   |'  `|   -
-                 `~~~~'    `~~~~'
     
--->
 </head>
 
 <body class="no-mathjax">
