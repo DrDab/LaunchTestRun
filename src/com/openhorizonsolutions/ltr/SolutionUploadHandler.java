@@ -212,7 +212,7 @@ public class SolutionUploadHandler extends HttpServlet
 			int fileSize = buffer.length;
 			if (fileSize >= 10000)
 			{
-				request.setAttribute("message", "File size too big. Please upload a smaller file under 1MB.");
+				request.setAttribute("message", "<plain>File size too big. Please upload a smaller file under 1MB.</plain>");
 			}
 			else
 			{
@@ -225,7 +225,7 @@ public class SolutionUploadHandler extends HttpServlet
 				catch (NumberFormatException nfe0)
 				{
 					nfe0.printStackTrace();
-					request.setAttribute("message", "The selected language type is invalid.");
+					request.setAttribute("message", "<plain>The selected language type is invalid.</plain>");
 				}
 				boolean ok = true;
 				if (languageType > 5 || languageType < 0)
@@ -494,7 +494,7 @@ public class SolutionUploadHandler extends HttpServlet
 				}
 				else
 				{
-					request.setAttribute("message", "The selected language type is doesn't match the file-type uploaded.");
+					request.setAttribute("message", "<plain>The selected language type doesn't match the file-type uploaded.</plain>");
 					double totalTimeUsed = (double) ((DataStore.stw.getElapsedNanoTime() - start) / 1000000000.0);
 					String end = String.format("Page requested: %s <br>" +
 							  "%d Users online<br>" +
