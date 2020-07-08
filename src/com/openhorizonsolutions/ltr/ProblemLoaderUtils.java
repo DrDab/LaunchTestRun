@@ -283,37 +283,37 @@ public class ProblemLoaderUtils
 		ExecutableLocationUpdator eld = new ExecutableLocationUpdator(serverpath);
 		File programOutputFile = new File(toRun.getParent(), uuid + "-program-output");
 		File programErrFile = new File(toRun.getParent(), uuid + "-program-error");
-		String command = "";
+		ArrayList<String> commandArgs = new ArrayList<String>();
 		if (language == 0 || language == 1)
 		{
-			command += "";
-			command += toRun.toString();
+			commandArgs.add(toRun.toString());
 		}
 		else if (language == 2)
 		{
-			command += eld.getJava() + " -cp ";
-			command += toRun.getParent() + " ";
-			command += toRun.getName().replaceAll(".class", "");
+			commandArgs.add(eld.getJava());
+			commandArgs.add(" -cp ");
+			commandArgs.add(toRun.getParent());
+			commandArgs.add(toRun.getName().replaceAll(".class", ""));
 		}
 		else if (language == 3)
 		{
-			command += eld.getPython27() + " ";
-			command += toRun.toString();
+			commandArgs.add(eld.getPython27());
+			commandArgs.add(toRun.toString());
 		}
 		else if (language == 4)
 		{
-			command += eld.getPython36() + " ";
-			command += toRun.toString();
+			commandArgs.add(eld.getPython36());
+			commandArgs.add(toRun.toString());
 		}
 		else if (language == 5)
 		{
-			command += eld.getCSharpRunner() + " ";
-			command += toRun.toString();
+			commandArgs.add(eld.getCSharpRunner());
+			commandArgs.add(toRun.toString());
 		}
 		try 
 		{
 			ArrayList<Integer> al = new ArrayList<Integer>();
-			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
+			ProcessBuilder pb = new ProcessBuilder(commandArgs);
 			pb.directory(new File(toRun.getParent()));
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
@@ -384,32 +384,43 @@ public class ProblemLoaderUtils
 		ExecutableLocationUpdator eld = new ExecutableLocationUpdator(serverpath);
 		File programOutputFile = new File(file.getParent(), uuid + "-compiler-output");
 		File programErrFile = new File(file.getParent(), uuid + "-compiler-error");
-		String command = "";
+		ArrayList<String> commandArgs = new ArrayList<String>();
 		if (language == 0)
 		{
-			command += eld.getGCC() + " ";
-			command += file.getAbsolutePath() + " ";
-			command += "-lm -O2 ";
-			command += "-o " + file.getParent() + "/toExecute";
+			commandArgs.add(eld.getGCC());
+			commandArgs.add(file.getAbsolutePath());
+			commandArgs.add("-lm"); 
+			commandArgs.add("-O2");
+			commandArgs.add("-o");
+			commandArgs.add(file.getParent()+"/toExecute");
 		}
 		else if (language == 1)
 		{
-			command += eld.getGPP() + " ";
-			command += file.getAbsolutePath() + " ";
-			command += "--std=c++11 ";
-			command += "-lm -O2 ";
-			command += "-o " + file.getParent() + "/toExecute";
+			commandArgs.add(eld.getGPP());
+			commandArgs.add(file.getAbsolutePath());
+			commandArgs.add("--std=c++11");
+			commandArgs.add("-lm"); 
+			commandArgs.add("-O2");
+			commandArgs.add("-o");
+			commandArgs.add(file.getParent()+"/toExecute");
 		}
 		else if (language == 2)
 		{
-			command += eld.getJavac() + " -source 1.8 -target 1.8 ";
-			command += file.getAbsolutePath() + " ";
-			command += "-d " + file.getParent();
+			commandArgs.add(eld.getJavac());
+			commandArgs.add("-source");
+			commandArgs.add("1.8");
+			commandArgs.add("-target");
+			commandArgs.add("1.8");
+			commandArgs.add(file.getAbsolutePath());
+			commandArgs.add("-d");
+			commandArgs.add(file.getParent());
 		}
 		else if (language == 5)
 		{
-			command += eld.getMCS() + " -out:toExecute.exe ";
-			command += "-pkg:dotnet " + file.getName(); 
+			commandArgs.add(eld.getMCS());
+			commandArgs.add("-out:toExecute.exe");
+			commandArgs.add("-pkg:dotnet");
+			commandArgs.add(file.getName()); 
 		}
 		else
 		{
@@ -419,7 +430,7 @@ public class ProblemLoaderUtils
 		try 
 		{
 			ArrayList<Integer> al = new ArrayList<Integer>();
-			ProcessBuilder pb = new ProcessBuilder(command.split(" "));
+			ProcessBuilder pb = new ProcessBuilder(commandArgs);
 			pb.directory(new File(file.getParent()));
 			pb.redirectOutput(programOutputFile);
 			pb.redirectError(programErrFile);
