@@ -37,6 +37,7 @@ public class Problem implements Comparable<Problem>
 	private File judgeOutput;
 	private String inputName;
 	private int timeout;
+	public boolean matchRegex;
 	
 	public Problem(String cpid, String title, String setInfo, String description, String pdfLink, File sampleInput, File sampleOutput, File judgeInput, File judgeOutput, String inputName, int timeout)
 	{
@@ -51,8 +52,8 @@ public class Problem implements Comparable<Problem>
 		this.judgeOutput = judgeOutput;
 		this.inputName = inputName;
 		this.timeout = timeout;
+		this.matchRegex = false;
 	}
-	
 	
 	public String getCPID()
 	{

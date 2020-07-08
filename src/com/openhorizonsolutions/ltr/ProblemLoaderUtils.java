@@ -78,8 +78,9 @@ public class ProblemLoaderUtils
 					 * 	"sampleout":"sample.out",
 					 * 	"judgein":"judge.in",
 					 * 	"judgeout":"judge.out"
-					 * 	"inputname":"input.txt"
-					 * 	"timeout":"2000"
+					 * 	"inputname":"input.txt",
+					 * 	"timeout":"2000",
+					 * 	"matchRegex":false
 					 * }
 					 */
 					try
@@ -114,6 +115,11 @@ public class ProblemLoaderUtils
 						String judgeOut = mainObj.getString("judgeout");
 						String inputName = mainObj.getString("inputname");
 						int timeout = Integer.parseInt(mainObj.getString("timeout"));
+						boolean matchRegex = false;
+						if (mainObj.has("matchRegex"))
+						{
+							matchRegex = mainObj.getBoolean("matchRegex");
+						}
 						File sampleInFile = new File(subFolder, sampleIn);
 						File sampleOutFile = new File(subFolder, sampleOut);
 						File judgeInFile = new File(subFolder, judgeIn);

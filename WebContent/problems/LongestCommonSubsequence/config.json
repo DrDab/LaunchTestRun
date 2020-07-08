@@ -9,5 +9,6 @@
 	"judgein":"judge.in",
 	"judgeout":"judge.out",
 	"inputname":"longestcs.txt",
-	"timeout":"2000"
+	"timeout":"2000",
+	"matchRegex":true
 }

@@ -344,8 +344,8 @@ public class SolutionUploadHandler extends HttpServlet
 					String judgeStatus = "SYSTEM ERROR";
 					byte[] expectedSampleOutputBytes = Files.readAllBytes(curProblem.getSampleOutput().toPath());
 					byte[] expectedJudgeOutputBytes = Files.readAllBytes(curProblem.getJudgeOutput().toPath());
-					String expectedSampleOutput = new String(expectedSampleOutputBytes).trim();
-					String expectedJudgeOutput = new String(expectedJudgeOutputBytes).trim();
+					String expectedSampleOutput = new String(expectedSampleOutputBytes).replaceAll("\\s+$",""); // trim trailing right characters
+					String expectedJudgeOutput = new String(expectedJudgeOutputBytes).replaceAll("\\s+$","");   // ditto.
 					
 					DataStore.forensicsLogger.logUploadResult(false, uuid, executionOutputSample.getStdIn(), executionOutputSample.getStdOut(), executionOutputSample.getStdErr(), executionOutputSample.getMillis());
 					DataStore.forensicsLogger.logUploadResult(true, uuid, executionOutputJudge.getStdIn(), executionOutputJudge.getStdOut(), executionOutputJudge.getStdErr(), executionOutputJudge.getMillis());
@@ -362,9 +362,17 @@ public class SolutionUploadHandler extends HttpServlet
 						sampleStatus = "<plainbold><font color=\"#e62100\">ERROR</font></plainbold>";
 						success = false;
 					}
-					else if (executionOutputSample.getStdOut().trim().matches(expectedSampleOutput))
+					else if (curProblem.matchRegex)
 					{
-						sampleStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
+						if (executionOutputSample.getStdOut().trim().matches(expectedSampleOutput))
+						{
+							sampleStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
+						}
+						else
+						{
+							sampleStatus = "<plainbold><font color=\"#e62100\">WRONG</font></plainbold>";
+							success = false;
+						}
 					}
 					else if (executionOutputSample.getStdOut().trim().equals(expectedSampleOutput))
 					{
@@ -386,9 +394,17 @@ public class SolutionUploadHandler extends HttpServlet
 						judgeStatus = "<plainbold><font color=\"#e62100\">ERROR</font></plainbold>";
 						success = false;
 					}
-					else if (executionOutputJudge.getStdOut().trim().matches(expectedJudgeOutput))
+					else if (curProblem.matchRegex)
 					{
-						judgeStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
+						if (executionOutputSample.getStdOut().trim().matches(expectedSampleOutput))
+						{
+							sampleStatus = "<plainbold><font color=\"#66e621\">CORRECT</font></plainbold>";
+						}
+						else
+						{
+							sampleStatus = "<plainbold><font color=\"#e62100\">WRONG</font></plainbold>";
+							success = false;
+						}
 					}
 					else if (executionOutputJudge.getStdOut().trim().equals(expectedJudgeOutput))
 					{
