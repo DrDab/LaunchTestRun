@@ -297,7 +297,7 @@ public class ProblemLoaderUtils
 		else if (language == 2)
 		{
 			commandArgs.add(eld.getJava());
-			commandArgs.add(" -cp ");
+			commandArgs.add("-cp");
 			commandArgs.add(toRun.getParent());
 			commandArgs.add(toRun.getName().replaceAll(".class", ""));
 		}
